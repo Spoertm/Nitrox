@@ -3,13 +3,12 @@ using NitroxClient.Communication.Abstract;
 using NitroxClient.GameLogic;
 using NitroxClient.MonoBehaviours.Vehicles;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class MovementBroadcaster : MonoBehaviour
+public sealed class MovementBroadcaster : MonoBehaviour
 {
     public const int BROADCAST_FREQUENCY = 30;
     public const float BROADCAST_PERIOD = 1f / BROADCAST_FREQUENCY;
@@ -31,7 +30,7 @@ public class MovementBroadcaster : MonoBehaviour
         Instance = this;
     }
 
-    public void OnDestroy()
+    public static void OnDestroy()
     {
         Instance = null;
     }

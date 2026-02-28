@@ -6,7 +6,7 @@ using Nitrox.Model.Helper;
 
 namespace Nitrox.Model.Platforms.OS.Shared;
 
-public class ConfigFileKeyValueStore : IKeyValueStore
+public sealed class ConfigFileKeyValueStore : IKeyValueStore
 {
     private bool hasLoaded = false;
     private readonly Dictionary<string, object> keyValuePairs = new();

@@ -19,22 +19,21 @@
     <UserControl.Styles>
         <Style Selector=":not(.official)">
             <Style Selector="^ controls|RecolorImage.updateIcon">
-                <Setter Property="Source" Value="/Assets/Images/store-icons/pirated.png" />
-                <Setter Property="ToolTip.Tip" Value=":(" />
+                <Setter Property="Source" Value="/Assets/Images/nitrox-icon.ico" />
+                <Setter Property="ToolTip.Tip" Value="Development version" />
             </Style>
             <Style Selector="^ TextBlock.updateHeader">
-                <Setter Property="Text" Value="Unofficial Version Detected" />
+                <Setter Property="Text" Value="Development Version" />
             </Style>
             <Style Selector="^ TextBlock.updateDescription">
                 <Setter Property="Text">
-                    <MultiBinding StringFormat="{}{0}&#x0a;&#x0a;Your version: {1}&#x0a;Official version: {2}">
+                    <MultiBinding StringFormat="{}{0}&#x0a;&#x0a;Your version: {1}">
                         <Binding>
                             <Binding.Source>
-                                <x:String>It looks like you aren't using an official version of Nitrox. If you are not a developer, please download the official version to ensure that you have the best experience.</x:String>
+                                <x:String>You are using a development version of Nitrox.</x:String>
                             </Binding.Source>
                         </Binding>
                         <Binding Path="Version" FallbackValue="." />
-                        <Binding Path="OfficialVersion" FallbackValue="." />
                     </MultiBinding>
                 </Setter>
             </Style>

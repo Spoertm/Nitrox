@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.HUD;
 
-public class PlayerListTab : NitroxPDATab
+public sealed class PlayerListTab : NitroxPDATab
 {
     private uGUI_PDATab tab;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Nitrox.Server.Subnautica.Models.Serialization;
 
-public class SubnauticaServerProtoBufSerializer : ServerProtoBufSerializer
+public sealed class SubnauticaServerProtoBufSerializer : ServerProtoBufSerializer
 {
     public SubnauticaServerProtoBufSerializer(ILogger<SubnauticaServerProtoBufSerializer>? logger) : base(logger, "Assembly-CSharp", "Assembly-CSharp-firstpass", "Nitrox.Model", "Nitrox.Model.Subnautica")
     {

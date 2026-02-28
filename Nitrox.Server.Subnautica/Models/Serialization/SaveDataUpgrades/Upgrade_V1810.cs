@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Nitrox.Server.Subnautica.Models.Serialization.SaveDataUpgrades;
 
-public class Upgrade_V1810(ILogger<Upgrade_V1810> logger) : SaveDataUpgrade(logger)
+public sealed class Upgrade_V1810(ILogger<Upgrade_V1810> logger) : SaveDataUpgrade(logger)
 {
     public override Version TargetVersion { get; } = new(1, 8, 1, 0);
 

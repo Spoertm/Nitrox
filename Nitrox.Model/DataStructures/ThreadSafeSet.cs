@@ -32,7 +32,7 @@ namespace Nitrox.Model.DataStructures
         {
             if (set == null || createCopy)
             {
-                this.set = CreateCopy(set);
+                this.set = ThreadSafeSet<T>.CreateCopy(set);
                 return;
             }
             this.set = set;
@@ -190,7 +190,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return CreateCopy(set).GetEnumerator();
+                return ThreadSafeSet<T>.CreateCopy(set).GetEnumerator();
             }
         }
 
@@ -235,11 +235,11 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return CreateCopy(set);
+                return ThreadSafeSet<T>.CreateCopy(set);
             }
         }
 
-        private HashSet<T> CreateCopy(ISet<T> data)
+        private static HashSet<T> CreateCopy(ISet<T> data)
         {
             return new HashSet<T>(data);
         }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic.Bases;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities.Bases;
 

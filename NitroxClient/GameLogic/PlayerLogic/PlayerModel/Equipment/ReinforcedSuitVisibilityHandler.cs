@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.Equipment
 {
-    public class ReinforcedSuitVisibilityHandler : IEquipmentVisibilityHandler
+    public sealed class ReinforcedSuitVisibilityHandler : IEquipmentVisibilityHandler
     {
         private readonly GameObject gloves;
         private readonly GameObject suit;

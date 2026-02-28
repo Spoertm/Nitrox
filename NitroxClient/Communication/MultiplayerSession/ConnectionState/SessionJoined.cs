@@ -3,7 +3,7 @@ using NitroxClient.Communication.Abstract;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class SessionJoined : ConnectionNegotiatedState
+    public sealed class SessionJoined : ConnectionNegotiatedState
     {
         public override MultiplayerSessionConnectionStage CurrentStage => MultiplayerSessionConnectionStage.SESSION_JOINED;
 

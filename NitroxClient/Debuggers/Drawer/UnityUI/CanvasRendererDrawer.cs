@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class CanvasRendererDrawer : IDrawer<CanvasRenderer>
+public sealed class CanvasRendererDrawer : IDrawer<CanvasRenderer>
 {
     public void Draw(CanvasRenderer canvasRenderer)
     {

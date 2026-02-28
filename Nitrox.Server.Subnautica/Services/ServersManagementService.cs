@@ -63,6 +63,7 @@ internal sealed class ServersManagementService(PlayerManager playerManager, IPac
             }
             await WaitNextAsync();
         }
+        return;
 
         ValueTask<bool> WaitNextAsync() => refreshTimer.WaitForNextTickAsync(stoppingToken);
 
@@ -140,14 +141,14 @@ internal sealed class ServersManagementService(PlayerManager playerManager, IPac
             // Omit last "new line" occurrence, as it is implied.
             if (message.LastIndexOf(Environment.NewLine, StringComparison.Ordinal) is var newlineIndex and > -1)
             {
-                message = message.Substring(0, newlineIndex);
+                message = message[..newlineIndex];
             }
 
             await api.AddOutputLine(category, isPlain ? null : time, level, message);
         }
     }
 
-    private bool ShouldIgnoreException(Exception ex)
+    private static bool ShouldIgnoreException(Exception ex)
     {
         ex = ex is AggregateException aggregate ? aggregate.InnerException : ex;
         return ex switch
@@ -180,5 +181,5 @@ internal sealed class ServersManagementService(PlayerManager playerManager, IPac
         public void OnCommand(string command) => commandProcessor.ExecuteCommand(command, new HostToServerCommandContext(packetSender), out _);
     }
 
-    internal record LogEntry(IZLoggerEntry Entry, IZLoggerFormatter Formatter, ZLoggerPlainOptions.LogGeneratorCall Generator, ArrayBufferWriter<byte> Writer);
+    internal sealed record LogEntry(IZLoggerEntry Entry, IZLoggerFormatter Formatter, ZLoggerPlainOptions.LogGeneratorCall Generator, ArrayBufferWriter<byte> Writer);
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace NitroxClient.MonoBehaviours;
 
 // Shouldn't this class be named after the armscontroller?
-public class AnimationController : MonoBehaviour
+public sealed class AnimationController : MonoBehaviour
 {
     private const float SMOOTHING_SPEED = 4f;
     private Animator animator;

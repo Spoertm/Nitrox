@@ -2,7 +2,7 @@
 
 namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Catalog;
 
-public class ResourceLocation
+public sealed class ResourceLocation
 {
     public string InternalId { get; set; }
     public string ProviderId { get; set; }

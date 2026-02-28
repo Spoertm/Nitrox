@@ -190,6 +190,7 @@ internal sealed class ConsoleInputService(CommandService commandService, IPacket
                 }
             }
         }
+        return;
 
         int GetConsoleWidth(int offset = 0) => int.Max(0, Console.WindowWidth + offset);
 
@@ -231,7 +232,7 @@ internal sealed class ConsoleInputService(CommandService commandService, IPacket
     ///     Provides a <see cref="IHostLifetime" /> implementation that prevents Ctrl+C from cancelling the
     ///     application.
     /// </summary>
-    internal class NoCtrlCCancelLifetime : IHostLifetime, IDisposable
+    internal sealed class NoCtrlCCancelLifetime : IHostLifetime, IDisposable
     {
         private PosixSignalRegistration? sigIntRegistration;
         private PosixSignalRegistration? sigQuitRegistration;

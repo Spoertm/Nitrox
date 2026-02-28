@@ -1,12 +1,11 @@
 using System;
-using System.Linq;
 using System.Runtime.Serialization;
 using Nitrox.Model.DataStructures;
 
 namespace Nitrox.Model.Subnautica.DataStructures.GameLogic.Bases;
 
 [DataContract]
-public class BaseData : IEquatable<BaseData>
+public sealed class BaseData : IEquatable<BaseData>
 {
     [DataMember(Order = 1)]
     public NitroxInt3 BaseShape;

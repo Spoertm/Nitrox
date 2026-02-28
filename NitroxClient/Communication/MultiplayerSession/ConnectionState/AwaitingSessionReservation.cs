@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using NitroxClient.Communication.Abstract;
 using Nitrox.Model.Helper;
 using Nitrox.Model.MultiplayerSession;
@@ -7,7 +6,7 @@ using Nitrox.Model.Packets.Exceptions;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class AwaitingSessionReservation : ConnectionNegotiatingState
+    public sealed class AwaitingSessionReservation : ConnectionNegotiatingState
     {
         private readonly string reservationCorrelationId;
 

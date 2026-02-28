@@ -61,17 +61,17 @@ internal sealed class EntityReparentedProcessor(Entities entities) : IClientPack
             // Move this to a resolver if there ends up being a lot of custom reparenting logic
             if (entityType == typeof(InventoryItemEntity))
             {
-                InventoryItemReparented(entity.Value, newParent);
+                EntityReparentedProcessor.InventoryItemReparented(entity.Value, newParent);
             }
             else
             {
-                PerformDefaultReparenting(entity.Value, newParent);
+                EntityReparentedProcessor.PerformDefaultReparenting(entity.Value, newParent);
             }
         }
         return Task.CompletedTask;
     }
 
-    private void InventoryItemReparented(GameObject entity, GameObject newParent)
+    private static void InventoryItemReparented(GameObject entity, GameObject newParent)
     {
         Optional<ItemsContainer> opContainer = InventoryContainerHelper.TryGetContainerByOwner(newParent);
 
@@ -87,7 +87,7 @@ internal sealed class EntityReparentedProcessor(Entities entities) : IClientPack
         container.UnsafeAdd(new InventoryItem(pickupable));
     }
 
-    private void PerformDefaultReparenting(GameObject entity, GameObject newParent)
+    private static void PerformDefaultReparenting(GameObject entity, GameObject newParent)
     {
         entity.transform.SetParent(newParent.transform, false);
     }

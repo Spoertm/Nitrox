@@ -2,7 +2,7 @@
 
 namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Json;
 
-public class ContentCatalogData
+public sealed class ContentCatalogData
 {
     [JsonProperty("m_LocatorId")]
     public string LocatorId { get; set; }

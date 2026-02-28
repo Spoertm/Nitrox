@@ -2,7 +2,7 @@
 
 namespace NitroxClient.GameLogic.Simulation
 {
-    public class LockRequest<T> : LockRequestBase where T : LockRequestContext
+    public sealed class LockRequest<T> : LockRequestBase where T : LockRequestContext
     {
         public delegate void LockRequestCompleted(NitroxId id, bool lockAquired, T context);
 

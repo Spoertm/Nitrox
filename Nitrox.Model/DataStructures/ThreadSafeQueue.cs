@@ -74,7 +74,7 @@ public class ThreadSafeQueue<T> : IReadOnlyCollection<T>, ICollection
 
     public ThreadSafeQueue(Queue<T> queue, bool createCopy = true)
     {
-        this.queue = createCopy ? CreateCopy(queue) : queue;
+        this.queue = createCopy ? ThreadSafeQueue<T>.CreateCopy(queue) : queue;
     }
 
     public void Clear()
@@ -154,7 +154,7 @@ public class ThreadSafeQueue<T> : IReadOnlyCollection<T>, ICollection
     {
         lock (locker)
         {
-            return CreateCopy(queue);
+            return ThreadSafeQueue<T>.CreateCopy(queue);
         }
     }
 
@@ -174,7 +174,7 @@ public class ThreadSafeQueue<T> : IReadOnlyCollection<T>, ICollection
         }
     }
 
-    private Queue<T> CreateCopy(IEnumerable<T> data)
+    private static Queue<T> CreateCopy(IEnumerable<T> data)
     {
         return new Queue<T>(data);
     }
@@ -183,7 +183,7 @@ public class ThreadSafeQueue<T> : IReadOnlyCollection<T>, ICollection
     {
         lock (locker)
         {
-            return CreateCopy(queue).GetEnumerator();
+            return ThreadSafeQueue<T>.CreateCopy(queue).GetEnumerator();
         }
     }
 

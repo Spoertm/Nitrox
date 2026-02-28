@@ -13,7 +13,6 @@ using Nitrox.Server.Subnautica.Models.GameLogic.Entities;
 using Nitrox.Server.Subnautica.Models.GameLogic.Entities.Spawning;
 using Nitrox.Server.Subnautica.Models.GameLogic.Players;
 using Nitrox.Server.Subnautica.Models.GameLogic.Unlockables;
-using Nitrox.Server.Subnautica.Models.Helper;
 using Nitrox.Server.Subnautica.Models.Serialization.SaveDataUpgrades;
 using Nitrox.Server.Subnautica.Services;
 
@@ -271,6 +270,7 @@ internal class WorldService : IHostedService
             {
                 EnsureChildrenTransformAreParented(entity);
             }
+            return;
 
             void EnsureChildrenTransformAreParented(WorldEntity entity)
             {
@@ -388,6 +388,7 @@ internal class WorldService : IHostedService
         };
         await LoadPersistedWorldIntoServicesAsync(pWorldData);
         InitNewWorld();
+        return;
 
         void InitNewWorld()
         {

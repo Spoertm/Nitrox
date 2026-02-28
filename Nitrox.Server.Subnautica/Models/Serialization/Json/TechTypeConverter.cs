@@ -3,7 +3,7 @@ using Nitrox.Model.Subnautica.DataStructures.GameLogic;
 
 namespace Nitrox.Server.Subnautica.Models.Serialization.Json
 {
-    public class TechTypeConverter : JsonConverter<NitroxTechType>
+    public sealed class TechTypeConverter : JsonConverter<NitroxTechType>
     {
         public override void WriteJson(JsonWriter writer, NitroxTechType value, JsonSerializer serializer)
         {

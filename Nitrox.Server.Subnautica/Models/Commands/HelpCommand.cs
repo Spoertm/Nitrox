@@ -30,7 +30,7 @@ internal sealed class HelpCommand(Func<CommandRegistry> registryProvider) : ICom
                                                 .ThenBy(h => h.Name)
                                                 .ThenBy(h => h.ParameterTypes.Length))
         {
-            if (!registry.IsValidHandlerForContext(handler, context))
+            if (!CommandRegistry.IsValidHandlerForContext(handler, context))
             {
                 continue;
             }

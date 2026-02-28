@@ -24,7 +24,7 @@ public static class StringExtensions
             }
             if (arg.Length > name.Length && arg[name.Length] == '=')
             {
-                yield return arg.Substring(name.Length + 1);
+                yield return arg[(name.Length + 1)..];
                 continue;
             }
             for (i += 1; i < args.Length; i++)

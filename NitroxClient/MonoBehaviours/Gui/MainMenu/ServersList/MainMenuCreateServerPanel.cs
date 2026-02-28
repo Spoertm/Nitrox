@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 
-public class MainMenuCreateServerPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
+public sealed class MainMenuCreateServerPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
 {
     public const string NAME = "MultiplayerCreateServer";
 
@@ -122,7 +122,7 @@ public class MainMenuCreateServerPanel : MonoBehaviour, uGUI_INavigableIconGrid,
                 return false;
             }
             // Valid IPv4 but port should be specified in designated field.
-            if (value.LastIndexOf(":", StringComparison.Ordinal) is var colonIndex and > 0 && IPAddress.TryParse(value.Substring(0, colonIndex), out _))
+            if (value.LastIndexOf(":", StringComparison.Ordinal) is var colonIndex and > 0 && IPAddress.TryParse(value[..colonIndex], out _))
             {
                 return false;
             }

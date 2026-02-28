@@ -34,13 +34,13 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            UpdateElevator(rocket, metadata);
-            UpdateStage(rocket, metadata);
+            RocketMetadataProcessor.UpdateElevator(rocket, metadata);
+            RocketMetadataProcessor.UpdateStage(rocket, metadata);
             UpdatePreflightChecks(rocket, metadata);
         }
     }
 
-    private void UpdateElevator(Rocket rocket, RocketMetadata metadata)
+    private static void UpdateElevator(Rocket rocket, RocketMetadata metadata)
     {
         // elevators will only be present on this model after the gantry (p1) is built
         if (rocket.currentRocketStage > 1)
@@ -51,7 +51,7 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
         }
     }
 
-    private void UpdateStage(Rocket rocket, RocketMetadata metadata)
+    private static void UpdateStage(Rocket rocket, RocketMetadata metadata)
     {
         if (rocket.currentRocketStage == metadata.CurrentStage)
         {
@@ -110,15 +110,15 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
 
         if (isCockpitCheck)
         {
-            CompleteCockpitPreflightCheck(rocket, preflightCheck);
+            RocketMetadataProcessor.CompleteCockpitPreflightCheck(rocket, preflightCheck);
         }
         else
         {
-            CompleteBasicPreflightCheck(rocket, preflightCheck);
+            RocketMetadataProcessor.CompleteBasicPreflightCheck(rocket, preflightCheck);
         }
     }
 
-    private void CompleteCockpitPreflightCheck(Rocket rocket, PreflightCheck preflightCheck)
+    private static void CompleteCockpitPreflightCheck(Rocket rocket, PreflightCheck preflightCheck)
     {
         CockpitSwitch[] cockpitSwitches = rocket.GetComponentsInChildren<CockpitSwitch>(true);
 
@@ -137,7 +137,7 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
         }
     }
 
-    private void CompleteBasicPreflightCheck(Rocket rocket, PreflightCheck preflightCheck)
+    private static void CompleteBasicPreflightCheck(Rocket rocket, PreflightCheck preflightCheck)
     {
         ThrowSwitch[] throwSwitches = rocket.GetComponentsInChildren<ThrowSwitch>(true);
 

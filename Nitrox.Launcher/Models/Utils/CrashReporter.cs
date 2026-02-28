@@ -37,6 +37,7 @@ internal static class CrashReporter
         {
             Environment.Exit(1);
         }
+        return;
 
         static string GetNewCrashFilePath(string crashPath)
         {

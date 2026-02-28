@@ -209,6 +209,7 @@ internal sealed class JoiningManager(
         );
 
         await packetSender.SendPacketAsync(initialPlayerSync, player.SessionId);
+        return;
 
         IEnumerable<PlayerContext> GetOtherPlayers(Player player)
         {

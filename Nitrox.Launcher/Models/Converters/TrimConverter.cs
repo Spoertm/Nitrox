@@ -12,7 +12,7 @@ namespace Nitrox.Launcher.Models.Converters;
 ///     This converter is unconventional (inverted converter) in that the value is converted for the backend.
 ///     The user wants to be able to input spaces while they're typing, but we don't want to save those spaces.
 /// </remarks>
-public class TrimConverter : Converter<TrimConverter>
+public sealed class TrimConverter : Converter<TrimConverter>
 {
     private readonly Lock inOutCacheLock = new();
     /// <summary>

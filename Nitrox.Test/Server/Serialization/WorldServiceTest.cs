@@ -515,7 +515,7 @@ internal sealed class WorldServiceTest
 }
 
 [AttributeUsage(AttributeTargets.Method)]
-public class DynamicWorldDataAfterAttribute : Attribute, ITestDataSource
+public sealed class DynamicWorldDataAfterAttribute : Attribute, ITestDataSource
 {
     public IEnumerable<object[]> GetData(MethodInfo methodInfo)
     {

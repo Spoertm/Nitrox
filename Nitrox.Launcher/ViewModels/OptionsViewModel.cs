@@ -77,15 +77,14 @@ internal partial class OptionsViewModel(IKeyValueStore keyValueStore, StorageSer
         await Task.Run(() => SetTargetedSubnauticaPath(SelectedGame.PathToGame), cancellationToken).ContinueWithHandleError(ex => LauncherNotifier.Error(ex.Message));
     }
 
-    private void SetTargetedSubnauticaPath(string path)
+    private static void SetTargetedSubnauticaPath(string path)
     {
         if (!Directory.Exists(path))
         {
             return;
         }
 
-        PirateDetection.TriggerOnDirectory(path);
-        if (!FileSystem.Instance.IsWritable(Directory.GetCurrentDirectory()) || !FileSystem.Instance.IsWritable(path))
+        if (!FileSystem.IsWritable(Directory.GetCurrentDirectory()) || !FileSystem.IsWritable(path))
         {
             // TODO: Move this check to another place where Nitrox installation can be verified. (i.e: another page on the launcher in order to check permissions, network setup, ...)
             if (!FileSystem.Instance.SetFullAccessToCurrentUser(Directory.GetCurrentDirectory()) || !FileSystem.Instance.SetFullAccessToCurrentUser(path))
@@ -158,7 +157,7 @@ internal partial class OptionsViewModel(IKeyValueStore keyValueStore, StorageSer
     }
 
     [RelayCommand]
-    private void OpenFolder(string? dir = null)
+    private static void OpenFolder(string? dir = null)
     {
         try
         {

@@ -3,7 +3,7 @@ using Nitrox.Launcher.Models.Design;
 
 namespace Nitrox.Launcher.ViewModels.Designer;
 
-internal class DesignEmbeddedServerViewModel : EmbeddedServerViewModel
+internal sealed class DesignEmbeddedServerViewModel : EmbeddedServerViewModel
 {
     public DesignEmbeddedServerViewModel() : base(new ServerEntry { Name = "Design server" })
     {

@@ -2,7 +2,7 @@ using Nitrox.Model.DataStructures;
 
 namespace Nitrox.Test.Helper.Faker;
 
-public class NitroxCollectionFaker : NitroxFaker, INitroxFaker
+public sealed class NitroxCollectionFaker : NitroxFaker, INitroxFaker
 {
     private const int DEFAULT_SIZE = 2;
     private readonly Func<HashSet<Type>, object> generateAction;

@@ -22,13 +22,13 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
     {
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            SetEngineMode(cyclops, (CyclopsMotorMode.CyclopsMotorModes)metadata.EngineMode);
+            CyclopsMetadataProcessor.SetEngineMode(cyclops, (CyclopsMotorMode.CyclopsMotorModes)metadata.EngineMode);
             ChangeSilentRunning(cyclops, metadata.SilentRunningOn);
-            ChangeShieldMode(cyclops, metadata.ShieldOn);
-            ChangeSonarMode(cyclops, metadata.SonarOn);
+            CyclopsMetadataProcessor.ChangeShieldMode(cyclops, metadata.ShieldOn);
+            CyclopsMetadataProcessor.ChangeSonarMode(cyclops, metadata.SonarOn);
             SetEngineState(cyclops, metadata.EngineOn);
             SetHealth(cyclops, metadata.Health);
-            SetDestroyed(cyclops, metadata.IsDestroyed);
+            CyclopsMetadataProcessor.SetDestroyed(cyclops, metadata.IsDestroyed);
         }
     }
 
@@ -62,7 +62,7 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
         }
     }
 
-    private void SetEngineMode(GameObject cyclops, CyclopsMotorMode.CyclopsMotorModes mode)
+    private static void SetEngineMode(GameObject cyclops, CyclopsMotorMode.CyclopsMotorModes mode)
     {
         CyclopsMotorMode.CyclopsMotorModes oldMode = cyclops.GetComponent<SubControl>().cyclopsMotorMode.cyclopsMotorMode;
         if (oldMode == mode)
@@ -107,7 +107,7 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
         }
     }
 
-    private void ChangeShieldMode(GameObject cyclops, bool isOn)
+    private static void ChangeShieldMode(GameObject cyclops, bool isOn)
     {
         CyclopsShieldButton shield = cyclops.GetComponentInChildren<CyclopsShieldButton>(true);
 
@@ -134,7 +134,7 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
         }
     }
 
-    private void ChangeSonarMode(GameObject cyclops, bool isOn)
+    private static void ChangeSonarMode(GameObject cyclops, bool isOn)
     {
         CyclopsSonarButton sonarButton = cyclops.GetComponentInChildren<CyclopsSonarButton>(true);
         if (sonarButton && sonarButton.sonarActive != isOn)
@@ -156,7 +156,7 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
         liveMixinManager.SyncRemoteHealth(liveMixin, health);
     }
 
-    private void SetDestroyed(GameObject gameObject, bool isDestroyed)
+    private static void SetDestroyed(GameObject gameObject, bool isDestroyed)
     {
         CyclopsDestructionEvent destructionEvent = gameObject.RequireComponentInChildren<CyclopsDestructionEvent>(true);
 

@@ -90,7 +90,7 @@ internal sealed partial class CommandService(CommandRegistry registry, ILogger<C
             for (int i = 0; i < currentHandler.ParameterTypes.Length; i++)
             {
                 ReadOnlySpan<char> part = commandArgs[ranges[i]];
-                object? parsedValue = registry.TryParseToType(part, currentHandler.ParameterTypes[i]);
+                object? parsedValue = CommandRegistry.TryParseToType(part, currentHandler.ParameterTypes[i]);
                 if (parsedValue == null)
                 {
                     almostMatchingHandlers ??= [];
@@ -219,7 +219,7 @@ internal sealed partial class CommandService(CommandRegistry registry, ILogger<C
             for (int i = 0; i < parameterTypes.Length; i++)
             {
                 ConvertResult[] conversions;
-                if (registry.TryParseToType(args[i], parameterTypes[i]) is { } parsedValue)
+                if (CommandRegistry.TryParseToType(args[i], parameterTypes[i]) is { } parsedValue)
                 {
                     conversions = [ConvertResult.Ok(parsedValue)];
                 }
@@ -293,6 +293,7 @@ internal sealed partial class CommandService(CommandRegistry registry, ILogger<C
         {
             logger.ZLogError(ex, $"Error occurred while executing command {inputText:@Command}");
         }
+        return;
 
         static async Task RunHandlerWithExceptionLoggingAsync(ILogger logger, CommandHandlerEntry handler, object[] args, string inputText)
         {

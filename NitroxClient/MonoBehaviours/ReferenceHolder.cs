@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class ReferenceHolder : MonoBehaviour
+public sealed class ReferenceHolder : MonoBehaviour
 {
     private readonly Dictionary<Type, object> references = [];
 

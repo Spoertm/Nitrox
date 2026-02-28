@@ -1,6 +1,6 @@
 ﻿namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap
 {
-    public class TextureBlock
+    public sealed class TextureBlock
     {
         public int X { get; }
         public int Y { get; }

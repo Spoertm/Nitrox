@@ -21,7 +21,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic
 {
-    public class Entities
+    public sealed class Entities
     {
         private readonly IPacketSender packetSender;
         private readonly ThrottledPacketSender throttledPacketSender;
@@ -191,7 +191,7 @@ namespace NitroxClient.GameLogic
                     UpdateEntity(entity);
                     continue;
                 }
-                else if (entity.ParentId != null && !IsParentReady(entity.ParentId))
+                else if (entity.ParentId != null && !Entities.IsParentReady(entity.ParentId))
                 {
                     AddPendingParentEntity(entity);
                     continue;
@@ -344,7 +344,7 @@ namespace NitroxClient.GameLogic
             throw new InvalidOperationException($"Did not have a type for {id}");
         }
 
-        public bool IsParentReady(NitroxId id)
+        public static bool IsParentReady(NitroxId id)
         {
             return NitroxEntity.TryGetObjectFrom(id, out _);
         }

@@ -4,7 +4,7 @@ using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.GameLogic
 {
-    public class MedkitFabricator
+    public sealed class MedkitFabricator
     {
         private readonly IPacketSender packetSender;
 

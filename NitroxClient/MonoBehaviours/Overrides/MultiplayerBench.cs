@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours.Overrides;
 
-public class MultiplayerBench : Bench
+public sealed class MultiplayerBench : Bench
 {
     private Side side;
 

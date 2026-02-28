@@ -1,5 +1,4 @@
 using System;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 
 namespace Nitrox.Model.Subnautica.DataStructures.GameLogic;

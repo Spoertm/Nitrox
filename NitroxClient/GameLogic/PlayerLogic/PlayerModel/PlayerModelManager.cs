@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel;
 
-public class PlayerModelManager
+public sealed class PlayerModelManager
 {
     private readonly IEnumerable<IColorSwapManager> colorSwapManagers;
     private List<IEquipmentVisibilityHandler> equipmentVisibilityHandlers;
@@ -47,7 +47,7 @@ public class PlayerModelManager
         }
     }
 
-    private IEnumerator CreateSignalPrototype(IOut<GameObject> result)
+    private static IEnumerator CreateSignalPrototype(IOut<GameObject> result)
     {
         CoroutineTask<GameObject> signalHandle = AddressablesUtility.InstantiateAsync("WorldEntities/Environment/Generated/Signal.prefab", Multiplayer.Main.transform, awake: false);
         yield return signalHandle;
@@ -64,7 +64,7 @@ public class PlayerModelManager
     public IEnumerator AttachPing(INitroxPlayer player)
     {
         TaskResult<GameObject> result = new();
-        yield return CreateSignalPrototype(result);
+        yield return PlayerModelManager.CreateSignalPrototype(result);
 
         GameObject signalBase = Object.Instantiate(result.value, player.PlayerModel.transform, false);
         signalBase.name = $"signal_{player.PlayerName}";

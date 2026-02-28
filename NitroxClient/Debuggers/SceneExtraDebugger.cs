@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 using NitroxClient.MonoBehaviours;
 using NitroxClient.Unity.Helper;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Helper;
 using Nitrox.Model.Subnautica.Helper;
 using UnityEngine;
 using Mathf = UnityEngine.Mathf;
@@ -237,7 +236,7 @@ public sealed class SceneExtraDebugger : BaseDebugger
                 if (gameObjectSearch.StartsWith("t:"))
                 {
                     Type type = AppDomain.CurrentDomain.GetAssemblies()
-                                         .Select(a => a.GetType(gameObjectSearch.Substring(2), false, true))
+                                         .Select(a => a.GetType(gameObjectSearch[2..], false, true))
                                          .FirstOrDefault(t => t != null);
                     if (type != null)
                     {
@@ -248,7 +247,7 @@ public sealed class SceneExtraDebugger : BaseDebugger
                     }
                     else
                     {
-                        GUILayout.Label($"There is no component named \"{gameObjectSearch.Substring(2)}\"", "error");
+                        GUILayout.Label($"There is no component named \"{gameObjectSearch[2..]}\"", "error");
                     }
                 }
                 else if (gameObjectSearch.StartsWith("id:"))

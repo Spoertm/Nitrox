@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class ReefbackChildEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class ReefbackChildEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     public IEnumerator SpawnAsync(WorldEntity entity, Optional<GameObject> parent, EntityCell cellRoot, TaskResult<Optional<GameObject>> result)
     {

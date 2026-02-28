@@ -3,7 +3,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class ServersView : RoutableViewBase<ServersViewModel>
+internal sealed partial class ServersView : RoutableViewBase<ServersViewModel>
 {
     public ServersView()
     {

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class EventTriggerDrawer : IDrawer<EventTrigger>
+public sealed class EventTriggerDrawer : IDrawer<EventTrigger>
 {
     private readonly SceneDebugger sceneDebugger;
 

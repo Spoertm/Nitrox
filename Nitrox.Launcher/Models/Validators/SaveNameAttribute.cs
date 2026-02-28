@@ -5,7 +5,7 @@ namespace Nitrox.Launcher.Models.Validators;
 
 /// <summary>Validates a Nitrox save name.</summary>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class SaveNameAttribute : DataTypeAttribute
+public sealed class SaveNameAttribute : DataTypeAttribute
 {
     public SaveNameAttribute() : base(DataType.Text)
     {

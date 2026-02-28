@@ -29,7 +29,7 @@ internal static class AssemblyResolver
 
     private static Assembly? ResolveFromLib(ReadOnlySpan<char> dllName)
     {
-        dllName = dllName.Slice(0, Math.Max(dllName.IndexOf(','), 0));
+        dllName = dllName[..Math.Max(dllName.IndexOf(','), 0)];
         if (dllName.IsEmpty)
         {
             return null;

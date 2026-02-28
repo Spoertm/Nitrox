@@ -54,7 +54,7 @@ internal static class Program
         {
             static Assembly? ResolveFromLib(ReadOnlySpan<char> dllName)
             {
-                dllName = dllName.Slice(0, dllName.IndexOf(','));
+                dllName = dllName[..dllName.IndexOf(',')];
                 if (!dllName.EndsWith(".dll"))
                 {
                     dllName = string.Concat(dllName, ".dll");

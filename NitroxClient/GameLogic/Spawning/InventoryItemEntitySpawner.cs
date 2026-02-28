@@ -16,13 +16,13 @@ using UWE;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class InventoryItemEntitySpawner(EntityMetadataManager entityMetadataManager) : SyncEntitySpawner<InventoryItemEntity>
+public sealed class InventoryItemEntitySpawner(EntityMetadataManager entityMetadataManager) : SyncEntitySpawner<InventoryItemEntity>
 {
     private readonly EntityMetadataManager entityMetadataManager = entityMetadataManager;
 
     protected override IEnumerator SpawnAsync(InventoryItemEntity entity, TaskResult<Optional<GameObject>> result)
     {        
-        if (!CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
+        if (!InventoryItemEntitySpawner.CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
         {
             Log.Error(errorLog);
             result.Set(Optional.Empty);
@@ -44,7 +44,7 @@ public class InventoryItemEntitySpawner(EntityMetadataManager entityMetadataMana
         {
             return false;
         }
-        if (!CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
+        if (!InventoryItemEntitySpawner.CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
         {
             Log.Error(errorLog);
             return true;
@@ -60,7 +60,7 @@ public class InventoryItemEntitySpawner(EntityMetadataManager entityMetadataMana
 
     protected override bool SpawnsOwnChildren(InventoryItemEntity entity) => false;
 
-    private bool CanSpawn(InventoryItemEntity entity, [NotNullWhen(true)] out GameObject? parentObject, [NotNullWhen(true)] out ItemsContainer? container, [NotNullWhen(false)] out string? errorLog)
+    private static bool CanSpawn(InventoryItemEntity entity, [NotNullWhen(true)] out GameObject? parentObject, [NotNullWhen(true)] out ItemsContainer? container, [NotNullWhen(false)] out string? errorLog)
     {
         Optional<GameObject> owner = NitroxEntity.GetObjectFrom(entity.ParentId);
         if (!owner.HasValue)

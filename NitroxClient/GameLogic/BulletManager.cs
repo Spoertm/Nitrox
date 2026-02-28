@@ -12,7 +12,7 @@ namespace NitroxClient.GameLogic;
 /// Registers one stasis sphere per connected remote player, and syncs their behaviour.<br/>
 /// Also syncs remote torpedo (of all types) shots and hits.
 /// </summary>
-public class BulletManager
+public sealed class BulletManager
 {
     private readonly PlayerManager playerManager;
 
@@ -53,7 +53,7 @@ public class BulletManager
         seamothTorpedo.Shoot(position, rotation, speed, lifeTime);
     }
 
-    public void TorpedoHit(NitroxId bulletId, Vector3 position, Quaternion rotation)
+    public static void TorpedoHit(NitroxId bulletId, Vector3 position, Quaternion rotation)
     {
         // On the local player, the torpedo might have already exploded while the packet is received with latency.
         // Therefore we don't need to log a failed query of bulletId
@@ -66,7 +66,7 @@ public class BulletManager
         }
     }
 
-    public void TorpedoTargetAcquired(NitroxId bulletId, NitroxId targetId, Vector3 position, Quaternion rotation)
+    public static void TorpedoTargetAcquired(NitroxId bulletId, NitroxId targetId, Vector3 position, Quaternion rotation)
     {
         // The target object might not be findable in which case we'll just ignore it
         // because the explosion will still be moved to the right spot
@@ -166,5 +166,5 @@ public class BulletManager
         playerManager.OnRemove += (sessionId, _) => { DestroyPlayerSphere(sessionId); };
     }
 
-    public class RemotePlayerBullet : MonoBehaviour;
+    public sealed class RemotePlayerBullet : MonoBehaviour;
 }

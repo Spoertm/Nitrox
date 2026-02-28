@@ -13,7 +13,7 @@ using static NitroxClient.GameLogic.Spawning.Metadata.Extractor.CyclopsMetadataE
 
 namespace NitroxClient.GameLogic
 {
-    public class Cyclops
+    public sealed class Cyclops
     {
         private readonly IPacketSender packetSender;
         private readonly Vehicles vehicles;
@@ -146,8 +146,8 @@ namespace NitroxClient.GameLogic
                 damageInfo = new CyclopsDamageInfoData(subId, dealerId, damage.originalDamage, damage.damage, damage.position.ToDto(), damage.type);
             }
 
-            int[] damagePointIndexes = GetActiveDamagePoints(subRoot).ToArray();
-            CyclopsFireData[] firePoints = GetActiveRoomFires(subRoot.GetComponent<SubFire>()).ToArray();
+            int[] damagePointIndexes = Cyclops.GetActiveDamagePoints(subRoot).ToArray();
+            CyclopsFireData[] firePoints = Cyclops.GetActiveRoomFires(subRoot.GetComponent<SubFire>()).ToArray();
 
             CyclopsDamage packet = new(subId, subRoot.GetComponent<LiveMixin>().health, subRoot.damageManager.subLiveMixin.health, subRoot.GetComponent<SubFire>().liveMixin.health, damagePointIndexes, firePoints, damageInfo);
             packetSender.Send(packet);
@@ -156,7 +156,7 @@ namespace NitroxClient.GameLogic
         /// <summary>
         /// Get all of the index locations of <see cref="CyclopsDamagePoint"/>s in <see cref="CyclopsExternalDamageManager.damagePoints"/>.
         /// </summary>
-        private IEnumerable<int> GetActiveDamagePoints(SubRoot subRoot)
+        private static IEnumerable<int> GetActiveDamagePoints(SubRoot subRoot)
         {
             for (int i = 0; i < subRoot.damageManager.damagePoints.Length; i++)
             {
@@ -171,7 +171,7 @@ namespace NitroxClient.GameLogic
         /// Get all of the index locations of all the fires on the <see cref="SubRoot"/>. <see cref="SubFire.RoomFire.spawnNodes"/> contains
         /// a static list of all possible fire nodes.
         /// </summary>
-        private IEnumerable<CyclopsFireData> GetActiveRoomFires(SubFire subFire)
+        private static IEnumerable<CyclopsFireData> GetActiveRoomFires(SubFire subFire)
         {
             if (!subFire.subRoot.TryGetIdOrWarn(out NitroxId subRootId))
             {

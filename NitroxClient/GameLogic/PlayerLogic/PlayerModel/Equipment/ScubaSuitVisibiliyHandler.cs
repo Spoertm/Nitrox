@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.Equipment
 {
-    public class ScubaSuitVisibilityHandler : IEquipmentVisibilityHandler
+    public sealed class ScubaSuitVisibilityHandler : IEquipmentVisibilityHandler
     {
         private readonly GameObject rebreather;
         private readonly GameObject scuba;

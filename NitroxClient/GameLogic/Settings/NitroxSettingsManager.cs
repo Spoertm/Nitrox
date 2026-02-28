@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace NitroxClient.GameLogic.Settings;
 
-public class NitroxSettingsManager
+public sealed class NitroxSettingsManager
 {
     /// <summary>
     /// Settings grouped by their headings
@@ -70,7 +70,7 @@ public class NitroxSettingsManager
         }
     }
 
-    public class Setting
+    public sealed class Setting
     {
         // These fields are used by each type of setting
         // To get the value, you need to type setting.GetValue<type>() or (type)NitroxPrefs.MyPref.Value when you don't have the setting

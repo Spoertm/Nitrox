@@ -5,7 +5,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Nitrox.Server.Subnautica.Models.Serialization.Json;
 
-public class AttributeContractResolver : DefaultContractResolver
+public sealed class AttributeContractResolver : DefaultContractResolver
 {
     //IDictionary to JsonArray
     protected override JsonContract CreateContract(Type objectType)

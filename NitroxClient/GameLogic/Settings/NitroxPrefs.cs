@@ -35,7 +35,7 @@ namespace NitroxClient.GameLogic.Settings
 
     public abstract class NitroxPref { }
 
-    public class NitroxPref<T> : NitroxPref where T : IConvertible
+    public sealed class NitroxPref<T> : NitroxPref where T : IConvertible
     {
         public string Key { get; }
         public T DefaultValue { get; }

@@ -10,7 +10,7 @@ namespace Nitrox.Launcher.ViewModels;
 /// <summary>
 ///     Simple Yes/No or OK confirmation box.
 /// </summary>
-public partial class DialogBoxViewModel : ModalViewModelBase
+public sealed partial class DialogBoxViewModel : ModalViewModelBase
 {
     [ObservableProperty] private string? windowTitle;
 

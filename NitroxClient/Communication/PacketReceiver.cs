@@ -4,7 +4,7 @@ using Nitrox.Model.Packets;
 
 namespace NitroxClient.Communication;
 
-public class PacketReceiver
+public sealed class PacketReceiver
 {
     private readonly Queue<Packet> receivedPackets = new(16);
     private readonly object receivedPacketsLock = new();

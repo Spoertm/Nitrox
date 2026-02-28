@@ -5,7 +5,7 @@ using Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Json;
 
 namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Catalog;
 
-public class ContentCatalogData
+public sealed class ContentCatalogData
 {
     public Dictionary<object, List<ResourceLocation>> Resources { get; set; }
 

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class EquipmentSlots
+public sealed class EquipmentSlots
 {
     private readonly IPacketSender packetSender;
     private readonly Entities entities;

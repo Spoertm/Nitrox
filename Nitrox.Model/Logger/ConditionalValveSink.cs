@@ -5,7 +5,7 @@ using Serilog.Events;
 
 namespace Nitrox.Model.Logger;
 
-public class ConditionalValveSink : ILogEventSink
+public sealed class ConditionalValveSink : ILogEventSink
 {
     private readonly Func<LogEvent, bool> thresholdPredicate;
     private readonly ILogEventSink wrappedSink;

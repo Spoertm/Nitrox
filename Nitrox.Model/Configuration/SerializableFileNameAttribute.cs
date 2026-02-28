@@ -4,7 +4,7 @@ using System.Reflection;
 namespace Nitrox.Model.Configuration;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class SerializableFileNameAttribute : Attribute
+public sealed class SerializableFileNameAttribute : Attribute
 {
     public SerializableFileNameAttribute(string fileName)
     {

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu;
 
-public class NitroxMainMenuModifications : MonoBehaviour
+public sealed class NitroxMainMenuModifications : MonoBehaviour
 {
     private MainMenuRightSide rightSide;
 

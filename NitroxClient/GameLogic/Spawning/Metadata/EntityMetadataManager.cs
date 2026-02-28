@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.Metadata;
 
-public class EntityMetadataManager
+public sealed class EntityMetadataManager
 {
     private readonly Dictionary<Type, IEntityMetadataExtractor> extractors;
     private readonly Dictionary<Type, IEntityMetadataProcessor> processors;

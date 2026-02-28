@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -121,11 +120,11 @@ public static class IpAddressExtensions
             {
                 throw new ArgumentOutOfRangeException(nameof(notation));
             }
-            if (!byte.TryParse(notation.Substring(slashIndex + 1), out byte networkMaskBitSize))
+            if (!byte.TryParse(notation[(slashIndex + 1)..], out byte networkMaskBitSize))
             {
                 throw new ArgumentOutOfRangeException(nameof(notation), "CIDR network mask bit size is not a valid byte value");
             }
-            byte[] notationBytes = IPAddress.Parse(notation.Substring(0, slashIndex)).GetAddressBytes();
+            byte[] notationBytes = IPAddress.Parse(notation[..slashIndex]).GetAddressBytes();
             if (networkMaskBitSize > notationBytes.Length * 8)
             {
                 throw new ArgumentOutOfRangeException(nameof(notation), "CIDR network mask bit size must not be more than total length of the CIDR notation");

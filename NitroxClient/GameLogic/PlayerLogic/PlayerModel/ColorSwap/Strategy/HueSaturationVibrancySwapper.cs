@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap.Strategy
 {
-    public class HueSaturationVibrancySwapper : IColorSwapStrategy
+    public sealed class HueSaturationVibrancySwapper : IColorSwapStrategy
     {
         private readonly float replacementHue;
         private readonly float replacementSaturation;

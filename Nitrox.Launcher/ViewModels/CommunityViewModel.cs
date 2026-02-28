@@ -3,34 +3,34 @@ using Nitrox.Launcher.ViewModels.Abstract;
 
 namespace Nitrox.Launcher.ViewModels;
 
-internal partial class CommunityViewModel : RoutableViewModelBase
+internal sealed partial class CommunityViewModel : RoutableViewModelBase
 {
     [RelayCommand]
-    private void DiscordLink()
+    private static void DiscordLink()
     {
         OpenUri("discord.gg/E8B4X9s");
     }
 
     [RelayCommand]
-    private void XLink()
+    private static void XLink()
     {
         OpenUri("x.com/modnitrox");
     }
 
     [RelayCommand]
-    private void RedditLink()
+    private static void RedditLink()
     {
         OpenUri("reddit.com/r/SubnauticaNitrox");
     }
 
     [RelayCommand]
-    private void BlueskyLink()
+    private static void BlueskyLink()
     {
         OpenUri("bsky.app/profile/nitroxmod.bsky.social");
     }
 
     [RelayCommand]
-    private void GithubLink()
+    private static void GithubLink()
     {
         OpenUri("github.com/SubnauticaNitrox/Nitrox");
     }

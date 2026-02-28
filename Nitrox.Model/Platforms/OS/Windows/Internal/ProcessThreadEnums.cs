@@ -1,5 +1,3 @@
-using System;
-
 namespace Nitrox.Model.Platforms.OS.Windows.Internal;
 
 public enum PtraceRequest : int

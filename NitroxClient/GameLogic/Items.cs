@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class Items
+public sealed class Items
 {
     private readonly IPacketSender packetSender;
     private readonly Entities entities;
@@ -96,7 +96,7 @@ public class Items
     {
         techType ??= CraftData.GetTechType(gameObject);
         // there is a theoretical possibility of a stray remote tracking packet that re-adds the monobehavior, this is purely a safety call.
-        RemoveAnyRemoteControl(gameObject);
+        Items.RemoveAnyRemoteControl(gameObject);
 
         // WaterParkCreatures need at least one ManagedUpdate to run so their data is correctly refreshed (isMature and timeNextBreed)
         if (gameObject.TryGetComponent(out WaterParkCreature waterParkCreature))
@@ -163,7 +163,7 @@ public class Items
     /// </summary>
     public void Placed(GameObject gameObject, TechType techType)
     {
-        RemoveAnyRemoteControl(gameObject);
+        Items.RemoveAnyRemoteControl(gameObject);
 
         NitroxId id = NitroxEntity.GetIdOrGenerateNew(gameObject);
         Optional<EntityMetadata> metadata = entityMetadataManager.Extract(gameObject);
@@ -239,7 +239,7 @@ public class Items
         entities.MarkAsSpawned(inventoryItemEntity);
 
         // We want to remove any remote tracking immediately on pickup as it can cause weird behavior like holding a ghost item still in the world.
-        RemoveAnyRemoteControl(gameObject);
+        Items.RemoveAnyRemoteControl(gameObject);
         EntityPositionBroadcaster.StopWatchingEntity(inventoryItemEntity.Id);
 
         return inventoryItemEntity;
@@ -263,7 +263,7 @@ public class Items
     /// Some items might be remotely simulated if they were dropped by other players.  We'll want to remove
     /// any remote tracking when we actively handle the item.
     /// </summary>
-    private void RemoveAnyRemoteControl(GameObject gameObject)
+    private static void RemoveAnyRemoteControl(GameObject gameObject)
     {
         UnityEngine.Object.Destroy(gameObject.GetComponent<RemotelyControlled>());
     }

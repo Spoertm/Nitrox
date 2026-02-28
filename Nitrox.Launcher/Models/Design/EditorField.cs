@@ -4,7 +4,7 @@ using Nitrox.Model.Serialization;
 
 namespace Nitrox.Launcher.Models.Design;
 
-public record EditorField
+public sealed record EditorField
 {
     public object? Value { get; set; }
 

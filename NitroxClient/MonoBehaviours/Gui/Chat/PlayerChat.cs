@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.Chat
 {
-    public class PlayerChat : uGUI_InputGroup
+    public sealed class PlayerChat : uGUI_InputGroup
     {
         private const int LINE_CHAR_LIMIT = 255;
         private const int MESSAGES_LIMIT = 64;
@@ -75,7 +75,7 @@ namespace NitroxClient.MonoBehaviours.Gui.Chat
                 // Auto complete command names.
                 if (hasInputChanged && Regex.IsMatch(InputText, @"^/\w+$"))
                 {
-                    string commandName = InputText.Substring(1);
+                    string commandName = InputText[1..];
                     this.Resolve<IPacketSender>().Send(new TextAutoComplete(commandName, TextAutoComplete.AutoCompleteContext.COMMAND_NAME));
                 }
                 if (!string.IsNullOrWhiteSpace(AutoCompleteText))
@@ -181,7 +181,7 @@ namespace NitroxClient.MonoBehaviours.Gui.Chat
         private static string SanitizeMessage(string message)
         {
             message = message.Trim().TrimEnd('\n').Trim();
-            return message.Length < LINE_CHAR_LIMIT ? message : message.Substring(0, LINE_CHAR_LIMIT);
+            return message.Length < LINE_CHAR_LIMIT ? message : message[..LINE_CHAR_LIMIT];
         }
 
         private void ToggleBackgroundTransparency()

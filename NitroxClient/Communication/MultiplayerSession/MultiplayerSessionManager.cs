@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Nitrox.Model.Constants;
 using Nitrox.Model.Core;
 using NitroxClient.Communication.Abstract;
@@ -9,13 +8,12 @@ using Nitrox.Model.DataStructures;
 using Nitrox.Model.Helper;
 using Nitrox.Model.MultiplayerSession;
 using Nitrox.Model.Packets;
-using Nitrox.Model.Serialization;
 using Nitrox.Model.Subnautica.MultiplayerSession;
 using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.Communication.MultiplayerSession
 {
-    public class MultiplayerSessionManager : IMultiplayerSession, IMultiplayerSessionConnectionContext
+    public sealed class MultiplayerSessionManager : IMultiplayerSession, IMultiplayerSessionConnectionContext
     {
         private static readonly Task initSerializerTask;
 

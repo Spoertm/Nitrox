@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class SelectableDrawer : IDrawer<Selectable>
+public sealed class SelectableDrawer : IDrawer<Selectable>
 {
     private readonly SceneDebugger sceneDebugger;
     private readonly ColorDrawer colorDrawer;

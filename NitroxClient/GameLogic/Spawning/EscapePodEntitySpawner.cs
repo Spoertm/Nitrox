@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class EscapePodEntitySpawner : SyncEntitySpawner<EscapePodEntity>
+public sealed class EscapePodEntitySpawner : SyncEntitySpawner<EscapePodEntity>
 {
     /*
      * When creating additional escape pods (multiple users with multiple pods)

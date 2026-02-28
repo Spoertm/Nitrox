@@ -8,7 +8,7 @@ using Serilog.Formatting.Display;
 
 namespace Nitrox.Model.Logger
 {
-    public class ColoredConsoleSink : ILogEventSink
+    public sealed class ColoredConsoleSink : ILogEventSink
     {
         private readonly ConsoleColor defaultBackground = Console.BackgroundColor;
         private readonly ConsoleColor defaultForeground = Console.ForegroundColor;

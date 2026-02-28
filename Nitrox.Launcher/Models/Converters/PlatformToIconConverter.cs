@@ -6,7 +6,7 @@ using Nitrox.Model.Platforms.Discovery.Models;
 
 namespace Nitrox.Launcher.Models.Converters;
 
-public class PlatformToIconConverter : Converter<PlatformToIconConverter>
+public sealed class PlatformToIconConverter : Converter<PlatformToIconConverter>
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

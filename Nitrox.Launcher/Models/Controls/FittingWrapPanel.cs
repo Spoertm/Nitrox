@@ -13,7 +13,7 @@ namespace Nitrox.Launcher.Models.Controls;
 /// <remarks>
 ///     Looks similar to YouTube video layout.
 /// </remarks>
-public class FittingWrapPanel : Panel, INavigableContainer
+public sealed class FittingWrapPanel : Panel, INavigableContainer
 {
     public static readonly StyledProperty<double> MinItemWidthProperty =
         AvaloniaProperty.Register<WrapPanel, double>(nameof(MinItemWidth), 100);

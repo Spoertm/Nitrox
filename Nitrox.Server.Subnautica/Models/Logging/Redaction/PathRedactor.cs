@@ -6,7 +6,7 @@ internal sealed class PathRedactor : IRedactor
 {
     public string[] RedactableKeys { get; } = ["path", "filepath"];
 
-    private string GenericUserHomeTag => OperatingSystem.IsWindows() ? "%USERPROFILE%" : "~";
+    private static string GenericUserHomeTag => OperatingSystem.IsWindows() ? "%USERPROFILE%" : "~";
 
     public RedactResult Redact(ReadOnlySpan<char> value)
     {

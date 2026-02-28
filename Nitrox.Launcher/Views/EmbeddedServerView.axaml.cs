@@ -4,7 +4,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class EmbeddedServerView : RoutableViewBase<EmbeddedServerViewModel>
+internal sealed partial class EmbeddedServerView : RoutableViewBase<EmbeddedServerViewModel>
 {
     public EmbeddedServerView()
     {

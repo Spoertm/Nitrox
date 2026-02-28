@@ -5,7 +5,7 @@ using Nitrox.Server.Subnautica.Models.Serialization;
 
 namespace Nitrox.Server.Subnautica.Models.UnityStubs
 {
-    public class GameObject
+    public sealed class GameObject
     {
         public bool CreateEmptyObject { get; }
         public bool IsActive { get; }

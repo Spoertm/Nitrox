@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap
 {
-    public class ColorSwapAsyncOperation
+    public sealed class ColorSwapAsyncOperation
     {
         private readonly INitroxPlayer nitroxPlayer;
         private readonly IEnumerable<IColorSwapManager> colorSwapManagers;

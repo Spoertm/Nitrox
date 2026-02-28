@@ -10,10 +10,11 @@ using Nitrox.Model.Platforms.OS.Shared;
 
 namespace Nitrox.Launcher.ViewModels;
 
-internal partial class CrashWindowViewModel : ViewModelBase
+internal sealed partial class CrashWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string? title;
+
     [ObservableProperty]
     private string? message;
 
@@ -30,7 +31,7 @@ internal partial class CrashWindowViewModel : ViewModelBase
         string errorTitle = Message[..Math.Min(Message.Length, 100)];
         try
         {
-            errorTitle = Message.Substring(0, Math.Max(0, Math.Min(Message.IndexOf("at ", StringComparison.OrdinalIgnoreCase), Message.IndexOf('\n'))));
+            errorTitle = Message[..Math.Max(0, Math.Min(Message.IndexOf("at ", StringComparison.OrdinalIgnoreCase), Message.IndexOf('\n')))];
         }
         catch
         {
@@ -46,26 +47,18 @@ internal partial class CrashWindowViewModel : ViewModelBase
             Platform.MICROSOFT => "MS-Store",
             _ => "Other"
         };
-        string createGithubIssueUrl = $"https://github.com/SubnauticaNitrox/Nitrox/issues/new?assignees=&labels=Type%3A+bug%2CStatus%3A+to+verify&projects=&template=bug_report.yaml&title={HttpUtility.UrlEncode(issueTitle)}&what_happened={HttpUtility.UrlEncode(whatHappened)}&os_type={HttpUtility.UrlEncode(GetOsType())}&store_type={HttpUtility.UrlEncode(storeType)}";
+        string createGithubIssueUrl =
+            $"https://github.com/SubnauticaNitrox/Nitrox/issues/new?assignees=&labels=Type%3A+bug%2CStatus%3A+to+verify&projects=&template=bug_report.yaml&title={HttpUtility.UrlEncode(issueTitle)}&what_happened={HttpUtility.UrlEncode(whatHappened)}&os_type={HttpUtility.UrlEncode(GetOsType())}&store_type={HttpUtility.UrlEncode(storeType)}";
         OpenUri(createGithubIssueUrl);
+        return;
 
-        static string GetOsType()
+        static string GetOsType() => true switch
         {
-            if (OperatingSystem.IsWindows())
-            {
-                return "Windows";
-            }
-            if (OperatingSystem.IsMacOS())
-            {
-                return "MacOS";
-            }
-            if (OperatingSystem.IsLinux())
-            {
-                return "Linux";
-            }
-            return "Windows"; // No "Other" option in issue template so "Windows" is default.
-        }
+            _ when OperatingSystem.IsMacOS() => "MacOS",
+            _ when OperatingSystem.IsLinux() => "Linux",
+            _ => "Windows" // No "Other" option in issue template so "Windows" is default.
+        };
     }
 
-    private bool CanRestart() => !string.IsNullOrWhiteSpace(NitroxUser.ExecutableFilePath ?? Environment.ProcessPath);
+    private static bool CanRestart() => !string.IsNullOrWhiteSpace(NitroxUser.ExecutableFilePath ?? Environment.ProcessPath);
 }

@@ -18,7 +18,7 @@ namespace Nitrox.Launcher.Models.Controls;
 ///  - Draw-on-top logic: https://gist.github.com/kekekeks/ac06098a74fe87d49a9ff9ea37fa67bc <br/>
 ///  - Grayscale logic: https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/effects/color-filters <br/>
 /// </remarks>
-public class GrayscaleControl : Decorator
+public sealed class GrayscaleControl : Decorator
 {
     static GrayscaleControl()
     {

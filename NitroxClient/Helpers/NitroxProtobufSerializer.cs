@@ -8,12 +8,12 @@ using UnityEngine;
 
 namespace NitroxClient.Helpers
 {
-    public class NitroxProtobufSerializer
+    public sealed class NitroxProtobufSerializer
     {
         public readonly RuntimeTypeModel model;
         public readonly Dictionary<Type, int> NitroxTypes = [];
 
-        protected RuntimeTypeModel Model => model;
+        private RuntimeTypeModel Model => model;
 
         public NitroxProtobufSerializer(params string[] assemblies)
         {
@@ -74,7 +74,7 @@ namespace NitroxClient.Helpers
                 {
                     AddType(type);
                 }
-                else if (HasNitroxProtoContract(type))
+                else if (NitroxProtobufSerializer.HasNitroxProtoContract(type))
                 {
                     AddType(type);
 
@@ -83,7 +83,7 @@ namespace NitroxClient.Helpers
             }
         }
 
-        private bool HasNitroxProtoContract(Type type)
+        private static bool HasNitroxProtoContract(Type type)
         {
             foreach (object o in type.GetCustomAttributes(true))
             {

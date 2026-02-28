@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace NitroxClient.MonoBehaviours.Gui.Input.KeyBindings.Actions;
 
-public class DiscordFocusBindingAction : KeyBinding
+public sealed class DiscordFocusBindingAction : KeyBinding
 {
     public DiscordFocusBindingAction() : base("Nitrox_Settings_Keybind_FocusDiscord", "i") { }
 

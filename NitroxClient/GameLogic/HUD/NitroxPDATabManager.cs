@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.HUD;
 
-public class NitroxPDATabManager
+public sealed class NitroxPDATabManager
 {
     public readonly Dictionary<PDATab, NitroxPDATab> CustomTabs = new();
     

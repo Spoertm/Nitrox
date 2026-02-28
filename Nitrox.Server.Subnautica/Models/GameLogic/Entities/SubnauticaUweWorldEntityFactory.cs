@@ -5,7 +5,7 @@ using UWE;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities;
 
-internal class SubnauticaUweWorldEntityFactory(WorldEntitiesResource resource)
+internal sealed class SubnauticaUweWorldEntityFactory(WorldEntitiesResource resource)
 {
     private readonly WorldEntitiesResource resource = resource;
 

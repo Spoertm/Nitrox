@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.Bases;
 
-public class BaseLeakEntitySpawner : SyncEntitySpawner<BaseLeakEntity>
+public sealed class BaseLeakEntitySpawner : SyncEntitySpawner<BaseLeakEntity>
 {
     private readonly LiveMixinManager liveMixinManager;
 

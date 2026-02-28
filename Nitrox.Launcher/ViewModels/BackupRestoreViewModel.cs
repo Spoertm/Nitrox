@@ -11,11 +11,10 @@ using Nitrox.Launcher.Models.Design;
 using Nitrox.Launcher.Models.Validators;
 using Nitrox.Launcher.ViewModels.Abstract;
 using Nitrox.Model.Constants;
-using Nitrox.Server.Subnautica.Models.Serialization.World;
 
 namespace Nitrox.Launcher.ViewModels;
 
-public partial class BackupRestoreViewModel : ModalViewModelBase
+public sealed partial class BackupRestoreViewModel : ModalViewModelBase
 {
     [ObservableProperty]
     private AvaloniaList<BackupItem> backups = [];

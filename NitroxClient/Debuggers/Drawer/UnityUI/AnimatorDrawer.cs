@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class AnimatorDrawer : IDrawer<Animator>
+public sealed class AnimatorDrawer : IDrawer<Animator>
 {
     public void Draw(Animator target)
     {

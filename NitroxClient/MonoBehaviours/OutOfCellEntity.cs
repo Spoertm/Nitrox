@@ -1,6 +1,5 @@
 using NitroxClient.Communication.Abstract;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace NitroxClient.MonoBehaviours;
 /// (because the cell is only determined by the entity's position). Thus we need to be able to know when this entity is unloaded
 /// and broadcast this event so the server can switch the ownership from it.
 /// </summary>
-public class OutOfCellEntity : MonoBehaviour
+public sealed class OutOfCellEntity : MonoBehaviour
 {
     private NitroxId entityId;
 

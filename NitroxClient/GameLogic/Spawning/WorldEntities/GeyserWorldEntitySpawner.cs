@@ -7,7 +7,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class GeyserWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class GeyserWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private readonly Entities entities;
 

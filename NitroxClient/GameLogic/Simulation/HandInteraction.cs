@@ -1,6 +1,6 @@
 ﻿namespace NitroxClient.GameLogic.Simulation
 {
-    public class HandInteraction<T> : LockRequestContext where T : IHandTarget
+    public sealed class HandInteraction<T> : LockRequestContext where T : IHandTarget
     {
         public T Target { get; }
         public GUIHand GuiHand { get; }

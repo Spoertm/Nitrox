@@ -4,15 +4,13 @@ using NitroxClient.Communication.Abstract;
 using NitroxClient.GameLogic;
 using Nitrox.Model.Core;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Packets;
-using Nitrox.Model.Subnautica.DataStructures;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 using static Nitrox.Model.Subnautica.Packets.EntityTransformUpdates;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class EntityPositionBroadcaster : MonoBehaviour
+public sealed class EntityPositionBroadcaster : MonoBehaviour
 {
     public static readonly float BROADCAST_INTERVAL = 0.25f;
 

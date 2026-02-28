@@ -9,11 +9,11 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEntity>
+public sealed class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEntity>
 {
     protected override IEnumerator SpawnAsync(InstalledModuleEntity entity, TaskResult<Optional<GameObject>> result)
     {
-        if (!CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
+        if (!InstalledModuleEntitySpawner.CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
         {
             Log.Info(errorLog);
             result.Set(Optional.Empty);
@@ -24,7 +24,7 @@ public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEnt
         yield return DefaultWorldEntitySpawner.CreateGameObject(entity.TechType.ToUnity(), entity.ClassId, entity.Id, gameObjectResult);
         GameObject gameObject = gameObjectResult.Get();
 
-        SetupObject(entity, gameObject, parentObject, equipment);
+        InstalledModuleEntitySpawner.SetupObject(entity, gameObject, parentObject, equipment);
 
         result.Set(Optional.Of(gameObject));
     }
@@ -35,7 +35,7 @@ public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEnt
         {
             return false;
         }
-        if (!CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
+        if (!InstalledModuleEntitySpawner.CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
         {
             Log.Error(errorLog);
             return true;
@@ -43,7 +43,7 @@ public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEnt
 
         GameObject gameObject = GameObjectExtensions.SpawnFromPrefab(prefab, entity.Id);
 
-        SetupObject(entity, gameObject, parentObject, equipment);
+        InstalledModuleEntitySpawner.SetupObject(entity, gameObject, parentObject, equipment);
 
         result.Set(gameObject);
         return true;
@@ -51,7 +51,7 @@ public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEnt
 
     protected override bool SpawnsOwnChildren(InstalledModuleEntity entity) => false;
 
-    private bool CanSpawn(InstalledModuleEntity entity, out GameObject parentObject, out Equipment equipment, out string errorLog)
+    private static bool CanSpawn(InstalledModuleEntity entity, out GameObject parentObject, out Equipment equipment, out string errorLog)
     {
         if (!NitroxEntity.TryGetObjectFrom(entity.ParentId, out parentObject))
         {
@@ -73,7 +73,7 @@ public class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledModuleEnt
         return true;
     }
 
-    private void SetupObject(InstalledModuleEntity entity, GameObject gameObject, GameObject parentObject, Equipment equipment)
+    private static void SetupObject(InstalledModuleEntity entity, GameObject gameObject, GameObject parentObject, Equipment equipment)
     {
         Pickupable pickupable = gameObject.RequireComponent<Pickupable>();
         pickupable.Initialize();

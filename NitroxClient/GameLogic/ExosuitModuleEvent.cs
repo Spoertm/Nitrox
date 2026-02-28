@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class ExosuitModuleEvent
+public sealed class ExosuitModuleEvent
 {
     public static readonly int UseToolAnimation = Animator.StringToHash("use_tool");
     public static readonly int BashAnimation = Animator.StringToHash("bash");

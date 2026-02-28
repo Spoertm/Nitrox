@@ -78,7 +78,7 @@ internal static class SupportHelper
             {
                 return path;
             }
-            return $"<GAME_ROOT>{path.Substring(trimEnd)}";
+            return $"<GAME_ROOT>{path[trimEnd..]}";
         }
     }
 }

@@ -2,7 +2,7 @@ using Nitrox.Model.Configuration;
 
 namespace Nitrox.Launcher.ViewModels.Designer;
 
-internal class DesignObjectPropertyEditorViewModel : ObjectPropertyEditorViewModel
+internal sealed class DesignObjectPropertyEditorViewModel : ObjectPropertyEditorViewModel
 {
     public DesignObjectPropertyEditorViewModel() : base(null!)
     {

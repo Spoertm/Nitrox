@@ -14,7 +14,7 @@ using UWE;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 
-public class MainMenuServerListPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
+public sealed class MainMenuServerListPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
 {
     public const string NAME = "MultiplayerServerList";
 

@@ -2,7 +2,7 @@
 
 namespace NitroxClient.MonoBehaviours.Gui.HUD;
 
-public class DenyOwnershipHand : MonoBehaviour
+public sealed class DenyOwnershipHand : MonoBehaviour
 {
     private void Start()
     {
@@ -10,7 +10,7 @@ public class DenyOwnershipHand : MonoBehaviour
         Destroy(this, 2);
     }
 
-    private void Update()
+    private static void Update()
     {
         //TODO: Check if this should be Hand
         HandReticle.main.SetText(HandReticle.TextType.Hand, "Nitrox_DenyOwnershipHand", true);

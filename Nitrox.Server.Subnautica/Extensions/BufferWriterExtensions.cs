@@ -27,7 +27,7 @@ internal static class BufferWriterExtensions
             {
                 throw new InvalidOperationException("Buffer too small");
             }
-            writer.Write(buffer.Slice(0, written));
+            writer.Write(buffer[..written]);
             index += written;
         } while (written > 0);
     }

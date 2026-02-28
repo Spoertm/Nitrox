@@ -52,7 +52,7 @@ namespace Nitrox.Model.DataStructures
             InsertItemInSequentialChain(priorityItem, tail);
 
             // Step 2: Append the item into the priority chain.
-            InsertItemInPriorityChain(priorityItem, chain, chain.Tail);
+            PriorityQueue<T>.InsertItemInPriorityChain(priorityItem, chain, chain.Tail);
 
             return priorityItem;
         }
@@ -180,7 +180,7 @@ namespace Nitrox.Model.DataStructures
             if (chain.Head == null)
             {
                 Debug.Assert(chain.Tail == null, "PriorityQueue.InsertItemInPriorityChain: both the head and the tail should be null.");
-                InsertItemInPriorityChain(item, chain, null);
+                PriorityQueue<T>.InsertItemInPriorityChain(item, chain, null);
             }
             else
             {
@@ -198,11 +198,11 @@ namespace Nitrox.Model.DataStructures
                     }
                 }
 
-                InsertItemInPriorityChain(item, chain, after);
+                PriorityQueue<T>.InsertItemInPriorityChain(item, chain, after);
             }
         }
 
-        internal void InsertItemInPriorityChain(PriorityItem<T> item, PriorityChain<T> chain, PriorityItem<T> after)
+        internal static void InsertItemInPriorityChain(PriorityItem<T> item, PriorityChain<T> chain, PriorityItem<T> after)
         {
             Debug.Assert(chain != null, "PriorityQueue.InsertItemInPriorityChain: a chain must be provided.");
             Debug.Assert(item.Chain == null && item.PriorityPrev == null && item.PriorityNext == null, "PriorityQueue.InsertItemInPriorityChain: item must not already be in a priority chain.");
@@ -397,7 +397,7 @@ namespace Nitrox.Model.DataStructures
         private int count;
     }
 
-    public class PriorityChain<T>
+    public sealed class PriorityChain<T>
     {
         public PriorityChain(int priority) // NOTE: should be Priority 
         {
@@ -410,7 +410,7 @@ namespace Nitrox.Model.DataStructures
         public PriorityItem<T> Tail { get; set; }
     }
 
-    public class PriorityItem<T>
+    public sealed class PriorityItem<T>
     {
         public PriorityItem(T data)
         {

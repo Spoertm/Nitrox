@@ -13,7 +13,7 @@ namespace Nitrox.Launcher.Models.Design;
 /// <summary>
 ///     Selects a <see cref="DataTemplate" /> based on its <see cref="DataTemplate.DataType" />.
 /// </summary>
-public class MultiDataTemplate : AvaloniaList<DataTemplate>, IRecyclingDataTemplate
+public sealed class MultiDataTemplate : AvaloniaList<DataTemplate>, IRecyclingDataTemplate
 {
     private readonly Dictionary<Type, Control> typeToControlCache = [];
 

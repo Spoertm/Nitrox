@@ -1,6 +1,6 @@
 ﻿namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Catalog
 {
-    internal class ClassJsonObject
+    internal sealed class ClassJsonObject
     {
         public string AssemblyName { get; }
         public string ClassName { get; }

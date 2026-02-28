@@ -10,7 +10,7 @@ internal abstract class RoutableViewModelBase : ViewModelBase
     /// <summary>
     ///     Updates the current view container to show a different view, as is known by the TViewModel type.
     /// </summary>
-    protected void ChangeView<TViewModel>(TViewModel viewModel) where TViewModel : RoutableViewModelBase
+    protected static void ChangeView<TViewModel>(TViewModel viewModel) where TViewModel : RoutableViewModelBase
     {
         WeakReferenceMessenger.Default.Send(new ShowViewMessage
         {
@@ -18,12 +18,12 @@ internal abstract class RoutableViewModelBase : ViewModelBase
         });
     }
 
-    protected void ChangeViewToPrevious()
+    protected static void ChangeViewToPrevious()
     {
         WeakReferenceMessenger.Default.Send(new ShowPreviousViewMessage());
     }
 
-    protected void ChangeViewToPrevious<T>() where T : RoutableViewModelBase
+    protected static void ChangeViewToPrevious<T>() where T : RoutableViewModelBase
     {
         WeakReferenceMessenger.Default.Send(new ShowPreviousViewMessage(typeof(T)));
     }

@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Unity.Smoothing
 {
-    public class SmoothParameter
+    public sealed class SmoothParameter
     {
         private const float SMOOTHING_SPEED = 10f;
         public float Target { get; set; } = 0;

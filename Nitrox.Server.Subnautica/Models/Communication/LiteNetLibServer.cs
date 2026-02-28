@@ -313,6 +313,7 @@ internal sealed class LiteNetLibServer : IHostedService, IPacketSender, IKickPla
         {
             logger.ZLogError(ex, $"Error in packet processor {processor.GetType().Name:@TypeName}");
         }
+        return;
 
         static ProcessorTarget GetProcessorTarget(PacketProcessorsInvoker.Entry? processor, SessionId sessionId, PlayerManager playerManager, [NotNullIfNotNull(nameof(player))] out Player? player)
         {
@@ -349,7 +350,7 @@ internal sealed class LiteNetLibServer : IHostedService, IPacketSender, IKickPla
             dataWriter.Reset();
             dataWriter.Put(packetData.Length);
             dataWriter.ResizeIfNeed(packetData.Length + 4);
-            packetData.CopyTo(dataWriter.Data.AsSpan().Slice(4));
+            packetData.CopyTo(dataWriter.Data.AsSpan()[4..]);
             dataWriter.SetPosition(packetData.Length + 4);
             peer.Send(dataWriter, (byte)packet.UdpChannel, NitroxDeliveryMethod.ToLiteNetLib(packet.DeliveryMethod));
         }

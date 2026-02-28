@@ -6,7 +6,7 @@ using Serilog.Formatting;
 
 namespace Nitrox.Model.Logger
 {
-    public class MessageSink : ILogEventSink
+    public sealed class MessageSink : ILogEventSink
     {
         private readonly ITextFormatter formatter;
         private readonly Action<string> writer;

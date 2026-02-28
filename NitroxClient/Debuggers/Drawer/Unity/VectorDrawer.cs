@@ -1,11 +1,10 @@
-﻿using Nitrox.Model.Subnautica.DataStructures;
-using Nitrox.Model.DataStructures.Unity;
+﻿using Nitrox.Model.DataStructures.Unity;
 using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class VectorDrawer : IEditorDrawer<Vector2, VectorDrawer.DrawOptions>, IEditorDrawer<Vector3, VectorDrawer.DrawOptions>, IEditorDrawer<NitroxVector3>, IEditorDrawer<Vector4>, IEditorDrawer<NitroxVector4>, IEditorDrawer<Quaternion>,
-                            IEditorDrawer<Int3>
+public sealed class VectorDrawer : IEditorDrawer<Vector2, VectorDrawer.DrawOptions>, IEditorDrawer<Vector3, VectorDrawer.DrawOptions>, IEditorDrawer<NitroxVector3>, IEditorDrawer<Vector4>, IEditorDrawer<NitroxVector4>, IEditorDrawer<Quaternion>,
+                                   IEditorDrawer<Int3>
 {
     private const float MAX_WIDTH = 400;
 
@@ -86,7 +85,7 @@ public class VectorDrawer : IEditorDrawer<Vector2, VectorDrawer.DrawOptions>, IE
         return Draw(vector.ToUnity()).ToDto();
     }
 
-    public record DrawOptions(float MaxWidth = MAX_WIDTH);
+    public sealed record DrawOptions(float MaxWidth = MAX_WIDTH);
 
     public Vector2 Draw(Vector2 vector)
     {

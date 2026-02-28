@@ -53,6 +53,7 @@ internal sealed class StatusService(
         logger.ZLogInformation($"Loaded save:");
         await LogServerSummary();
         await LogIps();
+        return;
 
         async Task LogIps()
         {

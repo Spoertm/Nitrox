@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class IntroCinematicUpdater : MonoBehaviour
+public sealed class IntroCinematicUpdater : MonoBehaviour
 {
     public static RemotePlayer Partner;
     private static Transform modelRoot;

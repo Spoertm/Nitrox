@@ -6,7 +6,7 @@ using Nitrox.Server.Subnautica.Models.UnityStubs;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities.Spawning
 {
-    public class SubnauticaEntitySpawnPointFactory : EntitySpawnPointFactory
+    public sealed class SubnauticaEntitySpawnPointFactory : EntitySpawnPointFactory
     {
         private readonly Dictionary<string, EntitySpawnPoint> spawnPointsByUid = new Dictionary<string, EntitySpawnPoint>();
 

@@ -14,7 +14,7 @@ internal abstract class BuildingProcessor<T>(BuildingManager buildingManager, En
 
     public abstract Task Process(AuthProcessorContext context, T packet);
 
-    protected async Task SendToOtherPlayersWithOperationIdAsync(AuthProcessorContext context, T packet, int operationId)
+    protected static async Task SendToOtherPlayersWithOperationIdAsync(AuthProcessorContext context, T packet, int operationId)
     {
         if (packet is OrderedBuildPacket buildPacket)
         {

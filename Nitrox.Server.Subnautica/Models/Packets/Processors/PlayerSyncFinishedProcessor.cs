@@ -5,7 +5,7 @@ using Nitrox.Server.Subnautica.Services;
 
 namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
-internal class PlayerSyncFinishedProcessor(SessionManager sessionManager, JoiningManager joiningManager, HibernateService hibernateService)
+internal sealed class PlayerSyncFinishedProcessor(SessionManager sessionManager, JoiningManager joiningManager, HibernateService hibernateService)
     : IAuthPacketProcessor<PlayerSyncFinished>
 {
     private readonly SessionManager sessionManager = sessionManager;

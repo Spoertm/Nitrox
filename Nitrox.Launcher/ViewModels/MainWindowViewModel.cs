@@ -38,7 +38,7 @@ internal partial class MainWindowViewModel : ViewModelBase, IRoutingScreen
     private object? activeViewModel;
 
     [ObservableProperty]
-    private bool updateAvailableOrUnofficial;
+    private bool updateAvailable;
 
     public AvaloniaList<NotificationItem> Notifications { get; init; } = [];
 
@@ -103,7 +103,7 @@ internal partial class MainWindowViewModel : ViewModelBase, IRoutingScreen
                     Log.Warn("Launcher may not be connected to internet");
                     LauncherNotifier.Warning("Launcher may not be connected to internet");
                 }
-                UpdateAvailableOrUnofficial = await updatesViewModel.IsNitroxUpdateAvailableAsync();
+                UpdateAvailable = await updatesViewModel.IsNitroxUpdateAvailableAsync();
             });
 
             _ = this.ShowAsync(launchGameViewModel).ContinueWithHandleError(ex => LauncherNotifier.Error(ex.Message));
@@ -149,6 +149,7 @@ internal partial class MainWindowViewModel : ViewModelBase, IRoutingScreen
         {
             mainWindowProvider().CloseByCode();
         }
+        return;
 
         static async Task<DialogBoxViewModel?> ShowDialogAsync(DialogService dialogService, WindowClosingEventArgs args, string title)
         {

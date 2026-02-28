@@ -10,7 +10,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity>
+public sealed class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity>
 {
     protected override IEnumerator SpawnAsync(GlobalRootEntity entity, TaskResult<Optional<GameObject>> result)
     {
@@ -18,7 +18,7 @@ public class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity>
         yield return DefaultWorldEntitySpawner.CreateGameObject(entity.TechType.ToUnity(), entity.ClassId, entity.Id, gameObjectResult);
         GameObject gameObject = gameObjectResult.Get();
 
-        SetupObject(entity, gameObject);
+        GlobalRootEntitySpawner.SetupObject(entity, gameObject);
 
         result.Set(gameObject);
     }
@@ -30,13 +30,13 @@ public class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity>
             return false;
         }
         GameObject gameObject = GameObjectExtensions.InstantiateWithId(prefab, entity.Id);
-        SetupObject(entity, gameObject);
+        GlobalRootEntitySpawner.SetupObject(entity, gameObject);
 
         result.Set(gameObject);
         return true;
     }
 
-    private void SetupObject(GlobalRootEntity entity, GameObject gameObject)
+    private static void SetupObject(GlobalRootEntity entity, GameObject gameObject)
     {
         LargeWorldEntity largeWorldEntity = gameObject.EnsureComponent<LargeWorldEntity>();
         largeWorldEntity.cellLevel = LargeWorldEntity.CellLevel.Global;

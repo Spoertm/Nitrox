@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.Bases;
 
-public class ModuleEntitySpawner : EntitySpawner<ModuleEntity>
+public sealed class ModuleEntitySpawner : EntitySpawner<ModuleEntity>
 {
     private readonly Entities entities;
 

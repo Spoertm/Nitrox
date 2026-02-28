@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading;
 using Avalonia.Platform;
 using Nitrox.Model.Core;
-using Nitrox.Model.Helper;
 
 namespace Nitrox.Launcher.Models.Utils;
 

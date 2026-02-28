@@ -33,15 +33,15 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
             // This type of check could get out of control if there are many types with custom destroy logic. If we get a couple more, move to separate processors.
             if (gameObject.TryGetComponent(out Vehicle vehicle))
             {
-                DestroyVehicle(vehicle);
+                EntityDestroyedProcessor.DestroyVehicle(vehicle);
             }
             else if (gameObject.TryGetComponent(out SubRoot subRoot))
             {
-                DestroySubroot(subRoot);
+                EntityDestroyedProcessor.DestroySubroot(subRoot);
             }
             else if (gameObject.TryGetComponent(out Pickupable pickupable))
             {
-                DestroyPickupable(pickupable);
+                EntityDestroyedProcessor.DestroyPickupable(pickupable);
             }
             else
             {
@@ -51,7 +51,7 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
         return Task.CompletedTask;
     }
 
-    private void DestroyVehicle(Vehicle vehicle)
+    private static void DestroyVehicle(Vehicle vehicle)
     {
         if (vehicle.GetPilotingMode()) //Check Local Object Have Player inside
         {
@@ -82,7 +82,7 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
         }
     }
 
-    private void DestroySubroot(SubRoot subRoot)
+    private static void DestroySubroot(SubRoot subRoot)
     {
         DamageInfo damageInfo = new() { type = DAMAGE_TYPE_RUN_ORIGINAL };
         if (subRoot.live.health > 0f)
@@ -98,7 +98,7 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
         subRoot.OnTakeDamage(damageInfo);
     }
 
-    private void DestroyPickupable(Pickupable pickupable)
+    private static void DestroyPickupable(Pickupable pickupable)
     {
         // The OnDestroy method on Pickupable can send extra EntityDestroyed packets if the item is in an Equipment container, causing a loop.
         // The packet suppressor does not help since destroying an object is not synchronous and only happens at the end of a frame.

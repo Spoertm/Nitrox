@@ -3,7 +3,7 @@ using static NitroxClient.Debuggers.Drawer.NitroxGUILayout;
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class VFXControllerDrawer : IDrawer<VFXController>
+public sealed class VFXControllerDrawer : IDrawer<VFXController>
 {
     private readonly VectorDrawer vectorDrawer;
     private readonly SceneDebugger sceneDebugger;

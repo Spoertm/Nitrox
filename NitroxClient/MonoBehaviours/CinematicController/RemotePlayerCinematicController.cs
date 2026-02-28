@@ -8,7 +8,7 @@ namespace NitroxClient.MonoBehaviours.CinematicController;
 /// <summary>
 /// Override for <see cref="PlayerCinematicController"/>
 /// </summary>
-public class RemotePlayerCinematicController : MonoBehaviour, IManagedUpdateBehaviour, IManagedLateUpdateBehaviour
+public sealed class RemotePlayerCinematicController : MonoBehaviour, IManagedUpdateBehaviour, IManagedLateUpdateBehaviour
 {
     [AssertNotNull] public Transform animatedTransform;
 

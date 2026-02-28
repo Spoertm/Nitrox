@@ -1,11 +1,10 @@
 ﻿using System;
 using NitroxClient.Communication.Abstract;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class SessionReserved : ConnectionNegotiatedState
+    public sealed class SessionReserved : ConnectionNegotiatedState
     {
         public override MultiplayerSessionConnectionStage CurrentStage => MultiplayerSessionConnectionStage.SESSION_RESERVED;
 
@@ -14,8 +13,8 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             try
             {
                 ValidateState(sessionConnectionContext);
-                EnterMultiplayerSession(sessionConnectionContext);
-                ChangeState(sessionConnectionContext);
+                SessionReserved.EnterMultiplayerSession(sessionConnectionContext);
+                SessionReserved.ChangeState(sessionConnectionContext);
             }
             catch (Exception)
             {
@@ -32,7 +31,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             }
         }
 
-        private void EnterMultiplayerSession(IMultiplayerSessionConnectionContext sessionConnectionContext)
+        private static void EnterMultiplayerSession(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
             IClient client = sessionConnectionContext.Client;
             MultiplayerSessionReservation reservation = sessionConnectionContext.Reservation;
@@ -43,7 +42,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             client.Send(packet);
         }
 
-        private void ChangeState(IMultiplayerSessionConnectionContext sessionConnectionContext)
+        private static void ChangeState(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
             SessionJoined nextState = new SessionJoined();
             sessionConnectionContext.UpdateConnectionState(nextState);

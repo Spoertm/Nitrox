@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class MobileVehicleBay
+public sealed class MobileVehicleBay
 {
     public static bool TransmitLocalSpawns { get; set; } = true;
     public static GameObject MostRecentlyCrafted { get; set; }

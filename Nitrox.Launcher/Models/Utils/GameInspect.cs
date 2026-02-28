@@ -81,6 +81,7 @@ internal static class GameInspect
             Log.Warn($"BepInEx plugins detected: {modDllCount}");
             LauncherNotifier.Warning($"BepInEx mod(s) were detected ({modDllCount}). Nitrox multiplayer does not support mods and they may cause instability.");
         }
+        return;
 
         static IEnumerable<string> GetDllPaths(string path)
         {

@@ -97,7 +97,7 @@ internal ref struct DeduplicateInterpolatedStringHandler
         InnerHandler.AppendFormatted(namedValue, alignment, format);
     }
 
-    private bool CanDeduplicateValue<T>([NotNullWhen(true)] T value) =>
+    private static bool CanDeduplicateValue<T>([NotNullWhen(true)] T value) =>
         value switch
         {
             string { Length: <= 1000 } => true, // We don't want to fill memory too much. Too long strings we ignore.

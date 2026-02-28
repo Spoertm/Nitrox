@@ -5,14 +5,13 @@ using NitroxClient.Communication.Abstract;
 using NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 using Nitrox.Model;
 using Nitrox.Model.Core;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace NitroxClient.MonoBehaviours.Discord;
 
-public class DiscordClient : MonoBehaviour
+public sealed class DiscordClient : MonoBehaviour
 {
     private const long CLIENT_ID = 405122994348752896;
     private const int RETRY_INTERVAL = 60;
@@ -74,7 +73,7 @@ public class DiscordClient : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private static void OnDisable()
     {
         Log.Info("[Discord] Shutdown client");
         discord?.Dispose();

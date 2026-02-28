@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Net;
-using System.Threading.Tasks;
 using NitroxClient.Communication.Abstract;
 using NitroxClient.Communication.Exceptions;
 using NitroxClient.Communication.MultiplayerSession;
@@ -10,9 +9,7 @@ using NitroxClient.MonoBehaviours.Gui.InGame;
 using NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 using Nitrox.Model.Core;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Helper;
 using Nitrox.Model.MultiplayerSession;
-using Nitrox.Model.Subnautica.DataStructures;
 using Nitrox.Model.Subnautica.MultiplayerSession;
 using UnityEngine;
 

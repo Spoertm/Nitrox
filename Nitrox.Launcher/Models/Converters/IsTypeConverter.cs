@@ -8,7 +8,7 @@ namespace Nitrox.Launcher.Models.Converters;
 /// <summary>
 ///     Returns true if value is of the type as given by parameter (or any if parameter is a collection of types).
 /// </summary>
-public class IsTypeConverter : Converter<IsTypeConverter>
+public sealed class IsTypeConverter : Converter<IsTypeConverter>
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

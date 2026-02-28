@@ -71,12 +71,12 @@ internal partial class UpdatesViewModel(NitroxWebsiteApiService nitroxWebsiteApi
             }
             Version = currentVersion.ToString();
             OfficialVersion = latestVersion.ToString();
-            UsingOfficialVersion = NitroxEnvironment.IsReleaseMode && latestVersion >= currentVersion;
+            UsingOfficialVersion = latestVersion >= currentVersion;
         }
         catch
         {
             NewUpdateAvailable = false;
-            UsingOfficialVersion = NitroxEnvironment.IsReleaseMode;
+            UsingOfficialVersion = true;
         }
 
         return NewUpdateAvailable || !UsingOfficialVersion;
@@ -367,7 +367,7 @@ internal partial class UpdatesViewModel(NitroxWebsiteApiService nitroxWebsiteApi
             model.ButtonOptions = ButtonOptions.YesNo;
         });
 
-        if (confirmResult && backupService.DeleteBackup(backup.FilePath))
+        if (confirmResult && BackupService.DeleteBackup(backup.FilePath))
         {
             AvailableBackups.Remove(backup);
             LauncherNotifier.Success("Backup deleted");
@@ -418,7 +418,7 @@ internal partial class UpdatesViewModel(NitroxWebsiteApiService nitroxWebsiteApi
     }
 
     [RelayCommand]
-    private void OpenBackupsFolder()
+    private static void OpenBackupsFolder()
     {
         string backupsDir = BackupService.BackupsDirectory;
         Directory.CreateDirectory(backupsDir);

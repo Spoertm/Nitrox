@@ -9,7 +9,7 @@ namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap
 {
     public class ReinforcedSuitColorSwapManager : IColorSwapManager
     {
-        public void PrepareMaterials(GameObject playerModel)
+        public static void PrepareMaterials(GameObject playerModel)
         {
             SkinnedMeshRenderer reinforcedSuitRenderer = playerModel.GetRenderer(REINFORCED_SUIT_GAME_OBJECT_NAME);
 

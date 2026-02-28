@@ -159,7 +159,7 @@ internal partial class EmbeddedServerViewModel : RoutableViewModelBase
         });
     }
 
-    private void SetCaretToEnd(TextBox textBox)
+    private static void SetCaretToEnd(TextBox textBox)
     {
         if (textBox is not { Text: { } text })
         {

@@ -10,10 +10,10 @@ public class PlayerMetadataExtractor : EntityMetadataExtractor<Player, PlayerMet
 {
     public override PlayerMetadata Extract(Player player)
     {
-        return new PlayerMetadata(ExtractEquippedItems());
+        return new PlayerMetadata(PlayerMetadataExtractor.ExtractEquippedItems());
     }
 
-    private List<EquippedItem> ExtractEquippedItems()
+    private static List<EquippedItem> ExtractEquippedItems()
     {
         Equipment equipment = Inventory.main.equipment;
 

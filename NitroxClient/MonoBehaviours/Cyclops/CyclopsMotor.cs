@@ -7,7 +7,7 @@ namespace NitroxClient.MonoBehaviours.Cyclops;
 /// <summary>
 /// A replacement for <see cref="GroundMotor"/> while Local Player is in a Cyclops.
 /// </summary>
-public partial class CyclopsMotor : GroundMotor
+public sealed partial class CyclopsMotor : GroundMotor
 {
     public GroundMotor ActualMotor { get; private set; }
     public CyclopsPawn Pawn;
@@ -20,7 +20,7 @@ public partial class CyclopsMotor : GroundMotor
     private WorldForces worldForces;
 
     public Vector3 Up => virtualAxis.up;
-    public float DeltaTime => Time.fixedDeltaTime;
+    public static float DeltaTime => Time.fixedDeltaTime;
 
     private Vector3 verticalVelocity;
     private Vector3 latestVelocity;
@@ -147,7 +147,7 @@ public partial class CyclopsMotor : GroundMotor
         Vector3 beforePosition = Pawn.Position;
 
         Vector3 velocity = new(horizontalVelocity.x, verticalVelocity.y, horizontalVelocity.z);
-        Vector3 movementThisFrame = velocity * DeltaTime;
+        Vector3 movementThisFrame = velocity * CyclopsMotor.DeltaTime;
 
         float step = Mathf.Max(Pawn.Controller.stepOffset, Mathf.Sqrt(movementThisFrame.x * movementThisFrame.x + movementThisFrame.z * movementThisFrame.z));
         if (grounded)
@@ -163,7 +163,7 @@ public partial class CyclopsMotor : GroundMotor
         CheckGrounded(Collision, verticalDot <= 0f);
 
         Vector3 velocityXZ = velocity._X0Z();
-        Vector3 instantVelocity = (Pawn.Position - beforePosition) / DeltaTime;
+        Vector3 instantVelocity = (Pawn.Position - beforePosition) / CyclopsMotor.DeltaTime;
         if (instantVelocity.sqrMagnitude <= 0.2f)
         {
             instantVelocity = velocity;
@@ -243,7 +243,7 @@ public partial class CyclopsMotor : GroundMotor
 
         if (!grounded)
         {
-            verticalMove = -gravity * Up * DeltaTime;
+            verticalMove = -gravity * Up * CyclopsMotor.DeltaTime;
             verticalMove.y = Mathf.Max(verticalMove.y, -movement.maxFallSpeed);
         }
         if (grounded || allowMidAirJumping || flyCheatEnabled)
@@ -328,7 +328,7 @@ public partial class CyclopsMotor : GroundMotor
             latestVelocity.y = 0f;
         }
 
-        float maxSpeed = GetMaxAcceleration(grounded) * DeltaTime;
+        float maxSpeed = GetMaxAcceleration(grounded) * CyclopsMotor.DeltaTime;
         
         Vector3 difference = velocity - latestVelocity;
         if (difference.sqrMagnitude > maxSpeed * maxSpeed)

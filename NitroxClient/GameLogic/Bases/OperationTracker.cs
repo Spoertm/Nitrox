@@ -2,7 +2,7 @@ using System;
 
 namespace NitroxClient.GameLogic.Bases;
 
-public class OperationTracker
+public sealed class OperationTracker
 {
     // TODO: Add the target's Id in here if future works requires it
     public int LastOperationId = -1;

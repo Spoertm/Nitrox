@@ -7,7 +7,7 @@ namespace NitroxPatcher.Modules;
 /// <summary>
 ///     Simple Dependency Injection (DI) container for registering the patch classes with AutoFac.
 /// </summary>
-public class NitroxPatchesModule : Autofac.Module
+public sealed class NitroxPatchesModule : Autofac.Module
 {
     protected override void Load(ContainerBuilder builder)
     {

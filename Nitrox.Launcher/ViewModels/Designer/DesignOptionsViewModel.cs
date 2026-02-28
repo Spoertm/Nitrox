@@ -3,7 +3,7 @@ using Nitrox.Model.Platforms.Discovery.Models;
 
 namespace Nitrox.Launcher.ViewModels.Designer;
 
-internal class DesignOptionsViewModel : OptionsViewModel
+internal sealed class DesignOptionsViewModel : OptionsViewModel
 {
     public DesignOptionsViewModel() : base(null!, null!)
     {

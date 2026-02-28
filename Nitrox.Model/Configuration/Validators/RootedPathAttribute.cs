@@ -8,7 +8,7 @@ namespace Nitrox.Model.Configuration.Validators;
 ///     Validates the value is a rooted path.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class RootedPathAttribute : ValidationAttribute
+public sealed class RootedPathAttribute : ValidationAttribute
 {
     public RootedPathAttribute()
     {

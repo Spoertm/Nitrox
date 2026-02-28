@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServerJoin;
 
-public class MainMenuEnterPasswordPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
+public sealed class MainMenuEnterPasswordPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
 {
     public const string NAME = "MultiplayerEnterPassword";
 
@@ -73,6 +73,7 @@ public class MainMenuEnterPasswordPanel : MonoBehaviour, uGUI_INavigableIconGrid
     public void FocusPasswordField()
     {
         StartCoroutine(Coroutine());
+        return;
 
         IEnumerator Coroutine()
         {

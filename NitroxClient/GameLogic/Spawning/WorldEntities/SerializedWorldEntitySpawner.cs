@@ -11,7 +11,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class SerializedWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class SerializedWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     /// <summary>
     /// Contains the only types we allow the server to instantiate on clients (for security concerns)

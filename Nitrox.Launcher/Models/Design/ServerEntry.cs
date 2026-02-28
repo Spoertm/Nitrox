@@ -387,7 +387,7 @@ internal sealed partial class ServerEntry : ObservableObject
 
     private bool CanOpenSaveFolder() => !string.IsNullOrWhiteSpace(Name);
 
-    internal class ServerProcess : IDisposable
+    internal sealed class ServerProcess : IDisposable
     {
         private ProcessEx? serverProcess;
         public int Id => serverProcess?.Id ?? -1;

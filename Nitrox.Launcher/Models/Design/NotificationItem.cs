@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.Messaging;
 
 namespace Nitrox.Launcher.Models.Design;
 
-public partial class NotificationItem : ObservableObject
+public sealed partial class NotificationItem : ObservableObject
 {
     public string Message { get; }
     public NotificationType Type { get; }

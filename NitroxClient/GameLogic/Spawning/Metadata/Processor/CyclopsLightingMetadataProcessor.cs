@@ -22,12 +22,12 @@ public class CyclopsLightingMetadataProcessor : EntityMetadataProcessor<CyclopsL
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            SetInternalLighting(lighting, metadata.InternalLightsOn);
-            SetFloodLighting(lighting, metadata.FloodLightsOn);
+            CyclopsLightingMetadataProcessor.SetInternalLighting(lighting, metadata.InternalLightsOn);
+            CyclopsLightingMetadataProcessor.SetFloodLighting(lighting, metadata.FloodLightsOn);
         }
     }
 
-    private void SetInternalLighting(CyclopsLightingPanel lighting, bool isOn)
+    private static void SetInternalLighting(CyclopsLightingPanel lighting, bool isOn)
     {
         if (lighting.lightingOn == isOn)
         {
@@ -41,7 +41,7 @@ public class CyclopsLightingMetadataProcessor : EntityMetadataProcessor<CyclopsL
         lighting.UpdateLightingButtons();
     }
 
-    private void SetFloodLighting(CyclopsLightingPanel lighting, bool isOn)
+    private static void SetFloodLighting(CyclopsLightingPanel lighting, bool isOn)
     {
         if (lighting.floodlightsOn == isOn)
         {

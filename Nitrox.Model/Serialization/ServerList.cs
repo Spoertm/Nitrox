@@ -7,7 +7,7 @@ using Nitrox.Model.Helper;
 
 namespace Nitrox.Model.Serialization;
 
-public class ServerList
+public sealed class ServerList
 {
     private const string SERVERS_FILE_NAME = "servers";
     private static ServerList instance;
@@ -89,7 +89,7 @@ public class ServerList
         entries.RemoveAt(index);
     }
 
-    public class Entry
+    public sealed class Entry
     {
         public string Name { get; }
         public string Address { get; }

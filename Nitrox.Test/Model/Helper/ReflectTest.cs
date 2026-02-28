@@ -26,7 +26,7 @@ public class ReflectTest
         staticMethod.Invoke(null, ["hello, reflection", null]).Should().BeEquivalentTo("hello, reflection");
 
         // Get instance method.
-        MethodInfo instanceMethod = Reflect.Method((AbusedClass t) => t.Method());
+        MethodInfo instanceMethod = Reflect.Method((AbusedClass t) => AbusedClass.Method());
         instanceMethod.Should().NotBeNull();
         instanceMethod.ReturnType.Should().Be<int>();
         instanceMethod.Name.Should().BeEquivalentTo(nameof(AbusedClass.Method));
@@ -85,7 +85,7 @@ public class ReflectTest
             return myValue;
         }
 
-        public int Method()
+        public static int Method()
         {
             return 1;
         }

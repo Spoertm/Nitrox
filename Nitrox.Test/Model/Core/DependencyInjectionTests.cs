@@ -93,11 +93,11 @@ public interface IRootDependency
 {
 }
 
-public class RootDependency : IRootDependency
+public sealed class RootDependency : IRootDependency
 {
 }
 
-public class DependencyWithRootDependency
+public sealed class DependencyWithRootDependency
 {
     public IRootDependency RootDependency { get; }
 
@@ -117,11 +117,11 @@ public interface IServicer<T>
     void PerformService(T serviced);
 }
 
-public class ServiceRecipientA : IServiced
+public sealed class ServiceRecipientA : IServiced
 {
 }
 
-public class ServiceRecipientB : IServiced
+public sealed class ServiceRecipientB : IServiced
 {
 }
 

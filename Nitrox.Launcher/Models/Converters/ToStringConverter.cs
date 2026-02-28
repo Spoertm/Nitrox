@@ -9,7 +9,7 @@ namespace Nitrox.Launcher.Models.Converters;
 /// <summary>
 ///     Formats the bound value as a string using a specific formatting style.
 /// </summary>
-public class ToStringConverter : Converter<ToStringConverter>
+public sealed class ToStringConverter : Converter<ToStringConverter>
 {
     public override object? Convert(object? value, Type targetType, object parameter, CultureInfo culture)
     {

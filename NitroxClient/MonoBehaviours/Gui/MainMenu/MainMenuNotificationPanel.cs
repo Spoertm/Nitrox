@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu;
 
-public class MainMenuNotificationPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
+public sealed class MainMenuNotificationPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver
 {
     public const string NAME = "MultiplayerNotification";
 

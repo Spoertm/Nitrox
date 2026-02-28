@@ -47,7 +47,7 @@ public sealed class ServerJsonSerializer : IServerSerializer
         {
             serializer.Serialize(stream, o);
         }
-        FileSystem.Instance.ReplaceFile(tmpPath, filePath);
+        FileSystem.ReplaceFile(tmpPath, filePath);
     }
 
     public T Deserialize<T>(Stream stream)

@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Net;
-using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -17,7 +16,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Nitrox.Launcher.Models.Services;
 using Nitrox.Launcher.Models.Utils;
@@ -28,12 +26,11 @@ using Nitrox.Model.Constants;
 using Nitrox.Model.Core;
 using Nitrox.Model.Helper;
 using Nitrox.Model.Logger;
-using Nitrox.Model.Platforms.Discovery;
 using Nitrox.Model.Platforms.OS.Shared;
 
 namespace Nitrox.Launcher;
 
-internal class App : Application
+internal sealed class App : Application
 {
     internal static Func<Window>? StartupWindowFactory;
     internal static InstantLaunchData? InstantLaunch;
@@ -179,7 +176,7 @@ internal class App : Application
     /// <summary>
     ///     Disables Avalonia plugins which are replaced by MVVM Toolkit.
     /// </summary>
-    private void FixAvaloniaPlugins()
+    private static void FixAvaloniaPlugins()
     {
         for (int i = BindingPlugins.DataValidators.Count - 1; i >= 0; i--)
         {
@@ -208,5 +205,5 @@ internal class App : Application
         }
     }
 
-    internal record InstantLaunchData(string SaveName, string[] PlayerNames);
+    internal sealed record InstantLaunchData(string SaveName, string[] PlayerNames);
 }

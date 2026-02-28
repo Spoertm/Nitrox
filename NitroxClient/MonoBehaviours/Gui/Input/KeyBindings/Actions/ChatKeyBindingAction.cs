@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace NitroxClient.MonoBehaviours.Gui.Input.KeyBindings.Actions;
 
-public class ChatKeyBindingAction : KeyBinding
+public sealed class ChatKeyBindingAction : KeyBinding
 {
     public ChatKeyBindingAction() : base("Nitrox_Settings_Keybind_OpenChat", "y") { }
 

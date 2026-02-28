@@ -7,7 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Nitrox.Launcher.Models.Controls;
 
-public partial class CustomTitlebar : TemplatedControl
+public sealed partial class CustomTitlebar : TemplatedControl
 {
     public static readonly DirectProperty<CustomTitlebar, bool> ShowTitleProperty =
         AvaloniaProperty.RegisterDirect<CustomTitlebar, bool>(

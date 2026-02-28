@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 namespace NitroxClient.MonoBehaviours;
 
 [ExcludeFromCodeCoverage]
-public class NitroxDebugManager : MonoBehaviour
+public sealed class NitroxDebugManager : MonoBehaviour
 {
     private const KeyCode ENABLE_DEBUGGER_HOTKEY = KeyCode.F7;
 
@@ -151,14 +151,14 @@ public class NitroxDebugManager : MonoBehaviour
         prevActiveDebuggers.Clear();
     }
 
-    private void OnEnable()
+    private static void OnEnable()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         SceneManager.sceneUnloaded += SceneManager_sceneUnloaded;
         SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
     }
 
-    private void OnDisable()
+    private static void OnDisable()
     {
         SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
         SceneManager.sceneUnloaded -= SceneManager_sceneUnloaded;

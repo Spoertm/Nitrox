@@ -5,7 +5,7 @@ using Nitrox.Model.Core;
 namespace Nitrox.Model.Serialization;
 
 [DataContract]
-public class SaveFileVersion
+public sealed class SaveFileVersion
 {
     [DataMember(Order = 1)]
     public readonly int Major;

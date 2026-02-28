@@ -85,7 +85,7 @@ public static class AssetBundleLoader
     }
 
     // ReSharper disable class StringLiteralTypo, InconsistentNaming
-    public class NitroxAssetBundle
+    public sealed class NitroxAssetBundle
     {
         public string BundleName { get; }
         public AssetBundle AssetBundle { get; set; }

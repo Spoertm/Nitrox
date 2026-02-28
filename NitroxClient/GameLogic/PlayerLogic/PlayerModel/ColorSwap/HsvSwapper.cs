@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap
 {
-    public class HsvSwapper
+    public sealed class HsvSwapper
     {
         private readonly IColorSwapStrategy colorSwapStrategy;
 

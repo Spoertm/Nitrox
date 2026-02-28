@@ -362,7 +362,7 @@ internal sealed class WorldEntityManager
     ///     Iterative breadth-first search which gets all children player entities in <paramref name="parentEntity" />'s
     ///     hierarchy.
     /// </summary>
-    private List<PlayerEntity> FindPlayerEntitiesInChildren(Entity parentEntity)
+    private static List<PlayerEntity> FindPlayerEntitiesInChildren(Entity parentEntity)
     {
         List<PlayerEntity> playerEntities = [];
         List<Entity> entitiesToSearch = [parentEntity];

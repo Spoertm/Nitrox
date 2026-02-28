@@ -1,5 +1,4 @@
 using Nitrox.Model.Subnautica.Packets;
-using NitroxClient.Communication.Abstract;
 using NitroxClient.Communication.Packets.Processors.Core;
 
 namespace NitroxClient.Communication.Packets.Processors;

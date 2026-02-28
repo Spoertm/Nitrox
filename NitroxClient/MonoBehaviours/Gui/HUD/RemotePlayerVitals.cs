@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.HUD;
 
-public class RemotePlayerVitals : MonoBehaviour
+public sealed class RemotePlayerVitals : MonoBehaviour
 {
     private static readonly Color OXYGEN_BAR_COLOR = new(0.168f, 0.666f, 0.60f, 1.0f);
     private static readonly Color OXYGEN_BAR_BORDER_COLOR = new(0.227f, 0.949f, 0.969f, 1.0f);
@@ -135,13 +135,13 @@ public class RemotePlayerVitals : MonoBehaviour
         {
             throw new NullReferenceException($"[{nameof(RemotePlayerVitals)}] Couldn't find uGUI main instance when creating vitals");
         }
-        healthBar = CreateBar(uGUI.GetComponentInChildren<uGUI_HealthBar>(true), canvas);
-        oxygenBar = CreateBar(uGUI.GetComponentInChildren<uGUI_OxygenBar>(true), canvas);
-        foodBar = CreateBar(uGUI.GetComponentInChildren<uGUI_FoodBar>(true), canvas);
-        waterBar = CreateBar(uGUI.GetComponentInChildren<uGUI_WaterBar>(true), canvas);
+        healthBar = RemotePlayerVitals.CreateBar(uGUI.GetComponentInChildren<uGUI_HealthBar>(true), canvas);
+        oxygenBar = RemotePlayerVitals.CreateBar(uGUI.GetComponentInChildren<uGUI_OxygenBar>(true), canvas);
+        foodBar = RemotePlayerVitals.CreateBar(uGUI.GetComponentInChildren<uGUI_FoodBar>(true), canvas);
+        waterBar = RemotePlayerVitals.CreateBar(uGUI.GetComponentInChildren<uGUI_WaterBar>(true), canvas);
     }
 
-    private Bar CreateBar<T>(T barBehaviour, Canvas canvas) where T : MonoBehaviour
+    private static Bar CreateBar<T>(T barBehaviour, Canvas canvas) where T : MonoBehaviour
     {
         GameObject originalBar = barBehaviour.gameObject;
         GameObject cloned = Instantiate(originalBar, canvas.transform, true);

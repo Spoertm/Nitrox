@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class ToggleGroupDrawer : IDrawer<ToggleGroup>
+public sealed class ToggleGroupDrawer : IDrawer<ToggleGroup>
 {
     public void Draw(ToggleGroup toggleGroup)
     {

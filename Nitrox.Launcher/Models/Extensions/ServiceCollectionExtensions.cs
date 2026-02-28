@@ -95,6 +95,7 @@ public static partial class ServiceCollectionExtensions
             dialog.DataContext = provider.GetRequiredService(viewModel);
             return dialog;
         }));
+        return;
         static Type GetViewModelType() => typeof(TDialog).GetCustomAttribute<ModalForViewModelAttribute>()?.ViewModelType ?? throw new Exception($"No ViewModel assigned to {typeof(TDialog).Name}");
     }
 

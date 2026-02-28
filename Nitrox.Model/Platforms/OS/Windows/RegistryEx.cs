@@ -195,6 +195,7 @@ public static class RegistryEx
             baseKey?.Dispose();
             innerCts?.Dispose();
         }
+        return;
 
         static bool Test(RegistryKey regKey, string regKeyName, Func<T, bool> testPredicate)
         {

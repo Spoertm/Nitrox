@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using NitroxClient.Communication.Abstract;
 using Nitrox.Model.Helper;
 using Nitrox.Model.Packets.Exceptions;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class EstablishingSessionPolicy : ConnectionNegotiatingState
+    public sealed class EstablishingSessionPolicy : ConnectionNegotiatingState
     {
         private readonly string policyRequestCorrelationId;
 
@@ -23,7 +22,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             try
             {
                 ValidateState(sessionConnectionContext);
-                AwaitReservationCredentials(sessionConnectionContext);
+                EstablishingSessionPolicy.AwaitReservationCredentials(sessionConnectionContext);
             }
             catch (Exception)
             {
@@ -59,7 +58,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             }
         }
 
-        private void AwaitReservationCredentials(IMultiplayerSessionConnectionContext sessionConnectionContext)
+        private static void AwaitReservationCredentials(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
             AwaitingReservationCredentials nextState = new AwaitingReservationCredentials();
             sessionConnectionContext.UpdateConnectionState(nextState);

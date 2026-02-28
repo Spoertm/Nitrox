@@ -1,7 +1,7 @@
 namespace Nitrox.Test.Model.Platforms;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class OSTestMethodAttribute : TestMethodAttribute
+public sealed class OSTestMethodAttribute : TestMethodAttribute
 {
     public string Platform { get;}
 

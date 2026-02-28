@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class RectTransformDrawer : IDrawer<RectTransform>
+public sealed class RectTransformDrawer : IDrawer<RectTransform>
 {
     private readonly VectorDrawer vectorDrawer;
     private const float LABEL_WIDTH = 120;

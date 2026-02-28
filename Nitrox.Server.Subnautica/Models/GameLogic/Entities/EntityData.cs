@@ -5,7 +5,7 @@ using Nitrox.Model.Subnautica.DataStructures.GameLogic;
 namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities;
 
 [DataContract]
-public class EntityData
+public sealed class EntityData
 {
     [DataMember(Order = 1)]
     public List<Entity> Entities = [];

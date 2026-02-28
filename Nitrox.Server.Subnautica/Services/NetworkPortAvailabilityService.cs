@@ -68,6 +68,7 @@ internal sealed class NetworkPortAvailabilityService(IOptions<SubnauticaServerOp
         {
             // ignored
         }
+        return;
 
         static void PrintPortWarn(ILogger logger, int port) =>
             logger.ZLogWarning($"Port {port:@Port} UDP is already in use. Please change the server port or close out any program that may be using it. Retrying...");

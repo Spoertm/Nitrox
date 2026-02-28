@@ -1,6 +1,5 @@
 extern alias JB;
 using System;
-using System.Runtime.CompilerServices;
 using Nitrox.Model.Helper;
 using Nitrox.Model.Platforms.Discovery.Models;
 

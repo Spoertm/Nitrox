@@ -15,7 +15,7 @@ internal sealed class RandomFactory(IOptions<SubnauticaServerOptions> options)
         string nameSpaceStr = type.Namespace ?? throw new Exception($"Namespace for {type} is unknown");
         Span<char> nameSpace = stackalloc char[nameSpaceStr.Length];
         nameSpaceStr.CopyTo(nameSpace);
-        nameSpace = nameSpace.Slice(assemblyName.Length + 1);
+        nameSpace = nameSpace[(assemblyName.Length + 1)..];
         nameSpace.Replace('.', '/');
         return $"{assemblyName}/{nameSpace}/{type.Name}.cs";
     }

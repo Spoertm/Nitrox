@@ -67,10 +67,10 @@ internal sealed class BuildingResyncProcessor(Entities entities, EntityMetadataM
     {
         Stopwatch stopwatch = Stopwatch.StartNew();
         BuildingHandler.Main.StartResync(buildEntities);
-        yield return UpdateEntities<Base, BuildEntity>(buildEntities.Keys.ToList(), OverwriteBase, IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing BuildEntities"));
+        yield return UpdateEntities<Base, BuildEntity>(buildEntities.Keys.ToList(), OverwriteBase, BuildingResyncProcessor.IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing BuildEntities"));
 
         BuildingHandler.Main.StartResync(moduleEntities);
-        yield return UpdateEntities<Constructable, ModuleEntity>(moduleEntities.Keys.ToList(), OverwriteModule, IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing ModuleEntities"));
+        yield return UpdateEntities<Constructable, ModuleEntity>(moduleEntities.Keys.ToList(), OverwriteModule, BuildingResyncProcessor.IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing ModuleEntities"));
         BuildingHandler.Main.StopResync();
 
         stopwatch.Stop();
@@ -79,7 +79,7 @@ internal sealed class BuildingResyncProcessor(Entities entities, EntityMetadataM
         Log.InGame(Language.main.Get("Nitrox_FinishedResyncRequest").Replace("{TIME}", stopwatch.ElapsedMilliseconds.ToString()).Replace("{COUNT}", totalEntities.ToString()));
     }
 
-    private bool IsInCloseProximity<C>(WorldEntity entity, C componentInWorld) where C : Component
+    private static bool IsInCloseProximity<C>(WorldEntity entity, C componentInWorld) where C : Component
     {
         return Vector3.Distance(entity.Transform.Position.ToUnity(), componentInWorld.transform.position) < 0.001f;
     }

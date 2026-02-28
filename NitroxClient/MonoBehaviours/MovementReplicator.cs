@@ -4,8 +4,6 @@ using NitroxClient.GameLogic.Settings;
 using NitroxClient.MonoBehaviours.Cyclops;
 using NitroxClient.MonoBehaviours.Vehicles;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Packets;
-using Nitrox.Model.Subnautica.DataStructures;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 
@@ -32,9 +30,9 @@ public abstract class MovementReplicator : MonoBehaviour
     /// After each periodical latency update (<see cref="LatencyUpdatePeriod"/>), we only want to lower the latency if it's way smaller than the current variable latency.
     /// The safety threshold is defined by this value.
     /// </summary>
-    private float SafetyLatencyMargin => NitroxPrefs.SafetyLatencyMargin.Value;
+    private static float SafetyLatencyMargin => NitroxPrefs.SafetyLatencyMargin.Value;
 
-    private float LatencyUpdatePeriod => NitroxPrefs.LatencyUpdatePeriod.Value;
+    private static float LatencyUpdatePeriod => NitroxPrefs.LatencyUpdatePeriod.Value;
 
     private Rigidbody rigidbody;
     public NitroxId objectId { get; private set; }
@@ -51,7 +49,7 @@ public abstract class MovementReplicator : MonoBehaviour
 
         if (latency > maxAllowedLatency)
         {
-            maxAllowedLatency = latency + SafetyLatencyMargin;
+            maxAllowedLatency = latency + MovementReplicator.SafetyLatencyMargin;
             latestLatencyBumpTime = currentTime;
             maxLatencyDetectedRecently = 0;
         }
@@ -59,11 +57,11 @@ public abstract class MovementReplicator : MonoBehaviour
         {
             maxLatencyDetectedRecently = Mathf.Max(latency, maxLatencyDetectedRecently);
 
-            if (currentTime - latestLatencyBumpTime >= LatencyUpdatePeriod)
+            if (currentTime - latestLatencyBumpTime >= MovementReplicator.LatencyUpdatePeriod)
             {
-                if (maxLatencyDetectedRecently < maxAllowedLatency - 2 * SafetyLatencyMargin)
+                if (maxLatencyDetectedRecently < maxAllowedLatency - 2 * MovementReplicator.SafetyLatencyMargin)
                 {
-                    maxAllowedLatency = maxLatencyDetectedRecently + SafetyLatencyMargin; // regular gameplay latency variation
+                    maxAllowedLatency = maxLatencyDetectedRecently + MovementReplicator.SafetyLatencyMargin; // regular gameplay latency variation
                 }
                 latestLatencyBumpTime = currentTime;
                 maxLatencyDetectedRecently = 0;

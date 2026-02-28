@@ -10,7 +10,7 @@ public static class StringExtensions
         Validate.NotNull(value);
         Validate.NotNull(appendix);
 
-        return value.Length <= maxChars ? value : value.Substring(0, maxChars) + appendix;
+        return value.Length <= maxChars ? value : value[..maxChars] + appendix;
     }
 
     public static string TruncateLeft(this string value, int maxChars, string appendix = "...")

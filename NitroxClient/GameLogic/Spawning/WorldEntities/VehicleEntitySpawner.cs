@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
+public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 {
     // The constructor has mixed results when the remote player is a long distance away.  UWE even has a built in distance tracker to ensure
     // that they are within allowed range.  However, this range is a bit restrictive. We will allow constructor spawning up to a specified 
@@ -20,7 +20,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
     protected override IEnumerator SpawnAsync(VehicleEntity vehicleEntity, TaskResult<Optional<GameObject>> result)
     {
-        bool withinConstructorSpawnWindow = (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime) < GetCraftDuration(vehicleEntity.TechType.ToUnity());
+        bool withinConstructorSpawnWindow = (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime) < VehicleEntitySpawner.GetCraftDuration(vehicleEntity.TechType.ToUnity());
         Optional<GameObject> spawnerObj = NitroxEntity.GetObjectFrom(vehicleEntity.SpawnerId);
         Optional<GameObject> parent = vehicleEntity.ParentId != null ? NitroxEntity.GetObjectFrom(vehicleEntity.ParentId) : Optional.Empty;
 
@@ -73,7 +73,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
             }
         }
 
-        AddCinematicControllers(gameObject);
+        VehicleEntitySpawner.AddCinematicControllers(gameObject);
 
         gameObject.transform.position = vehicleEntity.Transform.Position.ToUnity();
         gameObject.transform.rotation = vehicleEntity.Transform.Rotation.ToUnity();
@@ -86,7 +86,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         yield return Yielders.WaitForEndOfFrame;
 
-        RemoveConstructionAnimations(gameObject);
+        VehicleEntitySpawner.RemoveConstructionAnimations(gameObject);
 
         yield return Yielders.WaitForEndOfFrame;
 
@@ -104,7 +104,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         if (parent.HasValue)
         {
-            DockVehicle(gameObject, parent.Value);
+            VehicleEntitySpawner.DockVehicle(gameObject, parent.Value);
         }
         
         // While spawning a vehicle, we want to make sure that it doesn't free fall as if it was just built by a constructor
@@ -123,7 +123,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
             constructor.Deploy(true);
         }
 
-        float craftDuration = GetCraftDuration(vehicleEntity.TechType.ToUnity()) - (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime);
+        float craftDuration = VehicleEntitySpawner.GetCraftDuration(vehicleEntity.TechType.ToUnity()) - (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime);
 
         ConstructorInput crafter = constructor.gameObject.RequireComponentInChildren<ConstructorInput>(true);
 
@@ -134,7 +134,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         NitroxEntity.SetNewId(constructedObject, vehicleEntity.Id);
 
-        AddCinematicControllers(constructedObject);
+        VehicleEntitySpawner.AddCinematicControllers(constructedObject);
 
         result.Set(constructedObject);
         yield break;
@@ -143,7 +143,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
     /// <summary>
     ///   For scene objects like cyclops, PlayerCinematicController Start() will not be called to add Cinematic reference.
     /// </summary>
-    private void AddCinematicControllers(GameObject gameObject)
+    private static void AddCinematicControllers(GameObject gameObject)
     {
         if (gameObject.GetComponent<MultiplayerCinematicReference>())
         {
@@ -168,7 +168,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
     /// <summary>
     ///  When loading in vehicles, they still briefly have their blue crafting animation playing.  Force them to stop.
     /// </summary>
-    private void RemoveConstructionAnimations(GameObject gameObject)
+    private static void RemoveConstructionAnimations(GameObject gameObject)
     {
         VFXConstructing[] vfxConstructions = gameObject.GetComponentsInChildren<VFXConstructing>();
         
@@ -178,7 +178,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
         }
     }
 
-    private void DockVehicle(GameObject gameObject, GameObject parent)
+    private static void DockVehicle(GameObject gameObject, GameObject parent)
     {
         Vehicle vehicle = gameObject.GetComponent<Vehicle>();
 
@@ -199,7 +199,7 @@ public class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
         dockingBay.DockVehicle(vehicle);        
     }
     
-    private float GetCraftDuration(TechType techType)
+    private static float GetCraftDuration(TechType techType)
     {
         // UWE hard codes the build times into if/else logic inside ConstructorInput.Craft().
 

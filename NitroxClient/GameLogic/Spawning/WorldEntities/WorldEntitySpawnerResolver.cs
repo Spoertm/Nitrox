@@ -4,7 +4,7 @@ using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class WorldEntitySpawnerResolver
+public sealed class WorldEntitySpawnerResolver
 {
     private readonly DefaultWorldEntitySpawner defaultEntitySpawner = new();
 

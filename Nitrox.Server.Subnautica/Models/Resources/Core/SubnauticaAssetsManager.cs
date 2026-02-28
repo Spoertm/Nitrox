@@ -33,7 +33,7 @@ internal sealed class SubnauticaAssetsManager : AssetsManager, IDisposable
             bundlePath = bundlePath.Replace('\\', '/');
         }
 
-        return options.Value.GetSubnauticaAaResourcePath() + bundlePath.Substring(bundlePath.IndexOf('}') + 1);
+        return options.Value.GetSubnauticaAaResourcePath() + bundlePath[(bundlePath.IndexOf('}') + 1)..];
     }
 
     public AssetsFileInstance LoadBundleWithDependencies(string[] bundlePaths)

@@ -1,7 +1,6 @@
 #if DEBUG
 using System.Collections.Generic;
 using System.ComponentModel;
-using Nitrox.Model.Core;
 using Nitrox.Model.DataStructures.GameLogic;
 using Nitrox.Model.DataStructures.Unity;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic;

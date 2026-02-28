@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class SliderDrawer : IDrawer<Slider>
+public sealed class SliderDrawer : IDrawer<Slider>
 {
     private readonly SceneDebugger sceneDebugger;
     private readonly SelectableDrawer selectableDrawer;

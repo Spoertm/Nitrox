@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class CreatureRespawnEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class CreatureRespawnEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private readonly SimulationOwnership simulationOwnership;
 
@@ -145,7 +145,7 @@ public class CreatureRespawnEntitySpawner : IWorldEntitySpawner, IWorldEntitySyn
         gameObject.SetActive(true);
     }
 
-    internal class RespawnContext : LockRequestContext
+    internal sealed class RespawnContext : LockRequestContext
     {
         public CreatureRespawnEntity Entity;
         public GameObject GameObject;

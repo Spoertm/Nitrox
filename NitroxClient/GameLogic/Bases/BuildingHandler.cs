@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Bases;
 
-public partial class BuildingHandler : MonoBehaviour
+public sealed partial class BuildingHandler : MonoBehaviour
 {
     public static BuildingHandler Main;
 
@@ -297,7 +297,7 @@ public partial class BuildingHandler : MonoBehaviour
         BasesCooldown.RemoveWhere(DateTimeOffset.UtcNow, (time, curr) => (curr - time) >= MultiplayerBuildCooldown);
     }
 
-    public class TemporaryBuildData : IDisposable
+    public sealed class TemporaryBuildData : IDisposable
     {
         public NitroxId Id;
         public InteriorPieceEntity NewWaterPark;
@@ -338,7 +338,7 @@ public partial class BuildingHandler : MonoBehaviour
 /// <summary>
 /// Building resync-related part of <see cref="BuildingHandler"/>. 
 /// </summary>
-public partial class BuildingHandler
+public sealed partial class BuildingHandler
 {
     private static readonly TimeSpan ResyncRequestCooldown = TimeSpan.FromSeconds(10);
     private DateTimeOffset LatestResyncRequestTimeOffset;

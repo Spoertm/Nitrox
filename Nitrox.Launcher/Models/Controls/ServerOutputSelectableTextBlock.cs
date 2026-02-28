@@ -4,7 +4,7 @@ using Avalonia.Input;
 
 namespace Nitrox.Launcher.Models.Controls;
 
-public class ServerOutputSelectableTextBlock : SelectableTextBlock
+public sealed class ServerOutputSelectableTextBlock : SelectableTextBlock
 {
     public static event EventHandler<ServerOutputSelectableTextBlock>? SelectionStartedGlobal;
 

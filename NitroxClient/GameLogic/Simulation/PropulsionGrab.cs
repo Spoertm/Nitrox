@@ -2,7 +2,7 @@
 
 namespace NitroxClient.GameLogic.Simulation
 {
-    public class PropulsionGrab : LockRequestContext
+    public sealed class PropulsionGrab : LockRequestContext
     {
         public PropulsionCannon Cannon { get; }
         public GameObject GrabbedObject { get; }

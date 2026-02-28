@@ -57,6 +57,7 @@ internal class PortForwardService(IOptionsMonitor<SubnauticaServerOptions> optio
             openedPorts.Clear();
             throw;
         }
+        return;
 
         void ListenForOptionsChange()
         {

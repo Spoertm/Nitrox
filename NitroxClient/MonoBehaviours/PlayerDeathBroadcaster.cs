@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class PlayerDeathBroadcaster : MonoBehaviour
+public sealed class PlayerDeathBroadcaster : MonoBehaviour
 {
     private LocalPlayer localPlayer;
 

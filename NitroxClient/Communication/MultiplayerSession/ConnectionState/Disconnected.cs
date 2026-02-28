@@ -6,13 +6,13 @@ using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class Disconnected : IMultiplayerSessionConnectionState
+    public sealed class Disconnected : IMultiplayerSessionConnectionState
     {
         public MultiplayerSessionConnectionStage CurrentStage => MultiplayerSessionConnectionStage.DISCONNECTED;
 
         public async Task NegotiateReservationAsync(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
-            ValidateState(sessionConnectionContext);
+            Disconnected.ValidateState(sessionConnectionContext);
 
             IClient client = sessionConnectionContext.Client;
             string ipAddress = sessionConnectionContext.IpAddress;
@@ -21,7 +21,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             EstablishSessionPolicy(sessionConnectionContext, client);
         }
 
-        private void ValidateState(IMultiplayerSessionConnectionContext sessionConnectionContext)
+        private static void ValidateState(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
             ValidateClient(sessionConnectionContext);
 

@@ -53,5 +53,5 @@ internal sealed class DialogService(Func<Window> dialogOwnerProvider, IEnumerabl
             model.ButtonOptions = ButtonOptions.OkClipboard;
         });
 
-    public record Mapping(Type ViewModelType, Func<Type, Window> WindowFactory);
+    public sealed record Mapping(Type ViewModelType, Func<Type, Window> WindowFactory);
 }

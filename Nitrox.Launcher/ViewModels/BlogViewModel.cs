@@ -65,7 +65,7 @@ internal sealed partial class BlogViewModel : RoutableViewModelBase
     }
 
     [RelayCommand]
-    private void BlogEntryClick(string blogUrl)
+    private static void BlogEntryClick(string blogUrl)
     {
         OpenUri(blogUrl);
     }

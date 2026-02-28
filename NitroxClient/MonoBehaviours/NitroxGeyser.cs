@@ -8,7 +8,7 @@ namespace NitroxClient.MonoBehaviours;
 ///     Therefore, to ensure client freeze (and other things modifying the local unity's time) don't disturb the precise geyser's erupt schedule,
 ///     we manage it ourselves in a synced way.
 /// </summary>
-public class NitroxGeyser : MonoBehaviour
+public sealed class NitroxGeyser : MonoBehaviour
 {
     private Geyser geyser;
 

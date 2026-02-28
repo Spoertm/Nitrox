@@ -124,7 +124,7 @@
             nums.Last().Should().Be(10);
         }
 
-        private void DoReaderWriter(Action reader, Action<int> writer, int iterators)
+        private static void DoReaderWriter(Action reader, Action<int> writer, int iterators)
         {
             ManualResetEventSlim barrier = new(false);
             Thread readerThread = new(() =>

@@ -1,6 +1,6 @@
 namespace Nitrox.Test.Helper.Faker;
 
-public class NitroxActionFaker : NitroxFaker, INitroxFaker
+public sealed class NitroxActionFaker : NitroxFaker, INitroxFaker
 {
     private readonly Func<Bogus.Faker, object> generateAction;
 

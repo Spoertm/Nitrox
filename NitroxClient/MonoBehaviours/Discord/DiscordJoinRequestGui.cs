@@ -7,7 +7,7 @@ using static NitroxClient.Unity.Helper.AssetBundleLoader;
 
 namespace NitroxClient.MonoBehaviours.Discord;
 
-public class DiscordJoinRequestGui : uGUI_InputGroup
+public sealed class DiscordJoinRequestGui : uGUI_InputGroup
 {
     private readonly WaitForSeconds expireTimeYielder = new(45);
 

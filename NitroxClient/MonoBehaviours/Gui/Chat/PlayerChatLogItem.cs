@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.Chat
 {
-    public class PlayerChatLogItem : MonoBehaviour
+    public sealed class PlayerChatLogItem : MonoBehaviour
     {
         private Text playerName;
         private Text time;

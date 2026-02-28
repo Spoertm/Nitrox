@@ -6,7 +6,7 @@ namespace Nitrox.Model.Configuration.Validators;
 
 /// <summary>Validates a Nitrox save name.</summary>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class SaveNameAttribute : ValidationAttribute
+public sealed class SaveNameAttribute : ValidationAttribute
 {
     private static readonly char[] invalidPathCharacters = Path.GetInvalidFileNameChars();
 

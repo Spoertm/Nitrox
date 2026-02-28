@@ -51,7 +51,7 @@ internal sealed class HttpFileService
         return new FileDownloader(await response.Content.ReadAsStreamAsync(cancellationToken), response.Content.Headers.ContentLength ?? 0, response, cancellationToken);
     }
 
-    public record FileDownloader(Stream Stream, long SizeFromServer, IDisposable? Disposable = null, CancellationToken CancellationToken = default)
+    public sealed record FileDownloader(Stream Stream, long SizeFromServer, IDisposable? Disposable = null, CancellationToken CancellationToken = default)
         : IDisposable
     {
         private FileStream? destinationFileStream;

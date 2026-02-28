@@ -12,11 +12,11 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryEntity>
+public sealed class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryEntity>
 {
     protected override IEnumerator SpawnAsync(InstalledBatteryEntity entity, TaskResult<Optional<GameObject>> result)
     {
-        if (!CanSpawn(entity, out EnergyMixin? energyMixin, out string errorLog))
+        if (!InstalledBatteryEntitySpawner.CanSpawn(entity, out EnergyMixin? energyMixin, out string errorLog))
         {
             Log.Error(errorLog);
             result.Set(Optional.Empty);
@@ -27,7 +27,7 @@ public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryE
         yield return DefaultWorldEntitySpawner.RequestPrefab(entity.TechType.ToUnity(), prefabResult);
         GameObject gameObject = GameObjectExtensions.InstantiateWithId(prefabResult.Get(), entity.Id);
 
-        SetupObject(gameObject, energyMixin);
+        InstalledBatteryEntitySpawner.SetupObject(gameObject, energyMixin);
 
         result.Set(gameObject);
     }
@@ -38,7 +38,7 @@ public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryE
         {
             return false;
         }
-        if (!CanSpawn(entity, out EnergyMixin energyMixin, out string errorLog))
+        if (!InstalledBatteryEntitySpawner.CanSpawn(entity, out EnergyMixin energyMixin, out string errorLog))
         {
             Log.Error(errorLog);
             return true;
@@ -46,7 +46,7 @@ public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryE
 
         GameObject gameObject = GameObjectExtensions.SpawnFromPrefab(prefab, entity.Id);
 
-        SetupObject(gameObject, energyMixin);
+        InstalledBatteryEntitySpawner.SetupObject(gameObject, energyMixin);
 
         result.Set(gameObject);
         return true;
@@ -54,7 +54,7 @@ public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryE
 
     protected override bool SpawnsOwnChildren(InstalledBatteryEntity entity) => false;
 
-    private bool CanSpawn(InstalledBatteryEntity entity, [NotNullWhen(true)] out EnergyMixin? energyMixin, [NotNullWhen(false)] out string? errorLog)
+    private static bool CanSpawn(InstalledBatteryEntity entity, [NotNullWhen(true)] out EnergyMixin? energyMixin, [NotNullWhen(false)] out string? errorLog)
     {
         if (!NitroxEntity.TryGetObjectFrom(entity.ParentId, out GameObject parentObject))
         {
@@ -75,7 +75,7 @@ public class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledBatteryE
         return true;
     }
 
-    private void SetupObject(GameObject gameObject, EnergyMixin energyMixin)
+    private static void SetupObject(GameObject gameObject, EnergyMixin energyMixin)
     {
         energyMixin.Initialize();
         energyMixin.RestoreBattery();

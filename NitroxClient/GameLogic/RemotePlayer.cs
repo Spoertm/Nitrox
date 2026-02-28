@@ -19,7 +19,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic;
 
-public class RemotePlayer : INitroxPlayer
+public sealed class RemotePlayer : INitroxPlayer
 {
     /// <summary>
     /// Marks <see cref="Player.mainObject"/> and every <see cref="Body"/> so they can be precisely queried (e.g. by sea dragons).

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class ContentSizeFitterDrawer : IDrawer<ContentSizeFitter>
+public sealed class ContentSizeFitterDrawer : IDrawer<ContentSizeFitter>
 {
     public void Draw(ContentSizeFitter contentSizeFitter)
     {

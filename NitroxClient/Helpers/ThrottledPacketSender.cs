@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using NitroxClient.Communication;
 using NitroxClient.Communication.Abstract;
 using Nitrox.Model.Packets;
-using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.Helpers
 {
-    public class ThrottledPacketSender
+    public sealed class ThrottledPacketSender
     {
         private readonly Dictionary<object, ThrottledPacket> throttledPackets = new();
         private readonly IPacketSender packetSender;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class FixedJointDrawer : IDrawer<FixedJoint>
+public sealed class FixedJointDrawer : IDrawer<FixedJoint>
 {
     private readonly SceneDebugger sceneDebugger;
     private readonly VectorDrawer vectorDrawer;

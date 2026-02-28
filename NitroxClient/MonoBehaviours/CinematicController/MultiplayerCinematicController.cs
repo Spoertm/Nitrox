@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours.CinematicController;
 
-public class MultiplayerCinematicController : MonoBehaviour
+public sealed class MultiplayerCinematicController : MonoBehaviour
 {
     private readonly Dictionary<SessionId, RemotePlayerCinematicController> controllerBySessionId = new();
 

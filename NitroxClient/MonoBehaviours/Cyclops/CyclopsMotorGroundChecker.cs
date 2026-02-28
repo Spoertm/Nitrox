@@ -6,7 +6,7 @@ namespace NitroxClient.MonoBehaviours.Cyclops;
 /// <remarks>
 /// Ground detection adapted from <see href="https://github.com/Unity-Technologies/Standard-Assets-Characters/blob/master/Assets/_Standard%20Assets/Characters/Scripts/Physics/OpenCharacterController.cs"/>
 /// </remarks>
-public partial class CyclopsMotor
+public sealed partial class CyclopsMotor
 {
     private const float CAST_DISTANCE = 0.001f;
     private const float CAST_EXTRA_DISTANCE = 0.001f;

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class ScrollbarDrawer : IDrawer<Scrollbar>
+public sealed class ScrollbarDrawer : IDrawer<Scrollbar>
 {
     private readonly SceneDebugger sceneDebugger;
     private readonly SelectableDrawer selectableDrawer;

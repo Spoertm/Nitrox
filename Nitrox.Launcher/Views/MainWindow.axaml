@@ -89,7 +89,7 @@
                 </Setter>
                 
                 <Style Selector="^.updates Border">
-                    <Setter Property="IsVisible" Value="{Binding UpdateAvailableOrUnofficial}" />
+                    <Setter Property="IsVisible" Value="{Binding UpdateAvailable}" />
                 </Style>
 
                 <Style Selector="^:pointerover">

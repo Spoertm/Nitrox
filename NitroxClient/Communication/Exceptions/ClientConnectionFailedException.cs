@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Communication.Exceptions
 {
-    public class ClientConnectionFailedException : Exception
+    public sealed class ClientConnectionFailedException : Exception
     {
         public ClientConnectionFailedException(string message) : base(message)
         {

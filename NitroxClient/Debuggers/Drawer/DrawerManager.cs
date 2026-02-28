@@ -19,7 +19,7 @@ namespace NitroxClient.Debuggers.Drawer;
 ///     Registers known drawers into lookup dictionaries that are searched when <see cref="TryDraw{T}" /> and
 ///     <see cref="TryDrawEditor{T}" /> are called.
 /// </summary>
-public class DrawerManager
+public sealed class DrawerManager
 {
     private readonly Dictionary<Type, IDrawer<object>> drawers = new();
     private readonly Dictionary<Type, IEditorDrawer<object>> editorDrawers = new();

@@ -9,7 +9,7 @@ using UnityEngine;
 namespace NitroxClient.MonoBehaviours;
 
 [DisallowMultipleComponent]
-public class FMODEmitterController : MonoBehaviour
+public sealed class FMODEmitterController : MonoBehaviour
 {
     private readonly Dictionary<string, FMOD_CustomEmitter> customEmitters = new();
     private readonly Dictionary<string, Tuple<FMOD_CustomLoopingEmitter, bool, float>> loopingEmitters = new(); // Tuple<emitter, is3D, radius>

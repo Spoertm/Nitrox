@@ -204,7 +204,7 @@ public class PatchesTranspilerTest
     }
 }
 
-public class CodeInstructionComparer : IEqualityComparer<CodeInstruction>
+public sealed class CodeInstructionComparer : IEqualityComparer<CodeInstruction>
 {
     public bool Equals(CodeInstruction x, CodeInstruction y)
     {

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class ReefbackEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class ReefbackEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private readonly ReefbackChildEntitySpawner reefbackChildEntitySpawner;
 

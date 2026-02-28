@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerPreferences
 {
-    public class PlayerPreferenceManager
+    public sealed class PlayerPreferenceManager
     {
         private readonly PlayerPreferenceState state;
         private readonly IPreferenceStateProvider stateProvider;

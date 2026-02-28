@@ -8,7 +8,7 @@ namespace Nitrox.Model.Configuration.Validators;
 ///     Validates the value is a valid and accessible directory.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class DirectoryPathAttribute : ValidationAttribute
+public sealed class DirectoryPathAttribute : ValidationAttribute
 {
     public DirectoryPathAttribute()
     {

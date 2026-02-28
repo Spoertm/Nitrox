@@ -15,7 +15,7 @@ namespace NitroxClient.GameLogic.HUD.PdaTabs;
 /// <summary>
 /// The component containing a new PDA tab based on ping manager tab
 /// </summary>
-public class uGUI_PlayerListTab : uGUI_PingTab
+public sealed class uGUI_PlayerListTab : uGUI_PingTab
 {
     private NitroxPDATabManager nitroxPDATabManager;
     private PlayerManager playerManager;

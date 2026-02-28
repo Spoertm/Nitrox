@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.Chat
 {
-    public class PlayerChatInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
+    public sealed class PlayerChatInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         private PlayerChatManager playerChatManager;
         private bool selected;

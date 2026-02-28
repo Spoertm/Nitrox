@@ -6,7 +6,7 @@ namespace Nitrox.Model.Platforms.OS.Windows;
 #if NET
 [System.Runtime.Versioning.SupportedOSPlatform("windows")]
 #endif
-public class RegistryKeyValueStore : IKeyValueStore
+public sealed class RegistryKeyValueStore : IKeyValueStore
 {
     public static string KeyToRegistryPath(string key) => @$"SOFTWARE\Nitrox\{key}";
 

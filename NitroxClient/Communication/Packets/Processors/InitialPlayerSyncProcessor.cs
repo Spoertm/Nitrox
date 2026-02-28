@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Nitrox.Model.Subnautica.Packets;
-using NitroxClient.Communication.Abstract;
 using NitroxClient.Communication.Packets.Processors.Core;
 using NitroxClient.GameLogic.InitialSync.Abstract;
 using NitroxClient.MonoBehaviours;

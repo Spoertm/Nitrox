@@ -56,6 +56,7 @@ public class IpAddressExtensionsTest
         IPAddress differentIp = GetSlightlyDifferentIp(NetHelper.GetLanUsableIp()!);
         differentIp.Should().NotBeEquivalentTo(NetHelper.GetLanUsableIp());
         differentIp.IsLocalhost().Should().BeFalse();
+        return;
 
         IPAddress GetSlightlyDifferentIp(IPAddress address)
         {

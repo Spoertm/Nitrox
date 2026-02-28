@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class RectDrawer : IEditorDrawer<Rect, RectDrawer.DrawOptions>, IEditorDrawer<RectOffset>
+public sealed class RectDrawer : IEditorDrawer<Rect, RectDrawer.DrawOptions>, IEditorDrawer<RectOffset>
 {
     private const float MAX_WIDTH = 400;
 
@@ -52,7 +52,7 @@ public class RectDrawer : IEditorDrawer<Rect, RectDrawer.DrawOptions>, IEditorDr
         return Draw(rect, null);
     }
 
-    public RectOffset Draw(RectOffset rect, DrawOptions options)
+    public static RectOffset Draw(RectOffset rect, DrawOptions options)
     {
         options ??= new DrawOptions(Width: MAX_WIDTH);
 
@@ -72,8 +72,8 @@ public class RectDrawer : IEditorDrawer<Rect, RectDrawer.DrawOptions>, IEditorDr
 
     public RectOffset Draw(RectOffset rect)
     {
-        return Draw(rect, null);
+        return RectDrawer.Draw(rect, null);
     }
 
-    public record DrawOptions(float Width = 100, float MaxWidth = 215);
+    public sealed record DrawOptions(float Width = 100, float MaxWidth = 215);
 }

@@ -3,7 +3,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class LibraryView : RoutableViewBase<LibraryViewModel>
+internal sealed partial class LibraryView : RoutableViewBase<LibraryViewModel>
 {
     public LibraryView()
     {

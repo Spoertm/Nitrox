@@ -9,7 +9,7 @@ namespace Nitrox.Server.Subnautica.Models.AppEvents;
 /// </summary>
 internal interface ISummarize : IEvent<ISummarize.Args>
 {
-    public record Args(Perms ViewerPerms);
+    public sealed record Args(Perms ViewerPerms);
 
-    public class Trigger(Func<IEvent<Args>[]> lazyHandlersProvider) : SequentialTrigger<Args>(lazyHandlersProvider);
+    public sealed class Trigger(Func<IEvent<Args>[]> lazyHandlersProvider) : SequentialTrigger<Args>(lazyHandlersProvider);
 }

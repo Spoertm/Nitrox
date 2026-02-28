@@ -63,6 +63,7 @@ internal static class StaticCommands
         {
             Log.Error(e, "Error trying to copy to clipboard");
         }
+        return;
 
         static Window? GetWindowOfObject(object? obj) =>
             obj switch

@@ -1,6 +1,6 @@
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 
-public class MainMenuDeleteServer : uGUI_NavigableControlGrid, uGUI_IButtonReceiver
+public sealed class MainMenuDeleteServer : uGUI_NavigableControlGrid, uGUI_IButtonReceiver
 {
     public MainMenuServerButton serverButton;
 

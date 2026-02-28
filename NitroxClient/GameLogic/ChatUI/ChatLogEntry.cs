@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.ChatUI
 {
-    public class ChatLogEntry
+    public sealed class ChatLogEntry
     {
         public string PlayerName { get; }
         public string MessageText { get; set; }

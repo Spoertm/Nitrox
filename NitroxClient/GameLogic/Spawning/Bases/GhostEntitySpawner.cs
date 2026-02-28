@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.Bases;
 
-public class GhostEntitySpawner : EntitySpawner<GhostEntity>
+public sealed class GhostEntitySpawner : EntitySpawner<GhostEntity>
 {
     protected override IEnumerator SpawnAsync(GhostEntity entity, TaskResult<Optional<GameObject>> result)
     {

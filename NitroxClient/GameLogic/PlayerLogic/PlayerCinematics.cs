@@ -8,7 +8,7 @@ using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.GameLogic.PlayerLogic;
 
-public class PlayerCinematics
+public sealed class PlayerCinematics
 {
     private readonly IPacketSender packetSender;
     private readonly LocalPlayer localPlayer;

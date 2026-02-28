@@ -1,6 +1,6 @@
 ﻿namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.ColorSwap
 {
-    public class ColorValueRange
+    public sealed class ColorValueRange
     {
         private readonly float min;
         private readonly float max;

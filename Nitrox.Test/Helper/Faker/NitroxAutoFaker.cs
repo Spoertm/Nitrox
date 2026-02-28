@@ -4,7 +4,7 @@ using BinaryPack.Attributes;
 
 namespace Nitrox.Test.Helper.Faker;
 
-public class NitroxAutoFaker<T> : NitroxFaker, INitroxFaker
+public sealed class NitroxAutoFaker<T> : NitroxFaker, INitroxFaker
 {
     private readonly ConstructorInfo constructor;
     private readonly MemberInfo[] memberInfos;

@@ -371,20 +371,20 @@ namespace Nitrox.Model.Logger
 
             public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propFactory)
             {
-                foreach ((string key, string value) prop in GetPropertiesAsRedacted(logEvent.Properties))
+                foreach ((string key, string value) prop in SensitiveEnricher.GetPropertiesAsRedacted(logEvent.Properties))
                 {
                     logEvent.AddOrUpdateProperty(propFactory.CreateProperty(prop.key, prop.value));
                 }
             }
 
-            private IEnumerable<(string key, string value)> GetPropertiesAsRedacted(IEnumerable<KeyValuePair<string, LogEventPropertyValue>> originalProps)
+            private static IEnumerable<(string key, string value)> GetPropertiesAsRedacted(IEnumerable<KeyValuePair<string, LogEventPropertyValue>> originalProps)
             {
                 foreach (KeyValuePair<string, LogEventPropertyValue> prop in originalProps)
                 {
                     string key = prop.Key;
                     if (key.IndexOf('_') is var index and > 0)
                     {
-                        key = prop.Key.Substring(0, index);
+                        key = prop.Key[..index];
                     }
                     if (!sensitiveLogParameters.Contains(key))
                     {
@@ -446,7 +446,7 @@ namespace Nitrox.Model.Logger
         Error = 4
     }
 
-    internal class NitroxMsLogger<T>(Serilog.ILogger innerLogger) : ILogger<T>
+    internal sealed class NitroxMsLogger<T>(Serilog.ILogger innerLogger) : ILogger<T>
     {
         private readonly Serilog.ILogger innerLogger = innerLogger;
         public void Log<TState>(Microsoft.Extensions.Logging.LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
@@ -476,11 +476,11 @@ namespace Nitrox.Model.Logger
             }
         }
 
-        public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel) => innerLogger.IsEnabled(MsLevelToSerilogLevel(logLevel));
+        public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel) => innerLogger.IsEnabled(NitroxMsLogger<T>.MsLevelToSerilogLevel(logLevel));
 
         public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
 
-        private LogEventLevel MsLevelToSerilogLevel(Microsoft.Extensions.Logging.LogLevel logLevel)
+        private static LogEventLevel MsLevelToSerilogLevel(Microsoft.Extensions.Logging.LogLevel logLevel)
         {
             return logLevel switch
             {

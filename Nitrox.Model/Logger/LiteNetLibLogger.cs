@@ -3,7 +3,7 @@ using LiteNetLib;
 
 namespace Nitrox.Model.Logger;
 
-public class LiteNetLibLogger : INetLogger
+public sealed class LiteNetLibLogger : INetLogger
 {
     public void WriteNet(NetLogLevel level, string str, params object[] args)
     {

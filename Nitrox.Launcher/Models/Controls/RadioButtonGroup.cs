@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Nitrox.Launcher.Models.Controls;
 
-public class RadioButtonGroup : ItemsControl
+public sealed class RadioButtonGroup : ItemsControl
 {
     public static readonly DirectProperty<RadioButtonGroup, Type> EnumProperty = AvaloniaProperty.RegisterDirect<RadioButtonGroup, Type>(nameof(Enum), o => o.Enum, (o, v) => o.Enum = v);
     public static readonly StyledProperty<object> SelectedItemProperty = AvaloniaProperty.Register<RadioButtonGroup, object>(nameof(SelectedItem));

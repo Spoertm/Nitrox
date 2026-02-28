@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class PrefabChildEntitySpawner : SyncEntitySpawner<PrefabChildEntity>
+public sealed class PrefabChildEntitySpawner : SyncEntitySpawner<PrefabChildEntity>
 {
     // When we encounter a PrefabChildEntity, we need to assign the id to a prefab with the same class id and index.
     protected override IEnumerator SpawnAsync(PrefabChildEntity entity, TaskResult<Optional<GameObject>> result)

@@ -26,6 +26,7 @@ public class NitroxAttached : AvaloniaObject
         InputElement.LostFocusEvent.Raised.Subscribe(new AnonymousObserver<(object, RoutedEventArgs)>(HasUserInteractedOnNext));
         InputElement.TextInputEvent.Raised.Subscribe(new AnonymousObserver<(object, RoutedEventArgs)>(HasUserInteractedOnNext));
         AsyncCommandButtonTagger = new AsyncCommandButtonTagger("busy");
+        return;
 
         void HasUserInteractedOnNext((object Sender, RoutedEventArgs EventArgs) args)
         {
@@ -56,6 +57,7 @@ public class NitroxAttached : AvaloniaObject
         {
             visual.AttachedToVisualTree -= VisualAttached;
         }
+        return;
 
         static void VisualAttached(object sender, VisualTreeAttachmentEventArgs e) => (sender as ScrollViewer)?.ScrollToHome();
     }
@@ -84,6 +86,7 @@ public class NitroxAttached : AvaloniaObject
                 scrollViewer.PointerWheelChanged -= RotatedOrientationWheelHandler;
                 break;
         }
+        return;
 
         static void RotatedOrientationWheelHandler(object sender, PointerWheelEventArgs e)
         {
@@ -130,6 +133,7 @@ public class NitroxAttached : AvaloniaObject
         {
             inputElement.KeyDown -= OnKeyDown;
         }
+        return;
 
         static void OnKeyDown(object sender, KeyEventArgs e)
         {

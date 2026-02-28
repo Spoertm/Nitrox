@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class CrashEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class CrashEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     public IEnumerator SpawnAsync(WorldEntity entity, Optional<GameObject> parent, EntityCell cellRoot, TaskResult<Optional<GameObject>> result)
     {

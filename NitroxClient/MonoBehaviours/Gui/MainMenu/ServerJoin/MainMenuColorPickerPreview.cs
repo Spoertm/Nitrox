@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServerJoin;
 
-public class MainMenuColorPickerPreview : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public sealed class MainMenuColorPickerPreview : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Image previewImage;
     private CanvasGroup cg;

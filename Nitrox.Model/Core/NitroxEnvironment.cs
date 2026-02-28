@@ -55,7 +55,7 @@ public static class NitroxEnvironment
             string gitHash = GitHash;
             if (gitHash is { Length: > 0 })
             {
-                gitHash = gitHash.Substring(0, Math.Min(10, gitHash.Length));
+                gitHash = gitHash[..Math.Min(10, gitHash.Length)];
             }
             return gitHash;
         }

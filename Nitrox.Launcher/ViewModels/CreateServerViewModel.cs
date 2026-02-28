@@ -11,7 +11,7 @@ using Nitrox.Model.Helper;
 
 namespace Nitrox.Launcher.ViewModels;
 
-public partial class CreateServerViewModel : ModalViewModelBase
+public sealed partial class CreateServerViewModel : ModalViewModelBase
 {
     private readonly IKeyValueStore? keyValueStore;
 

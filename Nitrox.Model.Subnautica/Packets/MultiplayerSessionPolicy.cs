@@ -1,7 +1,6 @@
 ﻿using System;
 using Nitrox.Model.Core;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Helper;
 using Nitrox.Model.MultiplayerSession;
 using Nitrox.Model.Packets;
 

@@ -2,7 +2,6 @@ using System;
 using System.Buffers;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using LiteNetLib;
 using LiteNetLib.Layers;
 using LiteNetLib.Utils;
@@ -16,7 +15,7 @@ using Nitrox.Model.Packets;
 
 namespace NitroxClient.Communication.NetworkingLayer.LiteNetLib;
 
-public class LiteNetLibClient : IClient
+public sealed class LiteNetLibClient : IClient
 {
     private readonly NetManager client;
 

@@ -10,7 +10,7 @@ internal sealed class TorpedoTargetAcquiredProcessor(BulletManager bulletManager
 
     public Task Process(ClientProcessorContext context, TorpedoTargetAcquired packet)
     {
-        bulletManager.TorpedoTargetAcquired(packet.BulletId, packet.TargetId, packet.Position.ToUnity(), packet.Rotation.ToUnity());
+        BulletManager.TorpedoTargetAcquired(packet.BulletId, packet.TargetId, packet.Position.ToUnity(), packet.Rotation.ToUnity());
         return Task.CompletedTask;
     }
 }

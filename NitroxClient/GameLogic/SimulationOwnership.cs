@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic
 {
-    public class SimulationOwnership
+    public sealed class SimulationOwnership
     {
         private readonly IMultiplayerSession multiplayerSession;
         private readonly IPacketSender packetSender;
@@ -145,7 +145,7 @@ namespace NitroxClient.GameLogic
 
         public bool TreatVehicleEntity(NitroxId entityId, bool isLocalPlayerNewOwner, SimulationLockType simulationLockType)
         {
-            if (!NitroxEntity.TryGetObjectFrom(entityId, out GameObject gameObject) || !IsVehicle(gameObject))
+            if (!NitroxEntity.TryGetObjectFrom(entityId, out GameObject gameObject) || !SimulationOwnership.IsVehicle(gameObject))
             {
                 return false;
             }
@@ -173,7 +173,7 @@ namespace NitroxClient.GameLogic
             return true;
         }
 
-        public bool IsVehicle(GameObject gameObject)
+        public static bool IsVehicle(GameObject gameObject)
         {
             if (gameObject.GetComponent<Vehicle>())
             {

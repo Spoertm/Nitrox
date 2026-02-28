@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private readonly DefaultWorldEntitySpawner defaultEntitySpawner;
 
@@ -27,7 +27,7 @@ public class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorldEntityS
             yield break;
         }
 
-        SetupObject(entity, result.value.Value);
+        PrefabPlaceholderEntitySpawner.SetupObject(entity, result.value.Value);
     }
 
     public bool SpawnsOwnChildren() => false;
@@ -42,8 +42,18 @@ public class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorldEntityS
         if (!defaultEntitySpawner.SpawnSync(entity, placeholder.transform.parent.gameObject, cellRoot, result))
         {
             return false;
+
+<<<<<<< TODO: Unmerged change from project 'NitroxClient', Before:
         }
         
+        SetupObject(entity, result.value.Value);
+=======
+        }
+
+        PrefabPlaceholderEntitySpawner.SetupObject(entity, result.value.Value);
+>>>>>>> After
+        }
+
         SetupObject(entity, result.value.Value);
         return true;
     }
@@ -62,7 +72,7 @@ public class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorldEntityS
         return false;
     }
 
-    private void SetupObject(WorldEntity entity, GameObject gameObject)
+    private static void SetupObject(WorldEntity entity, GameObject gameObject)
     {
         gameObject.transform.localPosition = entity.Transform.LocalPosition.ToUnity();
         gameObject.transform.localRotation = entity.Transform.LocalRotation.ToUnity();

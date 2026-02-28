@@ -8,7 +8,7 @@ using static NitroxClient.Extensions.GameObjectExtensions;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private static readonly Dictionary<TechType, GameObject> prefabCacheByTechType = [];
     private static readonly Dictionary<string, GameObject> prefabCacheByClassId = [];
@@ -23,12 +23,12 @@ public class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSp
         yield return CreateGameObject(techType, entity.ClassId, entity.Id, gameObjectResult);
 
         GameObject gameObject = gameObjectResult.Get();
-        SetupObject(entity, parent, gameObject, cellRoot, techType);
+        DefaultWorldEntitySpawner.SetupObject(entity, parent, gameObject, cellRoot, techType);
 
         result.Set(Optional.Of(gameObject));
     }
 
-    private void SetupObject(WorldEntity entity, Optional<GameObject> parent, GameObject gameObject, EntityCell cellRoot, TechType techType)
+    private static void SetupObject(WorldEntity entity, Optional<GameObject> parent, GameObject gameObject, EntityCell cellRoot, TechType techType)
     {
         gameObject.transform.position = entity.Transform.Position.ToUnity();
         gameObject.transform.rotation = entity.Transform.Rotation.ToUnity();
@@ -190,7 +190,7 @@ public class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntitySyncSp
 
         if (TryCreateGameObjectSync(techType, entity.ClassId, entity.Id, out GameObject gameObject))
         {
-            SetupObject(entity, parent, gameObject, cellRoot, techType);
+            DefaultWorldEntitySpawner.SetupObject(entity, parent, gameObject, cellRoot, techType);
             result.Set(gameObject);
             return true;
         }

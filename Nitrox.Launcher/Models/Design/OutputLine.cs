@@ -2,7 +2,7 @@ using System;
 
 namespace Nitrox.Launcher.Models.Design;
 
-public record OutputLine
+public sealed record OutputLine
 {
     public required DateTimeOffset? LocalTime { get; init; }
     public required string LogText { get; init; }

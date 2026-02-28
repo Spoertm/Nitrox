@@ -13,7 +13,7 @@ using UWE;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServerJoin;
 
-public class MainMenuJoinServerPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver, uGUI_IScrollReceiver, uGUI_IAdjustReceiver
+public sealed class MainMenuJoinServerPanel : MonoBehaviour, uGUI_INavigableIconGrid, uGUI_IButtonReceiver, uGUI_IScrollReceiver, uGUI_IAdjustReceiver
 {
     public const string NAME = "MultiplayerJoinServer";
 
@@ -138,6 +138,8 @@ public class MainMenuJoinServerPanel : MonoBehaviour, uGUI_INavigableIconGrid, u
     public void FocusNameInputField()
     {
         StartCoroutine(Coroutine());
+        return;
+
         IEnumerator Coroutine()
         {
             SelectFirstItem();

@@ -10,7 +10,7 @@ namespace Nitrox.Launcher.Models.Converters;
 /// <remarks>
 ///     This converter is used to solve a niche issue with the styling of TextBoxes.
 /// </remarks>
-public class TextBoxPaddingToMarginConverter : Converter<TextBoxPaddingToMarginConverter>
+public sealed class TextBoxPaddingToMarginConverter : Converter<TextBoxPaddingToMarginConverter>
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

@@ -4,7 +4,7 @@ using NitroxClient.Communication.Abstract;
 
 namespace NitroxClient.GameLogic;
 
-public class SleepManager(IPacketSender packetSender)
+public sealed class SleepManager(IPacketSender packetSender)
 {
     private readonly IPacketSender packetSender = packetSender;
     private Bed? currentBed;

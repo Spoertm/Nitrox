@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class UnityEventDrawer : IDrawer<UnityEvent, UnityEventDrawer.DrawOptions>, IDrawer<UnityEvent<bool>, UnityEventDrawer.DrawOptions>
+public sealed class UnityEventDrawer : IDrawer<UnityEvent, UnityEventDrawer.DrawOptions>, IDrawer<UnityEvent<bool>, UnityEventDrawer.DrawOptions>
 {
     private const float LABEL_WIDTH = 250;
 
@@ -59,7 +59,7 @@ public class UnityEventDrawer : IDrawer<UnityEvent, UnityEventDrawer.DrawOptions
         }
     }
 
-    public record DrawOptions(string Name = "NoName");
+    public sealed record DrawOptions(string Name = "NoName");
 
     public void Draw(UnityEvent unityEvent) => Draw(unityEvent, null);
 

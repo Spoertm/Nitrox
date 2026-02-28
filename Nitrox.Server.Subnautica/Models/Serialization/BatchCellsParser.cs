@@ -17,7 +17,7 @@ namespace Nitrox.Server.Subnautica.Models.Serialization
      * This class consolidates the gameObject, entitySlot, and cellHeader data to
      * create EntitySpawnPoint objects.
      */
-    public class BatchCellsParser
+    public sealed class BatchCellsParser
     {
         private readonly EntitySpawnPointFactory entitySpawnPointFactory;
         private readonly SubnauticaServerProtoBufSerializer serializer;

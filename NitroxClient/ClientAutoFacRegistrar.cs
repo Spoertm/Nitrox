@@ -27,7 +27,7 @@ using NitroxClient.Communication.Packets.Processors.Core;
 
 namespace NitroxClient
 {
-    public class ClientAutoFacRegistrar : IAutoFacRegistrar
+    public sealed class ClientAutoFacRegistrar : IAutoFacRegistrar
     {
         private static readonly Assembly currentAssembly = Assembly.GetExecutingAssembly();
         private readonly IModule[] modules;
@@ -45,10 +45,10 @@ namespace NitroxClient
             }
 
             RegisterCoreDependencies(containerBuilder);
-            RegisterMetadataDependencies(containerBuilder);
-            RegisterPacketProcessors(containerBuilder);
-            RegisterColorSwapManagers(containerBuilder);
-            RegisterInitialSyncProcessors(containerBuilder);
+            ClientAutoFacRegistrar.RegisterMetadataDependencies(containerBuilder);
+            ClientAutoFacRegistrar.RegisterPacketProcessors(containerBuilder);
+            ClientAutoFacRegistrar.RegisterColorSwapManagers(containerBuilder);
+            ClientAutoFacRegistrar.RegisterInitialSyncProcessors(containerBuilder);
         }
 
         private void RegisterCoreDependencies(ContainerBuilder containerBuilder)
@@ -117,7 +117,7 @@ namespace NitroxClient
             containerBuilder.RegisterType<NtpSyncer>().InstancePerLifetimeScope();
         }
 
-        private void RegisterMetadataDependencies(ContainerBuilder containerBuilder)
+        private static void RegisterMetadataDependencies(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterAssemblyTypes(currentAssembly)
                             .AssignableTo<IEntityMetadataExtractor>()
@@ -132,7 +132,7 @@ namespace NitroxClient
             containerBuilder.RegisterType<EntityMetadataManager>().InstancePerLifetimeScope();
         }
 
-        private void RegisterPacketProcessors(ContainerBuilder containerBuilder)
+        private static void RegisterPacketProcessors(ContainerBuilder containerBuilder)
         {
             containerBuilder
                 .RegisterAssemblyTypes(currentAssembly)
@@ -143,7 +143,7 @@ namespace NitroxClient
             containerBuilder.RegisterType<PacketProcessorsInvoker>().InstancePerLifetimeScope();
         }
 
-        private void RegisterColorSwapManagers(ContainerBuilder containerBuilder)
+        private static void RegisterColorSwapManagers(ContainerBuilder containerBuilder)
         {
             containerBuilder
                 .RegisterAssemblyTypes(currentAssembly)
@@ -152,7 +152,7 @@ namespace NitroxClient
                 .SingleInstance();
         }
 
-        private void RegisterInitialSyncProcessors(ContainerBuilder containerBuilder)
+        private static void RegisterInitialSyncProcessors(ContainerBuilder containerBuilder)
         {
             containerBuilder
                 .RegisterAssemblyTypes(currentAssembly)

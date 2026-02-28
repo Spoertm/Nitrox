@@ -1,16 +1,15 @@
 using FMOD.Studio;
 using NitroxClient.GameLogic;
 using Nitrox.Model.GameLogic.FMOD;
-using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.Packets;
 using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours.Vehicles;
 
-public class CyclopsMovementReplicator : VehicleMovementReplicator
+public sealed class CyclopsMovementReplicator : VehicleMovementReplicator
 {
-    protected static readonly int CYCLOPS_YAW = Animator.StringToHash("cyclops_yaw");
-    protected static readonly int CYCLOPS_PITCH = Animator.StringToHash("cyclops_pitch");
+    private static readonly int CYCLOPS_YAW = Animator.StringToHash("cyclops_yaw");
+    private static readonly int CYCLOPS_PITCH = Animator.StringToHash("cyclops_pitch");
 
     private SubControl subControl;
 

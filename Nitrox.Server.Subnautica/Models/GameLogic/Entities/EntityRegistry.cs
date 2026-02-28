@@ -8,7 +8,7 @@ using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities
 {
-    public class EntityRegistry(ILogger<EntityRegistry> logger)
+    public sealed class EntityRegistry(ILogger<EntityRegistry> logger)
     {
         private readonly ILogger<EntityRegistry> logger = logger;
         private readonly ConcurrentDictionary<NitroxId, Entity> entitiesById = new();
@@ -233,7 +233,7 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities
             TransferChildren(parentEntity, newParentEntity, filter);
         }
 
-        public void TransferChildren(Entity parent, Entity newParent, Func<Entity, bool> filter = null)
+        public static void TransferChildren(Entity parent, Entity newParent, Func<Entity, bool> filter = null)
         {
             List<Entity> childrenToMove = filter != null ?
                 [.. parent.ChildEntities.Where(filter)] : parent.ChildEntities;

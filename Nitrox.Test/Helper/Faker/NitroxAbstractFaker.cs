@@ -6,7 +6,7 @@ using Nitrox.Server.Subnautica.Models.Commands.Core;
 
 namespace Nitrox.Test.Helper.Faker;
 
-public class NitroxAbstractFaker : NitroxFaker, INitroxFaker
+public sealed class NitroxAbstractFaker : NitroxFaker, INitroxFaker
 {
     private static readonly Dictionary<Type, Type[]> subtypesByBaseType;
 

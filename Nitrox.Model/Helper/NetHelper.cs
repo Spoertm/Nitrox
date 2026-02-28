@@ -234,6 +234,7 @@ public static class NetHelper
                 yield return new MachineKnownIp(address, address.IsPrivate() ? MachineIpOrigin.LAN : MachineIpOrigin.WAN, ni.Name);
             }
         }
+        yield break;
 
         bool HasSeen(IPAddress address) => !seenAddresses.Add(address);
 
@@ -262,5 +263,5 @@ public static class NetHelper
         WAN
     }
 
-    public record MachineKnownIp(IPAddress Address, MachineIpOrigin Origin, string? NetworkName = null);
+    public sealed record MachineKnownIp(IPAddress Address, MachineIpOrigin Origin, string? NetworkName = null);
 }

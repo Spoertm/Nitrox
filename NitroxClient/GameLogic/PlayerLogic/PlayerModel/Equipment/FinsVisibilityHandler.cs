@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.PlayerLogic.PlayerModel.Equipment
 {
-    public class FinsVisibilityHandler : IEquipmentVisibilityHandler
+    public sealed class FinsVisibilityHandler : IEquipmentVisibilityHandler
     {
         private readonly GameObject fins;
         private readonly GameObject finsRoot;

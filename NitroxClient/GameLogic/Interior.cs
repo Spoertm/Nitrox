@@ -4,7 +4,7 @@ using Nitrox.Model.Subnautica.Packets;
 
 namespace NitroxClient.GameLogic
 {
-    public class Interior
+    public sealed class Interior
     {
         private readonly IPacketSender packetSender;
 

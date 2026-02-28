@@ -3,7 +3,7 @@ using NitroxClient.Communication.Abstract;
 
 namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 {
-    public class SessionReservationRejected : ConnectionNegotiatedState
+    public sealed class SessionReservationRejected : ConnectionNegotiatedState
     {
         public override MultiplayerSessionConnectionStage CurrentStage => MultiplayerSessionConnectionStage.SESSION_RESERVATION_REJECTED;
 

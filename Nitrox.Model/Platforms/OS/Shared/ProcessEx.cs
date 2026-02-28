@@ -13,7 +13,7 @@ using Nitrox.Model.Platforms.OS.Windows.Internal;
 
 namespace Nitrox.Model.Platforms.OS.Shared;
 
-public class ProcessEx : IDisposable
+public sealed class ProcessEx : IDisposable
 {
     private readonly ProcessExBase implementation;
 
@@ -339,7 +339,7 @@ public abstract class ProcessExBase : IDisposable
     }
 }
 
-public class ProcessModuleEx
+public sealed class ProcessModuleEx
 {
     public IntPtr BaseAddress { get; set; }
     public string? ModuleName { get; set; }
@@ -563,7 +563,7 @@ public sealed class LinuxProcessEx : ProcessExBase
             {
                 string status = File.ReadAllText($"/proc/{pid}/status");
                 string[] lines = status.Split('\n');
-                return lines.FirstOrDefault(l => l.StartsWith("Name:", StringComparison.OrdinalIgnoreCase))?.Substring("Name:".Length).Trim();
+                return lines.FirstOrDefault(l => l.StartsWith("Name:", StringComparison.OrdinalIgnoreCase))?["Name:".Length..].Trim();
             }
             catch (UnauthorizedAccessException)
             {
@@ -592,7 +592,7 @@ public sealed class LinuxProcessEx : ProcessExBase
             try
             {
                 string[] lines = File.ReadAllLines($"/proc/{pid}/status");
-                string procState = lines.FirstOrDefault(l => l.StartsWith("State:", StringComparison.OrdinalIgnoreCase))?.Substring("State:".Length).Trim();
+                string procState = lines.FirstOrDefault(l => l.StartsWith("State:", StringComparison.OrdinalIgnoreCase))?["State:".Length..].Trim();
                 return procState?.FirstOrDefault() switch
                 {
                     'Z' => false, // Zombie process

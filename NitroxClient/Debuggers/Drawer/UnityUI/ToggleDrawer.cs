@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class ToggleDrawer : IDrawer<Toggle>
+public sealed class ToggleDrawer : IDrawer<Toggle>
 {
     private readonly SceneDebugger sceneDebugger;
     private readonly SelectableDrawer selectableDrawer;

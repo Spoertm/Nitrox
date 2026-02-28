@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Nitrox.Model.Subnautica.DataStructures.Surrogates
 {
     [DataContract]
-    public class QuaternionSurrogate : SerializationSurrogate<Quaternion>
+    public sealed class QuaternionSurrogate : SerializationSurrogate<Quaternion>
     {
         [DataMember(Order = 1)]
         public float X { get; private set; }

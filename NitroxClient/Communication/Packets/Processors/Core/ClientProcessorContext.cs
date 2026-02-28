@@ -4,7 +4,7 @@ using NitroxClient.Communication.Abstract;
 
 namespace NitroxClient.Communication.Packets.Processors.Core;
 
-public record ClientProcessorContext : IPacketProcessContext
+public sealed record ClientProcessorContext : IPacketProcessContext
 {
     private readonly IPacketSender packetSender;
 

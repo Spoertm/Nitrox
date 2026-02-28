@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class UnderwaterStateTracker : MonoBehaviour
+public sealed class UnderwaterStateTracker : MonoBehaviour
 {
     private LocalPlayer localPlayer;
     private AnimChangeState lastUnderwaterState = AnimChangeState.UNSET;

@@ -9,7 +9,7 @@ namespace NitroxPatcher.PatternMatching;
 /// <remarks>
 ///     Pattern matching is NOT thread safe.
 /// </remarks>
-public class InstructionsPattern : IEnumerable<InstructionPattern>
+public sealed class InstructionsPattern : IEnumerable<InstructionPattern>
 {
     private readonly int expectedMatches;
     private readonly List<InstructionPattern> pattern = new();

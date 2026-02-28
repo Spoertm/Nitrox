@@ -2,7 +2,7 @@ using System;
 
 namespace Nitrox.Model.Packets.Exceptions
 {
-    public class UncorrelatedPacketException : Exception
+    public sealed class UncorrelatedPacketException : Exception
     {
         public CorrelatedPacket InvalidPacket { get; }
         public string ExpectedCorrelationId { get; }

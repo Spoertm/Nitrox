@@ -6,7 +6,7 @@ using Nitrox.Server.Subnautica.Models.Packets.Core;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic
 {
-    internal class StoryScheduler(IPacketSender packetSender, PdaManager pdaManager, StoryManager storyManager, TimeService timeService, PlayerManager playerManager)
+    internal sealed class StoryScheduler(IPacketSender packetSender, PdaManager pdaManager, StoryManager storyManager, TimeService timeService, PlayerManager playerManager)
     {
         private readonly IPacketSender packetSender = packetSender;
         private readonly PdaManager pdaManager = pdaManager;

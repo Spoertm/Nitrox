@@ -8,7 +8,7 @@ using WorldStreaming;
 
 namespace NitroxClient.GameLogic;
 
-public class Terrain
+public sealed class Terrain
 {
     private readonly IMultiplayerSession multiplayerSession;
     private readonly IPacketSender packetSender;

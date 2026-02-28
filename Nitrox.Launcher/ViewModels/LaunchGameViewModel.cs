@@ -47,7 +47,7 @@ internal partial class LaunchGameViewModel(DialogService dialogService, ServerSe
         AssetHelper.GetAssetFromStream("/Assets/Images/gallery/image-4.png", static stream => new Bitmap(stream))
     ];
 
-    public string Version => $"{NitroxEnvironment.ReleasePhase} {NitroxEnvironment.Version}";
+    public static string Version => $"{NitroxEnvironment.ReleasePhase} {NitroxEnvironment.Version}";
 
     internal override async Task ViewContentLoadAsync(CancellationToken cancellationToken = default)
     {
@@ -107,11 +107,6 @@ internal partial class LaunchGameViewModel(DialogService dialogService, ServerSe
                 {
                     ChangeView(optionsViewModel);
                     LauncherNotifier.Warning("Location of Subnautica is unknown. Set the path to it in settings");
-                    return false;
-                }
-                if (PirateDetection.HasTriggered)
-                {
-                    LauncherNotifier.Error("Aarrr! Nitrox has walked the plank :(");
                     return false;
                 }
                 if (GameInspect.WarnIfGameProcessExists(GameInfo.Subnautica) && !keyValueStore.GetIsMultipleGameInstancesAllowed())
@@ -178,7 +173,7 @@ internal partial class LaunchGameViewModel(DialogService dialogService, ServerSe
     }
 
     [RelayCommand]
-    private void OpenContributionsOfYear()
+    private static void OpenContributionsOfYear()
     {
         string fromValue = HttpUtility.UrlEncode($"{DateTime.UtcNow.AddYears(-1):M/d/yyyy}");
         string toValue = HttpUtility.UrlEncode($"{DateTime.UtcNow:M/d/yyyy}");

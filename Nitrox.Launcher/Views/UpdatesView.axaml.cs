@@ -3,7 +3,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class UpdatesView : RoutableViewBase<UpdatesViewModel>
+internal sealed partial class UpdatesView : RoutableViewBase<UpdatesViewModel>
 {
     public UpdatesView()
     {

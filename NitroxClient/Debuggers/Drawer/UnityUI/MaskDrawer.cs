@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
-public class MaskDrawer : IDrawer<Mask>, IDrawer<RectMask2D>
+public sealed class MaskDrawer : IDrawer<Mask>, IDrawer<RectMask2D>
 {
     public Type[] ApplicableTypes { get; } = { typeof(Mask), typeof(RectMask2D) };
 

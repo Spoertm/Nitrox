@@ -4,7 +4,7 @@ namespace NitroxClient.MonoBehaviours;
 /// Ensures a deployed <see cref="PipeSurfaceFloater"/> is no longer remotely moved (it is supposed to be static).
 /// Also ensures <see cref="RemotelyControlled.FixedUpdate"/> no longer sets isKinematic to false when deployed.
 /// </summary>
-public class RemotelyControlledPipeFloater : RemotelyControlled
+public sealed class RemotelyControlledPipeFloater : RemotelyControlled
 {
     private PipeSurfaceFloater pipeSurfaceFloater;
     

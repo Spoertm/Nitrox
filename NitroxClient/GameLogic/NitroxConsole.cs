@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic
 {
-    public class NitroxConsole
+    public sealed class NitroxConsole
     {
         public static bool DisableConsole { get; set; } = true;
 

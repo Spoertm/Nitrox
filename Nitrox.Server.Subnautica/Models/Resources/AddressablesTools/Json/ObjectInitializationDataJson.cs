@@ -2,7 +2,7 @@
 
 namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Json;
 
-public class ObjectInitializationDataJson
+public sealed class ObjectInitializationDataJson
 {
     [JsonProperty("m_Id")]
     public string Id { get; set; }

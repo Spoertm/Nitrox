@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Nitrox.Launcher.Models.Converters;
 
-public class ToIntConverter : Converter<ToIntConverter>
+public sealed class ToIntConverter : Converter<ToIntConverter>
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

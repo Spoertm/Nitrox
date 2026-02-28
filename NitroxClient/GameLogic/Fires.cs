@@ -15,7 +15,7 @@ namespace NitroxClient.GameLogic
     /// added to <see cref="Fires.Create(CyclopsFireData)"/>. Fire dousing goes by Id and does not need to be
     /// modified
     /// </summary>
-    public class Fires
+    public sealed class Fires
     {
         private readonly IPacketSender packetSender;
 

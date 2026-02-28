@@ -5,7 +5,7 @@ using Nitrox.Server.Subnautica.Models.GameLogic.Players;
 namespace Nitrox.Server.Subnautica.Models.Serialization.World
 {
     [DataContract]
-    internal class PersistedWorldData
+    internal sealed class PersistedWorldData
     {
         [DataMember(Order = 1)]
         public WorldData? WorldData { get; set; }

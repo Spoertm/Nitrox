@@ -3,7 +3,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class LaunchGameView : RoutableViewBase<LaunchGameViewModel>
+internal sealed partial class LaunchGameView : RoutableViewBase<LaunchGameViewModel>
 {
     public LaunchGameView()
     {

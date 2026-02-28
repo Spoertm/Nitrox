@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class NitroxBootstrapper : MonoBehaviour
+public sealed class NitroxBootstrapper : MonoBehaviour
 {
     internal static NitroxBootstrapper Instance;
 

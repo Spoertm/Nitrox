@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.Nitrox;
 
-public class NitroxEntityDrawer : IDrawer<NitroxEntity>, IDrawer<NitroxId>
+public sealed class NitroxEntityDrawer : IDrawer<NitroxEntity>, IDrawer<NitroxId>
 {
     private const float LABEL_WIDTH = 250;
 

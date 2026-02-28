@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours.CinematicController;
 
-public class MultiplayerCinematicReference : MonoBehaviour
+public sealed class MultiplayerCinematicReference : MonoBehaviour
 {
     private readonly Dictionary<string, Dictionary<int, MultiplayerCinematicController>> controllerByKey = [];
 

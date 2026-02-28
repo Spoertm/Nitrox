@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours.Vehicles;
 
-public class WatchedEntry
+public sealed class WatchedEntry
 {
     /// <remarks>
     /// In unity position units. Refer to <see cref="ShouldBroadcastMovement"/> for use infos.

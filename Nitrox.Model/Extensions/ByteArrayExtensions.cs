@@ -1,6 +1,5 @@
 using System;
 using System.Buffers.Binary;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Nitrox.Model.Extensions;
@@ -49,7 +48,7 @@ public static class ByteArrayExtensions
                 lengthFromBitLength = Math.DivRem(amount, 32, out int remainder);
                 if (remainder == 0)
                 {
-                    span.Slice(0, index1 + 1 - lengthFromBitLength).CopyTo(span.Slice(lengthFromBitLength));
+                    span[..(index1 + 1 - lengthFromBitLength)].CopyTo(span[lengthFromBitLength..]);
                 }
                 else
                 {
@@ -68,7 +67,7 @@ public static class ByteArrayExtensions
             {
                 lengthFromBitLength = GetInt32ArrayLengthFromBitLength(bitLength);
             }
-            span.Slice(0, lengthFromBitLength).Clear();
+            span[..lengthFromBitLength].Clear();
             return array;
 
             static int GetInt32ArrayLengthFromBitLength(int bitLength) => (int)(((uint)bitLength + 31u) >> 5);

@@ -5,11 +5,11 @@ namespace Nitrox.Server.Subnautica.Models.AppEvents;
 
 internal interface IHibernate : IEvent<IHibernate.SleepArgs>, IEvent<IHibernate.WakeArgs>
 {
-    public record SleepArgs;
+    public sealed record SleepArgs;
 
-    public record WakeArgs;
+    public sealed record WakeArgs;
 
-    public class SleepTrigger(Func<IEvent<SleepArgs>[]> lazyHandlersProvider) : SequentialEmptyArgsTrigger<SleepArgs>(lazyHandlersProvider);
+    public sealed class SleepTrigger(Func<IEvent<SleepArgs>[]> lazyHandlersProvider) : SequentialEmptyArgsTrigger<SleepArgs>(lazyHandlersProvider);
 
-    public class WakeTrigger(Func<IEvent<WakeArgs>[]> lazyHandlersProvider) : SequentialEmptyArgsTrigger<WakeArgs>(lazyHandlersProvider);
+    public sealed class WakeTrigger(Func<IEvent<WakeArgs>[]> lazyHandlersProvider) : SequentialEmptyArgsTrigger<WakeArgs>(lazyHandlersProvider);
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class InventoryEntitySpawner : SyncEntitySpawner<InventoryEntity>
+public sealed class InventoryEntitySpawner : SyncEntitySpawner<InventoryEntity>
 {
     protected override IEnumerator SpawnAsync(InventoryEntity entity, TaskResult<Optional<GameObject>> result)
     {

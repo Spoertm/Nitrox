@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class PlayerEntitySpawner : SyncEntitySpawner<PlayerEntity>
+public sealed class PlayerEntitySpawner : SyncEntitySpawner<PlayerEntity>
 {
     private readonly PlayerManager playerManager;
     private readonly ILocalNitroxPlayer localPlayer;
@@ -50,7 +50,7 @@ public class PlayerEntitySpawner : SyncEntitySpawner<PlayerEntity>
 
         if (parent.HasValue)
         {
-            AttachToParent(remotePlayer.Value, parent.Value);
+            PlayerEntitySpawner.AttachToParent(remotePlayer.Value, parent.Value);
         }
 
         result.Set(Optional.Of(remotePlayerBody));
@@ -66,7 +66,7 @@ public class PlayerEntitySpawner : SyncEntitySpawner<PlayerEntity>
         return clone;
     }
 
-    private void AttachToParent(RemotePlayer remotePlayer, GameObject parent)
+    private static void AttachToParent(RemotePlayer remotePlayer, GameObject parent)
     {
         if (parent.TryGetComponent(out SubRoot subRoot))
         {

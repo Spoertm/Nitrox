@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.Bases;
 
-public class InteriorPieceEntitySpawner : EntitySpawner<InteriorPieceEntity>
+public sealed class InteriorPieceEntitySpawner : EntitySpawner<InteriorPieceEntity>
 {
     private readonly Entities entities;
     private readonly EntityMetadataManager entityMetadataManager;

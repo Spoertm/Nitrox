@@ -6,7 +6,7 @@ using Nitrox.Server.Subnautica.Models.GameLogic;
 namespace Nitrox.Server.Subnautica.Models.Serialization.World
 {
     [DataContract]
-    internal class WorldData
+    internal sealed class WorldData
     {
         [DataMember(Order = 1)]
         public List<NitroxInt3>? ParsedBatchCells { get; set; } = [];

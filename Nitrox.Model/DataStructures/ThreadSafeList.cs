@@ -71,7 +71,7 @@ namespace Nitrox.Model.DataStructures
 
         public ThreadSafeList(List<T> list, bool createCopy = true)
         {
-            this.list = createCopy ? CreateCopy(list) : list;
+            this.list = createCopy ? ThreadSafeList<T>.CreateCopy(list) : list;
         }
 
         public void Add(T item)
@@ -178,7 +178,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return CreateCopy(list).GetEnumerator();
+                return ThreadSafeList<T>.CreateCopy(list).GetEnumerator();
             }
         }
 
@@ -216,7 +216,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return CreateCopy(list);
+                return ThreadSafeList<T>.CreateCopy(list);
             }
         }
 
@@ -245,7 +245,7 @@ namespace Nitrox.Model.DataStructures
             }
         }
 
-        private List<T> CreateCopy(IEnumerable<T> data)
+        private static List<T> CreateCopy(IEnumerable<T> data)
         {
             return new List<T>(data);
         }

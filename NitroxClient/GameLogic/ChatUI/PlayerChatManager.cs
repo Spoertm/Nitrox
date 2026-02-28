@@ -34,6 +34,7 @@ public sealed class PlayerChatManager
         {
             CoroutineHost.StartCoroutine(LoadChatLogAsset());
         }
+        return;
 
         IEnumerator LoadChatLogAsset()
         {
@@ -49,6 +50,7 @@ public sealed class PlayerChatManager
     public void ShowChat()
     {
         CoroutineHost.StartCoroutine(ShowChatAsync());
+        return;
 
         IEnumerator ShowChatAsync()
         {
@@ -60,6 +62,7 @@ public sealed class PlayerChatManager
     public void HideChat()
     {
         CoroutineHost.StartCoroutine(HideChatAsync());
+        return;
 
         IEnumerator HideChatAsync()
         {
@@ -72,6 +75,7 @@ public sealed class PlayerChatManager
     public void SelectChat()
     {
         CoroutineHost.StartCoroutine(SelectChatAsync());
+        return;
 
         IEnumerator SelectChatAsync()
         {
@@ -96,6 +100,7 @@ public sealed class PlayerChatManager
     public void DeselectChat()
     {
         CoroutineHost.StartCoroutine(DeselectChatAsync());
+        return;
 
         IEnumerator DeselectChatAsync()
         {
@@ -107,6 +112,7 @@ public sealed class PlayerChatManager
     public void AddMessage(string playerName, string message, Color color)
     {
         CoroutineHost.StartCoroutine(AddMessageAsync(playerName, message, color));
+        return;
 
         IEnumerator AddMessageAsync(string playerName, string message, Color color)
         {
@@ -129,7 +135,7 @@ public sealed class PlayerChatManager
             // Server command
             playerChat.InputText = "";
             playerChat.Select();
-            OnPlayerCommand?.Invoke(trimmedInput.Substring(1));
+            OnPlayerCommand?.Invoke(trimmedInput[1..]);
             return;
         }
 

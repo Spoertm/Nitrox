@@ -9,7 +9,7 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities.Spawning;
 /// <summary>
 /// Specific type of <see cref="EntitySpawnPoint"/> for spawning <see cref="SerializedWorldEntity"/>
 /// </summary>
-public class SerializedEntitySpawnPoint : EntitySpawnPoint
+public sealed class SerializedEntitySpawnPoint : EntitySpawnPoint
 {
     public List<SerializedComponent> SerializedComponents { get; }
     public int Layer { get; }

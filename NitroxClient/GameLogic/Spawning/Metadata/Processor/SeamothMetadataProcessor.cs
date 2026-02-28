@@ -28,14 +28,14 @@ public class SeamothMetadataProcessor : VehicleMetadataProcessor<SeamothMetadata
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            SetLights(seamoth, metadata.LightsOn);
+            SeamothMetadataProcessor.SetLights(seamoth, metadata.LightsOn);
             SetHealth(seamoth.gameObject, metadata.Health);
             SetInPrecursor(seamoth, metadata.InPrecursor);
             SetNameAndColors(subName, metadata.Name, metadata.Colors);
         }
     }
 
-    private void SetLights(SeaMoth seamoth, bool lightsOn)
+    private static void SetLights(SeaMoth seamoth, bool lightsOn)
     {
         ToggleLights toggleLights = seamoth.toggleLights;
 

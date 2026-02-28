@@ -5,7 +5,7 @@ using Nitrox.Launcher.Models.Utils;
 
 namespace Nitrox.Launcher.Models.Converters;
 
-public class BitmapAssetValueConverter : Converter<BitmapAssetValueConverter>
+public sealed class BitmapAssetValueConverter : Converter<BitmapAssetValueConverter>
 {
     public override object? Convert(object? value, Type targetType, object parameter, CultureInfo culture)
     {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic
 {
-    public class Rockets
+    public sealed class Rockets
     {
         private readonly IPacketSender packetSender;
         private readonly Vehicles vehicles;

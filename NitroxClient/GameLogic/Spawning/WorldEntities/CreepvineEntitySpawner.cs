@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
-public class CreepvineEntitySpawner(DefaultWorldEntitySpawner defaultWorldEntitySpawner) : IWorldEntitySpawner, IWorldEntitySyncSpawner
+public sealed class CreepvineEntitySpawner(DefaultWorldEntitySpawner defaultWorldEntitySpawner) : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
     private readonly DefaultWorldEntitySpawner defaultWorldEntitySpawner = defaultWorldEntitySpawner;
 

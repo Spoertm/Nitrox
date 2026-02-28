@@ -23,7 +23,7 @@ using UWE;
 
 namespace NitroxClient.MonoBehaviours
 {
-    public class Multiplayer : MonoBehaviour
+    public sealed class Multiplayer : MonoBehaviour
     {
         public static Multiplayer Main;
         private ClientProcessorContext packetProcessorContext;

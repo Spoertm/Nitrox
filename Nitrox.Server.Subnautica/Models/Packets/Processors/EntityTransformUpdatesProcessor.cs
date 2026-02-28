@@ -60,7 +60,7 @@ internal sealed class EntityTransformUpdatesProcessor(PlayerManager playerManage
         }
     }
 
-    private async Task SendUpdatesToPlayersAsync(AuthProcessorContext context, Dictionary<Player, List<EntityTransformUpdates.EntityTransformUpdate>> visibleUpdatesByPlayer)
+    private static async Task SendUpdatesToPlayersAsync(AuthProcessorContext context, Dictionary<Player, List<EntityTransformUpdates.EntityTransformUpdate>> visibleUpdatesByPlayer)
     {
         foreach (KeyValuePair<Player, List<EntityTransformUpdates.EntityTransformUpdate>> playerUpdates in visibleUpdatesByPlayer)
         {

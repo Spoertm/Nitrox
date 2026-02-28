@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace NitroxClient.MonoBehaviours.Gui.Chat
 {
-    public class PlayerChatPinButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public sealed class PlayerChatPinButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         private static PlayerChatManager playerChatManager;
 

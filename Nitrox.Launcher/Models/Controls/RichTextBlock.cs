@@ -26,7 +26,7 @@ namespace Nitrox.Launcher.Models.Controls;
 ///     [#0000FF]Text[/#0000FF] => Text (with blue foreground) <br />
 ///     <a href="https://example.com">Flavor text</a> <br />
 /// </example>
-public partial class RichTextBlock : TextBlock
+public sealed partial class RichTextBlock : TextBlock
 {
     private static readonly TextDecorationCollection underlineTextDecoration = [new() { Location = TextDecorationLocation.Underline }];
 

@@ -38,7 +38,7 @@ public class ServerProtoBufSerializer : IServerSerializer
             Serialize(stream, o);
         }
 
-        FileSystem.Instance.ReplaceFile(tmpPath, filePath);
+        FileSystem.ReplaceFile(tmpPath, filePath);
     }
 
     public T Deserialize<T>(Stream stream)

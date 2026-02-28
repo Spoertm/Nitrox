@@ -75,7 +75,7 @@ public abstract class FileSystem
     /// </summary>
     /// <param name="fileName">File or program name to get the full path from.</param>
     /// <returns></returns>
-    public string GetFullPath(string fileName)
+    public static string GetFullPath(string fileName)
     {
         if (File.Exists(fileName))
         {
@@ -101,7 +101,7 @@ public abstract class FileSystem
         return null;
     }
 
-    public string MakeRelativePath(string fromPath, string toPath)
+    public static string MakeRelativePath(string fromPath, string toPath)
     {
         if (string.IsNullOrEmpty(fromPath))
         {
@@ -177,7 +177,7 @@ public abstract class FileSystem
         using ZipArchive zip = new(File.Create(outZipFullName), ZipArchiveMode.Create);
         foreach (string file in files)
         {
-            ZipArchiveEntry entry = zip.CreateEntry(MakeRelativePath(dir, file));
+            ZipArchiveEntry entry = zip.CreateEntry(FileSystem.MakeRelativePath(dir, file));
             using Stream sourceStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
             using Stream targetStream = entry.Open();
             sourceStream.CopyTo(targetStream);
@@ -194,7 +194,7 @@ public abstract class FileSystem
     /// <param name="source">Source file to replace with.</param>
     /// <param name="target">Target file to replace.</param>
     /// <returns>True if file was moved or replaced successfully.</returns>
-    public bool ReplaceFile(string source, string target)
+    public static bool ReplaceFile(string source, string target)
     {
         if (!File.Exists(source))
         {
@@ -254,7 +254,7 @@ public abstract class FileSystem
     }
 
 
-    public bool IsWritable(string directory)
+    public static bool IsWritable(string directory)
     {
         if (!Directory.Exists(directory))
         {

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.FMOD;
 
-public class FMODSystem
+public sealed class FMODSystem
 {
     private readonly IPacketSender packetSender;
 

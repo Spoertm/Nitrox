@@ -16,7 +16,7 @@ namespace Nitrox.Launcher.Models.Services;
 /// <summary>
 ///     Service for creating and restoring backups of Nitrox installations and save files.
 /// </summary>
-public class BackupService(IKeyValueStore keyValueStore)
+public sealed class BackupService(IKeyValueStore keyValueStore)
 {
     private readonly IKeyValueStore keyValueStore = keyValueStore;
 
@@ -121,7 +121,7 @@ public class BackupService(IKeyValueStore keyValueStore)
     /// <summary>
     ///     Gets information about a specific backup file.
     /// </summary>
-    public BackupInfo? GetBackupInfo(string backupPath)
+    public static BackupInfo? GetBackupInfo(string backupPath)
     {
         try
         {
@@ -183,7 +183,7 @@ public class BackupService(IKeyValueStore keyValueStore)
     /// <summary>
     ///     Deletes a backup file.
     /// </summary>
-    public bool DeleteBackup(string backupPath)
+    public static bool DeleteBackup(string backupPath)
     {
         try
         {
@@ -352,7 +352,7 @@ public class BackupService(IKeyValueStore keyValueStore)
     }
 }
 
-public class BackupInfo
+public sealed class BackupInfo
 {
     public required string FilePath { get; init; }
     public required string FileName { get; init; }
@@ -369,7 +369,7 @@ public class BackupInfo
     };
 }
 
-public class BackupMetadata
+public sealed class BackupMetadata
 {
     public string NitroxVersion { get; set; } = "";
     public DateTime BackupDate { get; set; }

@@ -117,9 +117,9 @@ internal sealed class SessionManager(ISessionCleaner.Trigger sessionCleanTrigger
         }
     }
 
-    private EndpointKey ToKey(IPEndPoint endPoint) => new(endPoint.Address, (ushort)endPoint.Port);
+    private static EndpointKey ToKey(IPEndPoint endPoint) => new(endPoint.Address, (ushort)endPoint.Port);
 
-    public record Session(SessionId Id, IPEndPoint EndPoint);
+    public sealed record Session(SessionId Id, IPEndPoint EndPoint);
 
     private record EndpointKey(IPAddress Address, ushort Port);
 }

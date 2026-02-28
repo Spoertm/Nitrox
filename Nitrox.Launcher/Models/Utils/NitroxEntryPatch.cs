@@ -44,7 +44,7 @@ public static class NitroxEntryPatch
             if (!File.Exists(assemblyCSharp))
             {
                 Log.Error($"Invalid state, {GAME_ASSEMBLY_NAME} not found, but {GAME_ASSEMBLY_MODIFIED_NAME} exists. Please verify your installation.");
-                FileSystem.Instance.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
+                FileSystem.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
             }
             else
             {
@@ -118,7 +118,7 @@ public static class NitroxEntryPatch
             throw error;
         }
 
-        FileSystem.Instance.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
+        FileSystem.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
         Log.Debug("Added Nitrox entry point to Subnautica");
 
         Log.Debug("Storing SHA256 of Nitrox-mutated code file in cache");
@@ -159,7 +159,7 @@ public static class NitroxEntryPatch
             File.SetAttributes(assemblyCSharp, System.IO.FileAttributes.Normal);
         }
 
-        FileSystem.Instance.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
+        FileSystem.ReplaceFile(modifiedAssemblyCSharp, assemblyCSharp);
         Log.Debug("Removed Nitrox entry point from Subnautica");
     }
 

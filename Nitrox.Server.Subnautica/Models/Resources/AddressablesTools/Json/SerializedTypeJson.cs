@@ -2,7 +2,7 @@
 
 namespace Nitrox.Server.Subnautica.Models.Resources.AddressablesTools.Json;
 
-public class SerializedTypeJson
+public sealed class SerializedTypeJson
 {
     [JsonProperty("m_AssemblyName")]
     public string AssemblyName { get; set; }

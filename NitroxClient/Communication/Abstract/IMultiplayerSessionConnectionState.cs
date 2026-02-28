@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using NitroxClient.Communication.MultiplayerSession;
+﻿using NitroxClient.Communication.MultiplayerSession;
 
 namespace NitroxClient.Communication.Abstract
 {

@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class MaterialDrawer : IEditorDrawer<Material>
+public sealed class MaterialDrawer : IEditorDrawer<Material>
 {
     public Material Draw(Material material)
     {

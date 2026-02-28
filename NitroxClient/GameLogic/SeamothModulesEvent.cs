@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic
 {
-    public class SeamothModulesEvent
+    public sealed class SeamothModulesEvent
     {
         private readonly IPacketSender packetSender;
 

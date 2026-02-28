@@ -1,6 +1,5 @@
 using System;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.MultiplayerSession;
 using Nitrox.Model.Packets;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities;
 using Nitrox.Model.Subnautica.MultiplayerSession;

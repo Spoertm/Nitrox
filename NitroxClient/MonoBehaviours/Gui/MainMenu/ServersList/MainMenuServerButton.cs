@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using NitroxClient.GameLogic.Settings;
 using NitroxClient.MonoBehaviours.Gui.MainMenu.ServerJoin;
 using Nitrox.Model.Serialization;
@@ -12,7 +11,7 @@ using UnityEngine.UI;
 
 namespace NitroxClient.MonoBehaviours.Gui.MainMenu.ServersList;
 
-public class MainMenuServerButton : MonoBehaviour
+public sealed class MainMenuServerButton : MonoBehaviour
 {
     private static MainMenuLoadButton loadButtonRef;
     private static LegendButtonData[] confirmButtonLegendData;

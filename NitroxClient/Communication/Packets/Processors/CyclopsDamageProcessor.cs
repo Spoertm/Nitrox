@@ -97,7 +97,7 @@ internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcess
                     // If it's active, but not in the list, it must have been repaired.
                     if (damageManager.damagePoints[damagePointsIndex].gameObject.activeSelf)
                     {
-                        RepairDamagePoint(cyclops, damagePointsIndex, 999);
+                        CyclopsDamageProcessor.RepairDamagePoint(cyclops, damagePointsIndex, 999);
                     }
                 }
             }
@@ -115,7 +115,7 @@ internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcess
             {
                 if (damageManager.damagePoints[i].gameObject.activeSelf)
                 {
-                    RepairDamagePoint(cyclops, i, 999);
+                    CyclopsDamageProcessor.RepairDamagePoint(cyclops, i, 999);
                 }
             }
         }
@@ -192,7 +192,7 @@ internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcess
     ///     The max health of the point is 1. 999 is passed to trigger a full repair of the
     ///     <see cref="CyclopsDamagePoint" />
     /// </param>
-    private void RepairDamagePoint(SubRoot subRoot, int damagePointIndex, float repairAmount)
+    private static void RepairDamagePoint(SubRoot subRoot, int damagePointIndex, float repairAmount)
     {
         subRoot.damageManager.damagePoints[damagePointIndex].liveMixin.AddHealth(repairAmount);
     }

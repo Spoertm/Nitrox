@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class PlayerManager
+public sealed class PlayerManager
 {
     private readonly PlayerModelManager playerModelManager;
     private readonly PlayerVitalsManager playerVitalsManager;

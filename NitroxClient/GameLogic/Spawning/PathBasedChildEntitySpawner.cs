@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic.Spawning;
 
-public class PathBasedChildEntitySpawner : SyncEntitySpawner<PathBasedChildEntity>
+public sealed class PathBasedChildEntitySpawner : SyncEntitySpawner<PathBasedChildEntity>
 {
     protected override IEnumerator SpawnAsync(PathBasedChildEntity entity, TaskResult<Optional<GameObject>> result)
     {

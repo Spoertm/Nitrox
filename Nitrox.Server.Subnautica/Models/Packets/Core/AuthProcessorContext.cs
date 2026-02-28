@@ -6,7 +6,7 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Core;
 /// <summary>
 ///     Context used by <see cref="IAuthPacketProcessor{TPacket}" />.
 /// </summary>
-internal record AuthProcessorContext : IPacketProcessContext<Player>
+internal sealed record AuthProcessorContext : IPacketProcessContext<Player>
 {
     private readonly IPacketSender packetSender;
     public Player Sender { get; set; }

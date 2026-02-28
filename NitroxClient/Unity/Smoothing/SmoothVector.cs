@@ -2,7 +2,7 @@
 
 namespace NitroxClient.Unity.Smoothing
 {
-    public class SmoothVector
+    public sealed class SmoothVector
     {
         private const float SMOOTHING_SPEED = 10f;
         public Vector3 Target { get; set; }

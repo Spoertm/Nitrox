@@ -3,7 +3,7 @@ using Nitrox.Launcher.Views.Abstract;
 
 namespace Nitrox.Launcher.Views;
 
-internal partial class BlogView : RoutableViewBase<BlogViewModel>
+internal sealed partial class BlogView : RoutableViewBase<BlogViewModel>
 {
     public BlogView()
     {

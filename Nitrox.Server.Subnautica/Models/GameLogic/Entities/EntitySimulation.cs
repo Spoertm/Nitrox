@@ -118,7 +118,7 @@ internal sealed class EntitySimulation : ISessionCleaner
         return SimulationWhitelist.UtilityWhitelist.Contains(entity.TechType) || ShouldSimulateEntityMovement(entity);
     }
 
-    public bool ShouldSimulateEntityMovement(WorldEntity entity)
+    public static bool ShouldSimulateEntityMovement(WorldEntity entity)
     {
         return !entity.SpawnedByServer || SimulationWhitelist.MovementWhitelist.Contains(entity.TechType);
     }

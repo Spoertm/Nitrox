@@ -13,7 +13,7 @@ using Nitrox.Server.Subnautica.Models.Resources.Parsers;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic;
 
-internal class EscapePodManager(RandomFactory randomFactory, EntityRegistry entityRegistry, RandomStartResource randomStartResource, IOptions<SubnauticaServerOptions> options)
+internal sealed class EscapePodManager(RandomFactory randomFactory, EntityRegistry entityRegistry, RandomStartResource randomStartResource, IOptions<SubnauticaServerOptions> options)
 {
     private const int PLAYERS_PER_ESCAPEPOD = 50;
 
@@ -119,6 +119,7 @@ internal class EscapePodManager(RandomFactory randomFactory, EntityRegistry enti
     {
         await InitializePodForNextPlayerAsync();
         InitializeEscapePodsByPlayerId();
+        return;
 
         async Task InitializePodForNextPlayerAsync()
         {

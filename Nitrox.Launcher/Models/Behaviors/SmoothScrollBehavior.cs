@@ -15,7 +15,7 @@ using Avalonia.Xaml.Interactivity;
 
 namespace Nitrox.Launcher.Models.Behaviors;
 
-public class SmoothScrollBehavior : StyledElementBehavior<ScrollViewer>
+public sealed class SmoothScrollBehavior : StyledElementBehavior<ScrollViewer>
 {
     public enum ChangeSize
     {

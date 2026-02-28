@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.Debuggers.Drawer.Unity;
 
-public class RigidbodyDrawer : IDrawer<Rigidbody>
+public sealed class RigidbodyDrawer : IDrawer<Rigidbody>
 {
     private readonly VectorDrawer vectorDrawer;
     private const float LABEL_WIDTH = 120;

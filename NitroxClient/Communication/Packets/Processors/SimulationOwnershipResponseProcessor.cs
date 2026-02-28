@@ -28,12 +28,12 @@ internal sealed class SimulationOwnershipResponseProcessor(IMultiplayerSession m
 
         if (response.LockAcquired)
         {
-            RemoveRemoteController(response.Id);
+            SimulationOwnershipResponseProcessor.RemoveRemoteController(response.Id);
         }
         return Task.CompletedTask;
     }
 
-    private void RemoveRemoteController(NitroxId id)
+    private static void RemoveRemoteController(NitroxId id)
     {
         Optional<GameObject> gameObject = NitroxEntity.GetObjectFrom(id);
 

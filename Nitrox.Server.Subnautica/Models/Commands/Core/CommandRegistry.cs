@@ -119,7 +119,7 @@ internal sealed class CommandRegistry
         return validHandlers.Count > 0;
     }
 
-    public bool IsValidHandlerForContext(CommandHandlerEntry handler, ICommandContext context) => handler.AcceptedOrigin.HasFlag(context.Origin) && handler.MinimumPermissions <= context.Permissions;
+    public static bool IsValidHandlerForContext(CommandHandlerEntry handler, ICommandContext context) => handler.AcceptedOrigin.HasFlag(context.Origin) && handler.MinimumPermissions <= context.Permissions;
 
     public async ValueTask<List<ConvertResult>> TryConvertToType(string value, Type targetType)
     {
@@ -143,7 +143,7 @@ internal sealed class CommandRegistry
         return results;
     }
 
-    public object? TryParseToType(ReadOnlySpan<char> value, Type type)
+    public static object? TryParseToType(ReadOnlySpan<char> value, Type type)
     {
         try
         {

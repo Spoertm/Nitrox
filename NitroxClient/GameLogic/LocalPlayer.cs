@@ -16,7 +16,7 @@ using Object = UnityEngine.Object;
 
 namespace NitroxClient.GameLogic;
 
-public class LocalPlayer : ILocalNitroxPlayer
+public sealed class LocalPlayer : ILocalNitroxPlayer
 {
     private readonly IMultiplayerSession multiplayerSession;
     private readonly IPacketSender packetSender;

@@ -23,6 +23,7 @@ public static class CloseByUserExtensions
         window.Closed += WindowOnClosed;
         isClosingByUser[window] = true;
         window.Close(dialogResult);
+        return;
 
         static void WindowOnClosed(object sender, EventArgs e)
         {

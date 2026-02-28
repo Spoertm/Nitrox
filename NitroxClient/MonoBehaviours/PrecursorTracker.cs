@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class PrecursorTracker : MonoBehaviour
+public sealed class PrecursorTracker : MonoBehaviour
 {
     private LocalPlayer localPlayer;
     private bool lastInPrecursor;

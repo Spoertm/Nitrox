@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using NitroxClient.GameLogic;
 using Nitrox.Model.DataStructures;
-using Nitrox.Model.Subnautica.DataStructures;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities;
 using Nitrox.Model.Subnautica.DataStructures.GameLogic.Entities.Bases;
 using UnityEngine;
@@ -17,7 +16,7 @@ namespace NitroxClient.MonoBehaviours;
 /// <remarks>
 /// To recognize pieces even after the base is rebuilt, we use the base anchor (<see cref="Base.anchor"/>) to get an absolute cell value.
 /// </remarks>
-public class MoonpoolManager : MonoBehaviour
+public sealed class MoonpoolManager : MonoBehaviour
 {
     private Entities entities;
 

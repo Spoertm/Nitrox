@@ -14,7 +14,7 @@ using UWE;
 
 namespace NitroxClient.GameLogic.HUD.PdaTabs;
 
-public class uGUI_PlayerPingEntry : uGUI_PingEntry
+public sealed class uGUI_PlayerPingEntry : uGUI_PingEntry
 {
     private uGUI_PlayerListTab parent;
     private INitroxPlayer player;
@@ -88,11 +88,11 @@ public class uGUI_PlayerPingEntry : uGUI_PingEntry
 
     public void OnLanguageChanged()
     {
-        GetTooltip(ShowObject).TooltipText = GetLocalizedText(showPing ? "Nitrox_HidePing" : "Nitrox_ShowPing");
-        GetTooltip(MuteObject).TooltipText = GetLocalizedText(muted ? "Nitrox_Unmute" : "Nitrox_Mute");
-        GetTooltip(KickObject).TooltipText = GetLocalizedText("Nitrox_Kick");
-        GetTooltip(TeleportToObject).TooltipText = GetLocalizedText("Nitrox_TeleportTo");
-        GetTooltip(TeleportToMeObject).TooltipText = GetLocalizedText("Nitrox_TeleportToMe");
+        uGUI_PlayerPingEntry.GetTooltip(ShowObject).TooltipText = GetLocalizedText(showPing ? "Nitrox_HidePing" : "Nitrox_ShowPing");
+        uGUI_PlayerPingEntry.GetTooltip(MuteObject).TooltipText = GetLocalizedText(muted ? "Nitrox_Unmute" : "Nitrox_Mute");
+        uGUI_PlayerPingEntry.GetTooltip(KickObject).TooltipText = GetLocalizedText("Nitrox_Kick");
+        uGUI_PlayerPingEntry.GetTooltip(TeleportToObject).TooltipText = GetLocalizedText("Nitrox_TeleportTo");
+        uGUI_PlayerPingEntry.GetTooltip(TeleportToMeObject).TooltipText = GetLocalizedText("Nitrox_TeleportToMe");
     }
 
     public new void Uninitialize()
@@ -118,43 +118,43 @@ public class uGUI_PlayerPingEntry : uGUI_PingEntry
         // We need to update each button's listener whether or not they have enough perms because they may become OP during playtime
         ClearButtonListeners();
 
-        GetToggle(ShowObject).onValueChanged.AddListener(delegate (bool toggled)
+        uGUI_PlayerPingEntry.GetToggle(ShowObject).onValueChanged.AddListener(delegate (bool toggled)
         {
             if (player is RemotePlayer remotePlayer)
             {
                 PingInstance pingInstance = remotePlayer.PlayerModel.GetComponentInChildren<PingInstance>();
                 pingInstance.SetVisible(toggled);
-                GetTooltip(ShowObject).TooltipText = GetLocalizedText(toggled ? "Nitrox_HidePing" : "Nitrox_ShowPing");
+                uGUI_PlayerPingEntry.GetTooltip(ShowObject).TooltipText = GetLocalizedText(toggled ? "Nitrox_HidePing" : "Nitrox_ShowPing");
                 visibilityIcon.sprite = toggled ? spriteVisible : spriteHidden;
             }
         });
         // Each of those clicks involves a confirmation modal
-        GetToggle(MuteObject).onValueChanged.AddListener(delegate (bool toggled)
+        uGUI_PlayerPingEntry.GetToggle(MuteObject).onValueChanged.AddListener(delegate (bool toggled)
         {
             Modal.Get<ConfirmModal>()?.Show(GetLocalizedText(muted ? "Nitrox_Unmute" : "Nitrox_Mute", true), () =>
             {
-                GetToggle(MuteObject).SetIsOnWithoutNotify(!toggled);
+                uGUI_PlayerPingEntry.GetToggle(MuteObject).SetIsOnWithoutNotify(!toggled);
                 if (player is RemotePlayer remotePlayer)
                 {
                     packetSender.Send(new ServerCommand($"{(toggled ? "" : "un")}mute {player.PlayerName}"));
                 }
             });
         });
-        GetToggle(KickObject).onValueChanged.AddListener(delegate (bool toggled)
+        uGUI_PlayerPingEntry.GetToggle(KickObject).onValueChanged.AddListener(delegate (bool toggled)
         {
             Modal.Get<ConfirmModal>()?.Show(GetLocalizedText("Nitrox_Kick", true), () =>
             {
                 packetSender.Send(new ServerCommand($"kick {player.PlayerName}"));
             });
         });
-        GetToggle(TeleportToObject).onValueChanged.AddListener(delegate (bool toggled)
+        uGUI_PlayerPingEntry.GetToggle(TeleportToObject).onValueChanged.AddListener(delegate (bool toggled)
         {
             Modal.Get<ConfirmModal>()?.Show(GetLocalizedText("Nitrox_TeleportTo", true), () =>
             {
                 packetSender.Send(new ServerCommand($"warp {player.PlayerName}"));
             });
         });
-        GetToggle(TeleportToMeObject).onValueChanged.AddListener(delegate (bool toggled)
+        uGUI_PlayerPingEntry.GetToggle(TeleportToMeObject).onValueChanged.AddListener(delegate (bool toggled)
         {
             Modal.Get<ConfirmModal>()?.Show(GetLocalizedText("Nitrox_TeleportToMe", true), () =>
             {
@@ -185,10 +185,10 @@ public class uGUI_PlayerPingEntry : uGUI_PingEntry
 
     private void ClearButtonListeners()
     {
-        GetToggle(MuteObject).onValueChanged = new Toggle.ToggleEvent();
-        GetToggle(KickObject).onValueChanged = new Toggle.ToggleEvent();
-        GetToggle(TeleportToObject).onValueChanged = new Toggle.ToggleEvent();
-        GetToggle(TeleportToMeObject).onValueChanged = new Toggle.ToggleEvent();
+        uGUI_PlayerPingEntry.GetToggle(MuteObject).onValueChanged = new Toggle.ToggleEvent();
+        uGUI_PlayerPingEntry.GetToggle(KickObject).onValueChanged = new Toggle.ToggleEvent();
+        uGUI_PlayerPingEntry.GetToggle(TeleportToObject).onValueChanged = new Toggle.ToggleEvent();
+        uGUI_PlayerPingEntry.GetToggle(TeleportToMeObject).onValueChanged = new Toggle.ToggleEvent();
     }
 
     private IEnumerator AssignSprites()
@@ -211,8 +211,8 @@ public class uGUI_PlayerPingEntry : uGUI_PingEntry
 
     private void RefreshMuteButton()
     {
-        GetToggle(MuteObject).SetIsOnWithoutNotify(muted);
-        GetTooltip(MuteObject).TooltipText = GetLocalizedText(muted ? "Nitrox_Unmute" : "Nitrox_Mute");
+        uGUI_PlayerPingEntry.GetToggle(MuteObject).SetIsOnWithoutNotify(muted);
+        uGUI_PlayerPingEntry.GetTooltip(MuteObject).TooltipText = GetLocalizedText(muted ? "Nitrox_Unmute" : "Nitrox_Mute");
         MuteObject.FindChild("Eye").GetComponent<Image>().sprite = muted ? MutedSprite : UnmutedSprite;
     }
 
@@ -231,12 +231,12 @@ public class uGUI_PlayerPingEntry : uGUI_PingEntry
         TeleportToMeObject.SetActive(isNotLocalPlayer && localPlayer.Permissions >= Perms.MODERATOR);
     }
 
-    private Toggle GetToggle(GameObject gameObject)
+    private static Toggle GetToggle(GameObject gameObject)
     {
         return gameObject.GetComponent<Toggle>();
     }
 
-    private ButtonTooltip GetTooltip(GameObject gameObject)
+    private static ButtonTooltip GetTooltip(GameObject gameObject)
     {
         return gameObject.GetComponent<ButtonTooltip>();
     }

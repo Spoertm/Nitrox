@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NitroxClient.MonoBehaviours;
 
-public class PlayerStatsBroadcaster : MonoBehaviour
+public sealed class PlayerStatsBroadcaster : MonoBehaviour
 {
     private float time;
     private const float BROADCAST_INTERVAL = 3f;

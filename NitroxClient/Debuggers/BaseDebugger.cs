@@ -62,7 +62,7 @@ namespace NitroxClient.Debuggers
             if (string.IsNullOrEmpty(debuggerName))
             {
                 string name = GetType().Name;
-                DebuggerName = name.Substring(0, name.IndexOf("Debugger", StringComparison.Ordinal));
+                DebuggerName = name[..name.IndexOf("Debugger", StringComparison.Ordinal)];
             }
             else
             {
@@ -178,7 +178,7 @@ namespace NitroxClient.Debuggers
         private string GetSkinName()
         {
             string name = GetType().Name;
-            return $"debuggers.{name.Substring(0, name.IndexOf("Debugger")).ToLowerInvariant()}";
+            return $"debuggers.{name[..name.IndexOf("Debugger")].ToLowerInvariant()}";
         }
 
         private void OnSetSkinImpl(GUISkin skin)
@@ -252,7 +252,7 @@ namespace NitroxClient.Debuggers
             WindowRect = new Rect(Screen.width / 2f - (WindowRect.width / 2), Screen.height / 2f - (WindowRect.height / 2), WindowRect.width, Math.Min(Screen.height * 0.8f, maxHeight)); //Reset position of debuggers because SN sometimes throws the windows from planet 4546B
         }
 
-        public class DebuggerTab
+        public sealed class DebuggerTab
         {
             public DebuggerTab(string name, Action render)
             {

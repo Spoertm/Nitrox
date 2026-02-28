@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class LiveMixinManager
+public sealed class LiveMixinManager
 {
     private readonly SimulationOwnership simulationOwnership;
     private static readonly HashSet<string> broadcastDeathClassIdWhitelist = new()
@@ -22,7 +22,7 @@ public class LiveMixinManager
 
     // Currently, we only apply live mixin updates to vehicles as there is more work to implement
     // damage for regular entities like fish.
-    public bool IsWhitelistedUpdateType(LiveMixin entity)
+    public static bool IsWhitelistedUpdateType(LiveMixin entity)
     {
         Vehicle vehicle = entity.GetComponent<Vehicle>();
         SubRoot subRoot = entity.GetComponent<SubRoot>();
@@ -30,7 +30,7 @@ public class LiveMixinManager
         return (vehicle || (subRoot && subRoot.isCyclops));
     }
     
-    public bool ShouldBroadcastDeath(LiveMixin liveMixin)
+    public static bool ShouldBroadcastDeath(LiveMixin liveMixin)
     {
         if (liveMixin.TryGetComponent(out UniqueIdentifier uniqueIdentifier) && !string.IsNullOrEmpty(uniqueIdentifier.classId))
         {

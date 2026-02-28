@@ -7,7 +7,7 @@ using Nitrox.Model.Helper;
 
 namespace Nitrox.Model.GameLogic.FMOD;
 
-public class FMODWhitelist : IDisposable
+public sealed class FMODWhitelist : IDisposable
 {
     private readonly Dictionary<string, SoundData> soundsWhitelist = [];
     private readonly HashSet<string> whitelistedPaths = [];

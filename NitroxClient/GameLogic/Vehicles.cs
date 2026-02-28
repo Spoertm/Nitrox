@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class Vehicles
+public sealed class Vehicles
 {
     private readonly IPacketSender packetSender;
     private readonly IMultiplayerSession multiplayerSession;

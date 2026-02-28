@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace NitroxClient.GameLogic;
 
-public class ItemContainers
+public sealed class ItemContainers
 {
     private readonly IPacketSender packetSender;
     private readonly EntityMetadataManager entityMetadataManager;
@@ -72,7 +72,7 @@ public class ItemContainers
         }
     }
 
-    public void AddItem(GameObject item, NitroxId containerId)
+    public static void AddItem(GameObject item, NitroxId containerId)
     {
         Optional<GameObject> owner = NitroxEntity.GetObjectFrom(containerId);
         if (!owner.HasValue)

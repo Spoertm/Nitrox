@@ -180,7 +180,7 @@ internal sealed class PrefabPlaceholderGroupsResource(SubnauticaAssetsManager as
         Validate.IsTrue(placeholdersByClassId.Count > 0);
     }
 
-    private (AddressableCatalogDictionary, ClassIdByRuntimeKeyDictionary) LoadAddressableCatalog(string aaRootPath, Dictionary<string, string> prefabDatabase)
+    private static (AddressableCatalogDictionary, ClassIdByRuntimeKeyDictionary) LoadAddressableCatalog(string aaRootPath, Dictionary<string, string> prefabDatabase)
     {
         ClassIdByRuntimeKeyDictionary classIdByRuntimeKey = [];
         AddressableCatalogDictionary addressableCatalog = [];
