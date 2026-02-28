@@ -8,7 +8,7 @@
         [TestInitialize]
         public void Setup()
         {
-            set = new ThreadSafeSet<string>();
+            set = [];
             for (int i = 0; i < 10; i++)
             {
                 set.Add($"test {i}");
@@ -32,7 +32,7 @@
         [TestMethod]
         public void Except()
         {
-            string[] exclude = { "test 0", "test 5", "test 9" };
+            string[] exclude = ["test 0", "test 5", "test 9"];
             set.Should().Contain(exclude);
             set.ExceptWith(exclude);
             set.Should().NotContain(exclude);
@@ -43,8 +43,8 @@
         {
             int iterations = 500000;
 
-            ThreadSafeSet<string> comeGetMe = new();
-            List<long> countsRead = new();
+            ThreadSafeSet<string> comeGetMe = [];
+            List<long> countsRead = [];
             long addCount = 0;
 
             Random r = new Random();
@@ -70,7 +70,7 @@
         {
             int iterations = 500000;
 
-            ThreadSafeSet<int> comeGetMe = new();
+            ThreadSafeSet<int> comeGetMe = [];
             long addCount = 0;
             long iterationsReadMany = 0;
 
@@ -96,10 +96,7 @@
         [TestMethod]
         public void IterateAndAdd()
         {
-            ThreadSafeSet<int> nums = new()
-            {
-                1,2,3,4,5
-            };
+            ThreadSafeSet<int> nums = [1, 2, 3, 4, 5];
 
             foreach (int num in nums)
             {

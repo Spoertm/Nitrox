@@ -39,12 +39,12 @@ public sealed partial class Constructable_Construct_Patch : NitroxPatch, IDynami
         { InstructionPattern.Call(nameof(Constructable), nameof(Constructable.UpdateMaterial)), "Insert" }
     };
 
-    public static readonly List<CodeInstruction> InstructionsToAdd = new()
-    {
+    public static readonly List<CodeInstruction> InstructionsToAdd =
+    [
         new(Ldarg_0),
         new(Ldc_I4_1), // True for "constructing"
         new(Call, Reflect.Method(() => ConstructionAmountModified(default, default)))
-    };
+    ];
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions) =>
         instructions.Transform(InstructionsPattern, (label, instruction) =>

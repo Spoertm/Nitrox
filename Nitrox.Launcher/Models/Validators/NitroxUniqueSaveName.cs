@@ -50,7 +50,7 @@ public sealed class NitroxUniqueSaveName : TypedValidationAttribute<string>
         }
         if (SaveFolderExists(value, !AllowCaseInsensitiveName, ReadProperty<string>(context, SavesFolderDirPropertyName)))
         {
-            return new ValidationResult($@"Save ""{value}"" already exists.");
+            return new ValidationResult($"""Save "{value}" already exists.""");
         }
 
         return ValidationResult.Success;

@@ -28,11 +28,11 @@ public sealed partial class Builder_TryPlace_Patch : NitroxPatch, IDynamicPatch
         { Pop, "Insert1" }
     };
 
-    public static readonly List<CodeInstruction> InstructionsToAdd1 = new()
-    {
+    public static readonly List<CodeInstruction> InstructionsToAdd1 =
+    [
         new(Ldloc_0),
         new(Call, Reflect.Method(() => GhostCreated(default)))
-    };
+    ];
 
     public static readonly InstructionsPattern AddInstructionPattern2 = new()
     {
@@ -43,11 +43,11 @@ public sealed partial class Builder_TryPlace_Patch : NitroxPatch, IDynamicPatch
         { new() { OpCode = Callvirt, Operand = new(nameof(Constructable), nameof(Constructable.SetIsInside)) }, "Insert2" }
     };
 
-    public static readonly List<CodeInstruction> InstructionsToAdd2 = new()
-    {
+    public static readonly List<CodeInstruction> InstructionsToAdd2 =
+    [
         TARGET_METHOD.Ldloc<Constructable>(),
         new(Call, Reflect.Method(() => GhostCreated(default)))
-    };
+    ];
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions) =>
         instructions.Transform(AddInstructionPattern1, (label, instruction) =>

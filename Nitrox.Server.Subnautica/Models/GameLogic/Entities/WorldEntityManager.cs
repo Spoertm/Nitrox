@@ -63,7 +63,7 @@ internal sealed class WorldEntityManager
     {
         lock (globalRootEntitiesLock)
         {
-            return new(globalRootEntitiesById.Values.OfType<T>());
+            return [..globalRootEntitiesById.Values.OfType<T>()];
         }
     }
 
@@ -267,7 +267,7 @@ internal sealed class WorldEntityManager
                 entitiesInCells.Add(worldEntity);
             }
 
-            cellRoot.ChildEntities = new List<Entity>();
+            cellRoot.ChildEntities = [];
         }
         // Specific type of entities which is not parented to a CellRootEntity
         entitiesInCells.AddRange(spawnedEntities.OfType<SerializedWorldEntity>());

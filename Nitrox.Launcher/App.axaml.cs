@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Net;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -75,7 +74,7 @@ internal sealed class App : Application
     {
         CultureManager.ConfigureCultureInfo();
         Log.Setup();
-        Log.Info($@"Starting Nitrox Launcher V{NitroxEnvironment.Version}+{NitroxEnvironment.GitHash} with args ""{string.Join(" ", NitroxEnvironment.CommandLineArgs)}"" built on {NitroxEnvironment.BuildDate:F}");
+        Log.Info($"""Starting Nitrox Launcher V{NitroxEnvironment.Version}+{NitroxEnvironment.GitHash} with args "{string.Join(" ", NitroxEnvironment.CommandLineArgs)}" built on {NitroxEnvironment.BuildDate:F}""");
 
         // Handle command line arguments.
         ConsoleApp.ConsoleAppBuilder cliParser = ConsoleApp.Create();
@@ -109,7 +108,7 @@ internal sealed class App : Application
                        .ClearProviders()
                        .Services
                        .AddAppServices();
-            hostBuilder.WebHost.ConfigureKestrel(options => options.Listen(IPAddress.Any, 0, o => o.Protocols = HttpProtocols.Http2));
+            hostBuilder.WebHost.ConfigureKestrel(options => options.ListenAnyIP(0, o => o.Protocols = HttpProtocols.Http2));
             WebApplication host = hostBuilder.Build();
             host.MapMagicOnionService();
             host.MapGrpcService<ServersManagement>();

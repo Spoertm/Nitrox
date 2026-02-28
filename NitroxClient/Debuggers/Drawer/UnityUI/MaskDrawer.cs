@@ -6,7 +6,7 @@ namespace NitroxClient.Debuggers.Drawer.UnityUI;
 
 public sealed class MaskDrawer : IDrawer<Mask>, IDrawer<RectMask2D>
 {
-    public Type[] ApplicableTypes { get; } = { typeof(Mask), typeof(RectMask2D) };
+    public Type[] ApplicableTypes { get; } = [typeof(Mask), typeof(RectMask2D)];
 
     public void Draw(Mask mask)
     {

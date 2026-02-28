@@ -76,7 +76,7 @@ public static class AssetBundleLoader
         {
             canvasGroup.alpha = 0;
         }
-        nitroxAssetBundle.LoadedAssets = new Object[] { asset };
+        nitroxAssetBundle.LoadedAssets = [asset];
     }
 
     public static bool IsBundleLoaded(NitroxAssetBundle nitroxAssetBundle)

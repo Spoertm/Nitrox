@@ -62,7 +62,9 @@ public abstract class FileSystem
         return Process.Start(new ProcessStartInfo
         {
             FileName = editorProgram,
-            Arguments = $@"{(arguments.Length > 0 ? $"{arguments} " : "")}""{file}""",
+            Arguments = $"""
+                         {(arguments.Length > 0 ? $"{arguments} " : "")}"{file}"
+                         """,
             UseShellExecute = false,
             RedirectStandardOutput = true,
             RedirectStandardError = true,

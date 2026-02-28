@@ -16,10 +16,7 @@ public sealed class SerializedWorldEntitySpawner : IWorldEntitySpawner, IWorldEn
     /// <summary>
     /// Contains the only types we allow the server to instantiate on clients (for security concerns)
     /// </summary>
-    private readonly HashSet<Type> typesWhitelist = new()
-    {
-        typeof(Light), typeof(DisableBeforeExplosion), typeof(BoxCollider), typeof(SphereCollider)
-    };
+    private readonly HashSet<Type> typesWhitelist = [typeof(Light), typeof(DisableBeforeExplosion), typeof(BoxCollider), typeof(SphereCollider)];
 
     public SerializedWorldEntitySpawner()
     {

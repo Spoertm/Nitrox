@@ -77,8 +77,5 @@ internal static class SimulationWhitelist
     ///     We differentiate the entities which should be simulated because of one of their behaviour (ie for utility)
     ///     from those are simulated for their movements.
     /// </summary>
-    public static readonly HashSet<NitroxTechType> UtilityWhitelist = new()
-    {
-        TechType.CrashHome.ToDto()
-    };
+    public static readonly HashSet<NitroxTechType> UtilityWhitelist = [TechType.CrashHome.ToDto()];
 }

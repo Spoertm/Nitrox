@@ -112,7 +112,7 @@ public sealed class NitroxId : ISerializable, IEquatable<NitroxId>, IComparable<
     }
 
     [IgnoredMember]
-    private static int[] byteOrder = { 15, 14, 13, 12, 11, 10, 9, 8, 6, 7, 4, 5, 0, 1, 2, 3 };
+    private static int[] byteOrder = [15, 14, 13, 12, 11, 10, 9, 8, 6, 7, 4, 5, 0, 1, 2, 3];
 
     public NitroxId Increment()
     {

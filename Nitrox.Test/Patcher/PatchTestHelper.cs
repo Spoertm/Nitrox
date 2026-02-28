@@ -10,7 +10,7 @@ namespace NitroxTest.Patcher
     {
         public static List<CodeInstruction> GenerateDummyInstructions(int count)
         {
-            List<CodeInstruction> instructions = new List<CodeInstruction>();
+            List<CodeInstruction> instructions = [];
             for (int i = 0; i < count; i++)
             {
                 instructions.Add(new CodeInstruction(OpCodes.Nop));
@@ -67,12 +67,12 @@ namespace NitroxTest.Patcher
         /// </remarks>
         public static List<CodeInstruction> Clone(this IEnumerable<CodeInstruction> instructions)
         {
-            return new List<CodeInstruction>(instructions.Select(il => new CodeInstruction(il)));
+            return [..instructions.Select(il => new CodeInstruction(il))];
         }
 
         private static ReadOnlyCollection<CodeInstruction> GetInstructionsFromIL(IEnumerable<KeyValuePair<OpCode, object>> il)
         {
-            List<CodeInstruction> result = new List<CodeInstruction>();
+            List<CodeInstruction> result = [];
             foreach (KeyValuePair<OpCode, object> instruction in il)
             {
                 result.Add(new CodeInstruction(instruction.Key, instruction.Value));

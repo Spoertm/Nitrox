@@ -8,7 +8,7 @@
         [TestInitialize]
         public void Setup()
         {
-            list = new ThreadSafeList<string>();
+            list = [];
             for (int i = 0; i < 10; i++)
             {
                 list.Add($"test {i}");
@@ -55,7 +55,7 @@
             int iterations = 500000;
 
             ThreadSafeList<int> comeGetMe = new(iterations);
-            List<long> countsRead = new();
+            List<long> countsRead = [];
             long addCount = 0;
 
             Random r = new Random();
@@ -107,10 +107,7 @@
         [TestMethod]
         public void IterateAndAdd()
         {
-            ThreadSafeList<int> nums = new()
-            {
-                1,2,3,4,5
-            };
+            ThreadSafeList<int> nums = [1, 2, 3, 4, 5];
 
             foreach (int num in nums)
             {

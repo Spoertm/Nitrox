@@ -29,11 +29,10 @@ public sealed partial class ItemsContainer_DestroyItem_Patch : NitroxPatch, IDyn
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions)
     {
         // After the call to RemoveItem (and storing the return value) we want to call our callback method
-        return instructions.InsertAfterMarker(removeItemPattern, "NotifyServer", new CodeInstruction[]
-        {
+        return instructions.InsertAfterMarker(removeItemPattern, "NotifyServer", [
             new(Ldloc_0),
             new(Call, Reflect.Method(() => Callback(default)))
-        });
+        ]);
     }
 
     private static void Callback(Pickupable pickupable)

@@ -92,7 +92,7 @@ public static class NitroxConfig
                         PropertyInfo prop => (prop.PropertyType, prop.GetValue(config)),
                         _ => (typeof(string), "")
                     };
-                    Log.Warn($@"Property ""({logData.type.Name}) {member.Name}"" has an invalid value {StringifyValue(pair.Value)}. Using default value: {StringifyValue(logData.value)}");
+                    Log.Warn($"""Property "({logData.type.Name}) {member.Name}" has an invalid value {StringifyValue(pair.Value)}. Using default value: {StringifyValue(logData.value)}""");
                 }
             }
 
@@ -211,8 +211,12 @@ public static class NitroxConfig
 
     private static string? StringifyValue(object? value) => value switch
     {
-        string _ => $@"""{value}""",
-        null => @"""""",
+        string _ => $"""
+                     "{value}"
+                     """,
+        null => """
+                ""
+                """,
         _ => value.ToString()
     };
 

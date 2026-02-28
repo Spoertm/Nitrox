@@ -157,7 +157,9 @@ internal sealed record CommandHandlerEntry
         int lastIndexOf = name.LastIndexOf("Command", StringComparison.Ordinal);
         if (lastIndexOf == -1)
         {
-            throw new ArgumentOutOfRangeException(nameof(owner), @"Expected command type name to end with ""Command""");
+            throw new ArgumentOutOfRangeException(nameof(owner), """
+                                                                 Expected command type name to end with "Command"
+                                                                 """);
         }
         return name[.. lastIndexOf].ToLowerInvariant();
     }

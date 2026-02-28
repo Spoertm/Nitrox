@@ -18,12 +18,12 @@ public sealed partial class Constructable_DeconstructAsync_Patch : NitroxPatch, 
         { InstructionPattern.Call(nameof(Constructable), nameof(Constructable.UpdateMaterial)), "InsertDestruction" }
     };
 
-    public static readonly List<CodeInstruction> InstructionsToAdd = new()
-    {
+    public static readonly List<CodeInstruction> InstructionsToAdd =
+    [
         new(Ldloc_1),
         new(Ldc_I4_0), // False for "constructing"
         new(Call, Reflect.Method(() => Constructable_Construct_Patch.ConstructionAmountModified(default, default)))
-    };
+    ];
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions) =>
         instructions.Transform(InstructionsPattern, (label, instruction) =>

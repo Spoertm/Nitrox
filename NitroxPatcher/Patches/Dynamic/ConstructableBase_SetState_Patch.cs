@@ -29,11 +29,11 @@ public sealed partial class ConstructableBase_SetState_Patch : NitroxPatch, IDyn
         { Brfalse, "Insert" }
     };
 
-    public static readonly List<CodeInstruction> InstructionsToAdd = new()
-    {
+    public static readonly List<CodeInstruction> InstructionsToAdd =
+    [
         TARGET_METHOD.Ldloc<GameObject>(),
         new(Call, Reflect.Method(() => BeforeDestroy(default)))
-    };
+    ];
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions) =>
         instructions.Transform(InstructionPattern, (label, instruction) =>

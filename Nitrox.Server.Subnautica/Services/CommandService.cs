@@ -19,7 +19,9 @@ internal sealed partial class CommandService(CommandRegistry registry, ILogger<C
     private readonly Channel<Task> runningCommands = Channel.CreateUnbounded<Task>();
     private Task commandWaiterTask;
 
-    [GeneratedRegex(@"""(?:[^""\\]|\\.)*""|\S+", RegexOptions.NonBacktracking | RegexOptions.ExplicitCapture)]
+    [GeneratedRegex("""
+                    "(?:[^"\\]|\\.)*"|\S+
+                    """, RegexOptions.NonBacktracking | RegexOptions.ExplicitCapture)]
     private static partial Regex ArgumentsRegex { get; }
 
     public bool ExecuteCommand(ReadOnlySpan<char> inputText, ICommandContext context, out Task<bool>? commandTask)

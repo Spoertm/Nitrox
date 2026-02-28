@@ -251,7 +251,7 @@ namespace NitroxClient.GameLogic
 
         public IEnumerator SpawnEntityAsync(Entity entity, bool forceRespawn = false, bool skipFrames = false)
         {
-            return SpawnBatchAsync(new() { entity }, forceRespawn, skipFrames);
+            return SpawnBatchAsync([entity], forceRespawn, skipFrames);
         }
 
         public void CleanupExistingEntities(List<Entity> dirtyEntities)
@@ -309,7 +309,7 @@ namespace NitroxClient.GameLogic
         {
             if (!pendingParentEntitiesByParentId.TryGetValue(entity.ParentId, out List<Entity> pendingEntities))
             {
-                pendingEntities = new List<Entity>();
+                pendingEntities = [];
                 pendingParentEntitiesByParentId[entity.ParentId] = pendingEntities;
             }
 

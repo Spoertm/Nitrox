@@ -25,7 +25,7 @@ namespace Nitrox.Model.DataStructures
 
         public ThreadSafeSet()
         {
-            set = new HashSet<T>();
+            set = [];
         }
 
         public ThreadSafeSet(HashSet<T> set, bool createCopy = true)
@@ -203,7 +203,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return new List<T>(set);
+                return [..set];
             }
         }
 
@@ -241,7 +241,7 @@ namespace Nitrox.Model.DataStructures
 
         private static HashSet<T> CreateCopy(ISet<T> data)
         {
-            return new HashSet<T>(data);
+            return [..data];
         }
     }
 }

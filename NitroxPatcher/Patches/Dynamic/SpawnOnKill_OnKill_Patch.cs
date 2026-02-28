@@ -28,12 +28,11 @@ public sealed partial class SpawnOnKill_OnKill_Patch : NitroxPatch, IDynamicPatc
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions)
     {
-        return instructions.InsertAfterMarker(spawnInstanceOnKillPattern, "DropOnKillInstance", new CodeInstruction[]
-        {
+        return instructions.InsertAfterMarker(spawnInstanceOnKillPattern, "DropOnKillInstance", [
             new(Ldarg_0),
             new(Ldloc_0),
             new(Call, ((Action<SpawnOnKill, GameObject>)Callback).Method)
-        });
+        ]);
     }
 
     private static void Callback(SpawnOnKill spawnOnKill, GameObject spawningItem)

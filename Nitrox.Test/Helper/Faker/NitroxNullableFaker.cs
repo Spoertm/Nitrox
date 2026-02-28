@@ -10,14 +10,14 @@ public sealed class NitroxNullableFaker : NitroxFaker, INitroxFaker
         generateAction = (typeTree) =>
         {
             MethodInfo castMethod = CastMethodBase.MakeGenericMethod(OutputType);
-            object castedObject = castMethod.Invoke(null, new[] { GetOrCreateFaker(OutputType).GenerateUnsafe(typeTree) });
+            object castedObject = castMethod.Invoke(null, [GetOrCreateFaker(OutputType).GenerateUnsafe(typeTree)]);
 
             Type nullableType = typeof(Nullable<>).MakeGenericType(OutputType);
             return Activator.CreateInstance(nullableType, castedObject);
         };
     }
 
-    public INitroxFaker[] GetSubFakers() => new[] { GetOrCreateFaker(OutputType) };
+    public INitroxFaker[] GetSubFakers() => [GetOrCreateFaker(OutputType)];
 
     public object GenerateUnsafe(HashSet<Type> typeTree) => generateAction.Invoke(typeTree);
 }

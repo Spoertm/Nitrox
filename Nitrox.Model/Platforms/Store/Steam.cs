@@ -60,7 +60,7 @@ public sealed class Steam : IGamePlatform
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
             launchExe = "/bin/sh";
-            launchArgs = $@"-c ""nohup '{exe}' {launchArgs}"" &";
+            launchArgs = $"""-c "nohup '{exe}' {launchArgs}" &""";
         }
         Stopwatch steamReadyStopwatch = Stopwatch.StartNew();
         ProcessEx process = ProcessEx.From(new ProcessStartInfo
@@ -263,7 +263,7 @@ public sealed class Steam : IGamePlatform
         // Start game through Steam so Steam Overlay loads properly. TODO: HACK - this way should be removed if we add a call SteamAPI_Init before Unity Engine shows graphics, see https://partner.steamgames.com/doc/features/overlay.
         if (!skipSteam)
         {
-            args = $@"-applaunch {steamAppId} --nitrox ""{NitroxUser.LauncherPath}"" {args}";
+            args = $"""-applaunch {steamAppId} --nitrox "{NitroxUser.LauncherPath}" {args}""";
             if (bigPictureMode)
             {
                 // Keep Steam client minimized but active in background to maintain overlay functionality
@@ -370,7 +370,9 @@ public sealed class Steam : IGamePlatform
             string content = File.ReadAllText(libraryFoldersPath);
 
             // Regex to match library folder entries
-            Regex folderRegex = new(@"""(\d+)""\s*\{[^}]*""path""\s*""([^""]+)""[^}]*""apps""\s*\{([^}]+)\}", RegexOptions.Singleline);
+            Regex folderRegex = new("""
+                                    "(\d+)"\s*\{[^}]*"path"\s*"([^"]+)"[^}]*"apps"\s*\{([^}]+)\}
+                                    """, RegexOptions.Singleline);
             MatchCollection matches = folderRegex.Matches(content);
 
             foreach (Match match in matches)
@@ -379,7 +381,9 @@ public sealed class Steam : IGamePlatform
                 string apps = match.Groups[3].Value;
 
                 // Check if the gameId exists in the apps section
-                if (Regex.IsMatch(apps, $@"""{gameId}""\s*""[^""]+"""))
+                if (Regex.IsMatch(apps, $"""
+                                         "{gameId}"\s*"[^"]+"
+                                         """))
                 {
                     return path;
                 }
@@ -394,7 +398,9 @@ public sealed class Steam : IGamePlatform
             string content = File.ReadAllText(libraryFoldersPath);
 
             // Regex to match library folder entries
-            Regex folderRegex = new(@"""(\d+)""\s*\{[^}]*""path""\s*""([^""]+)""", RegexOptions.Singleline);
+            Regex folderRegex = new("""
+                                    "(\d+)"\s*\{[^}]*"path"\s*"([^"]+)"
+                                    """, RegexOptions.Singleline);
             MatchCollection matches = folderRegex.Matches(content);
 
             List<string> libraryPaths = [];
@@ -421,12 +427,16 @@ public sealed class Steam : IGamePlatform
             try
             {
                 string fileContent = File.ReadAllText(configVdfFile);
-                Match compatToolMatch = Regex.Match(fileContent, @"""CompatToolMapping""\s*{((?:\s*""\d+""[^{]+[^}]+})*)\s*}");
+                Match compatToolMatch = Regex.Match(fileContent, """
+                                                                 "CompatToolMapping"\s*{((?:\s*"\d+"[^{]+[^}]+})*)\s*}
+                                                                 """);
 
                 if (compatToolMatch.Success)
                 {
                     string compatToolMapping = compatToolMatch.Groups[1].Value;
-                    string appIdPattern = $@"""{appId}""[^{{]*\{{[^}}]*""name""\s*""([^""]+)""";
+                    string appIdPattern = $$"""
+                                            "{{appId}}"[^{]*\{[^}]*"name"\s*"([^"]+)"
+                                            """;
                     Match appIdMatch = Regex.Match(compatToolMapping, appIdPattern);
 
                     if (appIdMatch.Success)

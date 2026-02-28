@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.InteropServices;
-using Nitrox.Model.Platforms.OS.Windows.Internal;
 using static Nitrox.Model.Platforms.OS.Windows.Internal.Win32Native;
 
 namespace Nitrox.Model.Platforms.OS.Windows;

@@ -8,7 +8,7 @@ public class BaseSerializationHelperTest
     [TestMethod]
     public void TestBytesRestoring()
     {
-        List<int> lengths = new() { 10000, 100000, 300000, 500000 };
+        List<int> lengths = [10000, 100000, 300000, 500000];
         foreach (int length in lengths)
         {
             TestSerialization(GenerateRealisticBytes(length));
@@ -18,7 +18,7 @@ public class BaseSerializationHelperTest
     [TestMethod]
     public void TestAllZeroBytes()
     {
-        List<int> lengths = new() { 10000, 100000, 300000, 500000 };
+        List<int> lengths = [10000, 100000, 300000, 500000];
         foreach (int length in lengths)
         {
             byte[] data = new byte[length];
@@ -29,7 +29,7 @@ public class BaseSerializationHelperTest
     [TestMethod]
     public void TestAllMaxBytes()
     {
-        List<int> lengths = new() { 10000, 100000, 300000, 500000 };
+        List<int> lengths = [10000, 100000, 300000, 500000];
         foreach (int length in lengths)
         {
             byte[] data = new byte[length];

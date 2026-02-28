@@ -10,10 +10,8 @@ namespace NitroxClient.Helpers
 {
     public sealed class NitroxProtobufSerializer
     {
-        public readonly RuntimeTypeModel model;
+        private readonly RuntimeTypeModel model;
         public readonly Dictionary<Type, int> NitroxTypes = [];
-
-        private RuntimeTypeModel Model => model;
 
         public NitroxProtobufSerializer(params string[] assemblies)
         {
@@ -37,7 +35,7 @@ namespace NitroxClient.Helpers
 
         private void AddType(Type type)
         {
-            // As of the latest protobuf update they will automatically register detected attributes.
+            // As of the latest protobuf update, they will automatically register detected attributes.
             model.Add(type, true);
             ProtobufSerializerPrecompiled.knownTypes[type] = int.MaxValue; // UWE precompiled is going to pass everything to us
             NitroxTypes[type] = int.MaxValue;
@@ -106,7 +104,7 @@ namespace NitroxClient.Helpers
 
                     if (attributeType.ToString().Contains("ProtoMemberAttribute"))
                     {
-                        int tag = (int)attributeType.GetProperty("Tag", BindingFlags.Public | BindingFlags.Instance).GetValue(customAttribute, new object[] { });
+                        int tag = (int)attributeType.GetProperty("Tag", BindingFlags.Public | BindingFlags.Instance).GetValue(customAttribute, []);
                         model[type].Add(tag, property.Name);
                     }
                 }

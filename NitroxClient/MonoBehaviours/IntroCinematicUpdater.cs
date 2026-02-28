@@ -37,17 +37,17 @@ public sealed class IntroCinematicUpdater : MonoBehaviour
         Transform seatLeft = modelRoot.Find("life_pod_seat_01_left_damaged_jnt1");
         Transform seatRight = modelRoot.Find("life_pod_seat_01_right_damaged_jnt1");
 
-        seatPartsLeft = new[]
-        {
+        seatPartsLeft =
+        [
             seatLeft.Find("life_pod_seat_01_left_damaged_jnt2"),
             seatLeft.Find("life_pod_seat_01_left_damaged_jnt3")
-        };
+        ];
 
-        seatPartsRight = new[]
-        {
+        seatPartsRight =
+        [
             seatRight.Find("life_pod_seat_01_right_damaged_jnt2"),
             seatRight.Find("life_pod_seat_01_right_damaged_jnt3")
-        };
+        ];
 
         seatArmRestLeft = modelRoot.Find("life_pod_seat_01_left_damaged_jnt4/life_pod_seat_01_left_damaged_jnt5");
         seatArmRestRight = modelRoot.Find("life_pod_seat_01_right_damaged_jnt4/life_pod_seat_01_right_damaged_jnt5");

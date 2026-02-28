@@ -25,11 +25,10 @@ public sealed partial class BreakableResource_SpawnResourceFromPrefab_Patch : Ni
 
     public static IEnumerable<CodeInstruction> Transpiler(MethodBase original, IEnumerable<CodeInstruction> instructions)
     {
-        return instructions.InsertAfterMarker(SpawnResFromPrefPattern, "DropItemInstance", new CodeInstruction[]
-        {
+        return instructions.InsertAfterMarker(SpawnResFromPrefPattern, "DropItemInstance", [
             new(Ldloc_1),
             new(Call, ((Action<GameObject>)Callback).Method)
-        });
+        ]);
     }
 
     private static void Callback(GameObject __instance)

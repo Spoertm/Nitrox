@@ -33,12 +33,12 @@ public sealed class GrayscaleControl : Decorator
     private class GrayscaleBehindRenderOperation : ICustomDrawOperation
     {
         private static readonly float[] grayscaleColorFilterMatrix =
-        {
+        [
             0.21f, 0.72f, 0.07f, 0, 0,
             0.21f, 0.72f, 0.07f, 0, 0,
             0.21f, 0.72f, 0.07f, 0, 0,
             0, 0, 0, 1, 0
-        };
+        ];
 
         private readonly byte opacity;
         private readonly Rect bounds;

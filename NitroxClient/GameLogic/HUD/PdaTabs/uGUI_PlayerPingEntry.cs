@@ -173,7 +173,7 @@ public sealed class uGUI_PlayerPingEntry : uGUI_PingEntry
     public void UpdateButtonsPosition()
     {
         float OFFSET = 0f;
-        List<GameObject> buttonsToAlign = new() { MuteObject, KickObject, TeleportToObject, TeleportToMeObject };
+        List<GameObject> buttonsToAlign = [MuteObject, KickObject, TeleportToObject, TeleportToMeObject];
         foreach (GameObject buttonObject in buttonsToAlign)
         {
             RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();

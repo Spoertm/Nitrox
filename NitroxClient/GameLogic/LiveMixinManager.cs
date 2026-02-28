@@ -8,10 +8,7 @@ namespace NitroxClient.GameLogic;
 public sealed class LiveMixinManager
 {
     private readonly SimulationOwnership simulationOwnership;
-    private static readonly HashSet<string> broadcastDeathClassIdWhitelist = new()
-    {
-        "7d307502-46b7-4f86-afb0-65fe8867f893" // Crash (fish)
-    };
+    private static readonly HashSet<string> broadcastDeathClassIdWhitelist = ["7d307502-46b7-4f86-afb0-65fe8867f893"];
 
     public bool IsRemoteHealthChanging { get; private set; }
 
@@ -22,7 +19,7 @@ public sealed class LiveMixinManager
 
     // Currently, we only apply live mixin updates to vehicles as there is more work to implement
     // damage for regular entities like fish.
-    public static bool IsWhitelistedUpdateType(LiveMixin entity)
+    public bool IsWhitelistedUpdateType(LiveMixin entity)
     {
         Vehicle vehicle = entity.GetComponent<Vehicle>();
         SubRoot subRoot = entity.GetComponent<SubRoot>();
@@ -30,7 +27,7 @@ public sealed class LiveMixinManager
         return (vehicle || (subRoot && subRoot.isCyclops));
     }
     
-    public static bool ShouldBroadcastDeath(LiveMixin liveMixin)
+    public bool ShouldBroadcastDeath(LiveMixin liveMixin)
     {
         if (liveMixin.TryGetComponent(out UniqueIdentifier uniqueIdentifier) && !string.IsNullOrEmpty(uniqueIdentifier.classId))
         {

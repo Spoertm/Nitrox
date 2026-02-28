@@ -12,14 +12,14 @@ public sealed class NitroxOptionalFaker : NitroxFaker, INitroxFaker
         generateAction = (typeTree) =>
         {
             MethodInfo castMethod = CastMethodBase.MakeGenericMethod(OutputType);
-            object castedObject = castMethod.Invoke(null, new[] { GetOrCreateFaker(OutputType).GenerateUnsafe(typeTree) });
+            object castedObject = castMethod.Invoke(null, [GetOrCreateFaker(OutputType).GenerateUnsafe(typeTree)]);
 
             Type optionalType = typeof(Optional<>).MakeGenericType(OutputType);
-            return Activator.CreateInstance(optionalType, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.CreateInstance, null, new[] { castedObject }, null);
+            return Activator.CreateInstance(optionalType, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.CreateInstance, null, [castedObject], null);
         };
     }
 
-    public INitroxFaker[] GetSubFakers() => new[] { GetOrCreateFaker(OutputType) };
+    public INitroxFaker[] GetSubFakers() => [GetOrCreateFaker(OutputType)];
 
     public object GenerateUnsafe(HashSet<Type> typeTree) => generateAction.Invoke(typeTree);
 }

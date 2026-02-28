@@ -28,15 +28,15 @@ public sealed class PlayerModelManager
 
     public void RegisterEquipmentVisibilityHandler(GameObject playerModel)
     {
-        equipmentVisibilityHandlers = new List<IEquipmentVisibilityHandler>
-        {
+        equipmentVisibilityHandlers =
+        [
             new DiveSuitVisibilityHandler(playerModel),
             new ScubaSuitVisibilityHandler(playerModel),
             new FinsVisibilityHandler(playerModel),
             new RadiationSuitVisibilityHandler(playerModel),
             new ReinforcedSuitVisibilityHandler(playerModel),
             new StillSuitVisibilityHandler(playerModel)
-        };
+        ];
     }
 
     public void UpdateEquipmentVisibility(ReadOnlyCollection<TechType> currentEquipment)

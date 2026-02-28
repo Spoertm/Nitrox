@@ -90,7 +90,7 @@ public class SceneDebugger : BaseDebugger
         skin.SetCustomStyle("boxHighlighted", skin.box, s =>
         {
             Texture2D result = new(1, 1);
-            result.SetPixels(new[] { new Color(1f, 0.9f, 0f, 0.25f) });
+            result.SetPixels([new Color(1f, 0.9f, 0f, 0.25f)]);
             result.Apply();
             s.normal.background = result;
         });
@@ -177,7 +177,7 @@ public class SceneDebugger : BaseDebugger
             {
                 using GUILayout.ScrollViewScope scroll = new(hierarchyScrollPos);
                 hierarchyScrollPos = scroll.scrollPosition;
-                List<GameObject> showObjects = new();
+                List<GameObject> showObjects = [];
                 if (!SelectedObject)
                 {
                     showObjects = selectedScene.GetRootGameObjects().ToList();
@@ -454,7 +454,7 @@ public class SceneDebugger : BaseDebugger
 
                     if (GUILayout.Button("Invoke", GUILayout.MaxWidth(150)))
                     {
-                        object result = method.Invoke(method.IsStatic ? null : monoBehaviour, Array.Empty<object>());
+                        object result = method.Invoke(method.IsStatic ? null : monoBehaviour, []);
                         Log.InGame($"Invoked method {method.Name}");
 
                         if (method.ReturnType != typeof(void))

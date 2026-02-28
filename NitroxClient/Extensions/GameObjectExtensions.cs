@@ -64,7 +64,9 @@ public static class GameObjectExtensions
 
         if (!child)
         {
-            throw new ArgumentNullException($@"{tf} does not contain ""{name}""");
+            throw new ArgumentNullException($"""
+                                             {tf} does not contain "{name}"
+                                             """);
         }
 
         return child;

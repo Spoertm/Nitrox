@@ -39,9 +39,9 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities
         {
             if (exceptGlobalRoot)
             {
-                return new(entitiesById.Values.Where(entity => entity is not GlobalRootEntity));
+                return [..entitiesById.Values.Where(entity => entity is not GlobalRootEntity)];
             }
-            return new List<Entity>(entitiesById.Values);            
+            return [..entitiesById.Values];            
         }
 
         public List<Entity> GetEntities(List<NitroxId> ids)

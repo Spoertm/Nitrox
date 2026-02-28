@@ -56,7 +56,7 @@ namespace Nitrox.Model.DataStructures
 
         public ThreadSafeList()
         {
-            list = new List<T>();
+            list = [];
         }
 
         public ThreadSafeList(int initialCapacity)
@@ -170,7 +170,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return new List<T>(list);
+                return [..list];
             }
         }
 
@@ -247,7 +247,7 @@ namespace Nitrox.Model.DataStructures
 
         private static List<T> CreateCopy(IEnumerable<T> data)
         {
-            return new List<T>(data);
+            return [..data];
         }
 
         IEnumerator IEnumerable.GetEnumerator()

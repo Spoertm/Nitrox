@@ -66,7 +66,7 @@ public sealed class NitroxSettingsManager
         }
         else
         {
-            NitroxSettings.Add(heading, new List<Setting> { setting });
+            NitroxSettings.Add(heading, [setting]);
         }
     }
 

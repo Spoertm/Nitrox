@@ -13,18 +13,12 @@ namespace Nitrox.Model.Subnautica.Packets
 
         public SimulationOwnershipChange(NitroxId id, SessionId owningSessionId, SimulationLockType lockType, bool changesPosition = false)
         {
-            Entities = new List<SimulatedEntity>
-            {
-                new(id, owningSessionId, changesPosition, lockType)
-            };
+            Entities = [new(id, owningSessionId, changesPosition, lockType)];
         }
 
         public SimulationOwnershipChange(SimulatedEntity entity)
         {
-            Entities = new List<SimulatedEntity>
-            {
-                entity
-            };
+            Entities = [entity];
         }
 
         public SimulationOwnershipChange(List<SimulatedEntity> entities)

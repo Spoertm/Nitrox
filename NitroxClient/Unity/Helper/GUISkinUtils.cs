@@ -125,10 +125,7 @@ namespace NitroxClient.Unity.Helper
             else
             {
                 // Increase array size and add style.
-                List<GUIStyle> styles = new List<GUIStyle>(skin.customStyles)
-                {
-                    style
-                };
+                List<GUIStyle> styles = [..skin.customStyles, style];
                 skin.customStyles = styles.ToArray();
             }
         }

@@ -35,7 +35,7 @@ sealed class CellVisibilityChangedProcessor(EntitySimulation entitySimulation, W
         // Simulation update must be broadcasted before the entities are spawned
         if (totalSimulationChanges.Count > 0)
         {
-            entitySimulation.BroadcastSimulationChanges(new(totalSimulationChanges));
+            entitySimulation.BroadcastSimulationChanges([..totalSimulationChanges]);
         }
 
         // We send this data whether it's empty because the client needs to know about it (see Terrain)

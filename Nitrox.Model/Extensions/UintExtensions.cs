@@ -7,7 +7,7 @@ public static class UintExtensions
     public static string AsByteUnitText(this uint byteSize)
     {
         // Uint can't go past 4GiB, so we don't need to worry about overflow.
-        string[] suf = { "B", "KiB", "MiB", "GiB" };
+        string[] suf = ["B", "KiB", "MiB", "GiB"];
         if (byteSize == 0)
         {
             return $"0{suf[0]}";
