@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Configuration.Providers;
 
 internal sealed class NitroxConfigurationProvider(NitroxConfigurationSource source) : FileConfigurationProvider(source)
 {
-    private readonly NitroxConfigurationSource source = source;
-
     public override void Load(Stream stream)
     {
         if (!string.IsNullOrWhiteSpace(source.Section))

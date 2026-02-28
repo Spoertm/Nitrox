@@ -7,8 +7,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class FMODAssetProcessor(FMODWhitelist fmodWhitelist) : IClientPacketProcessor<FMODAssetPacket>
 {
-    private readonly FMODWhitelist fmodWhitelist = fmodWhitelist;
-
     public Task Process(ClientProcessorContext context, FMODAssetPacket packet)
     {
         if (!fmodWhitelist.TryGetSoundData(packet.AssetPath, out SoundData soundData))

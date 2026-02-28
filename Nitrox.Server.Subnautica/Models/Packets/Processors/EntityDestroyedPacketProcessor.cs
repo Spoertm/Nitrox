@@ -8,10 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class EntityDestroyedPacketProcessor(PlayerManager playerManager, EntitySimulation entitySimulation, WorldEntityManager worldEntityManager) : IAuthPacketProcessor<EntityDestroyed>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, EntityDestroyed packet)
     {
         entitySimulation.EntityDestroyed(packet.Id);

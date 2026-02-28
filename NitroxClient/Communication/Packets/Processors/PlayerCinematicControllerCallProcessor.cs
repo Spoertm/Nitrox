@@ -11,8 +11,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class PlayerCinematicControllerCallProcessor(PlayerManager playerManager) : IClientPacketProcessor<PlayerCinematicControllerCall>
 {
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, PlayerCinematicControllerCall packet)
     {
         if (!NitroxEntity.TryGetObjectFrom(packet.ControllerID, out GameObject entity))

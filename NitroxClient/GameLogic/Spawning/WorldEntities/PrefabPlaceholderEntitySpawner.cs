@@ -27,7 +27,7 @@ public sealed class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorld
             yield break;
         }
 
-        PrefabPlaceholderEntitySpawner.SetupObject(entity, result.value.Value);
+        SetupObject(entity, result.value.Value);
     }
 
     public bool SpawnsOwnChildren() => false;
@@ -42,23 +42,13 @@ public sealed class PrefabPlaceholderEntitySpawner : IWorldEntitySpawner, IWorld
         if (!defaultEntitySpawner.SpawnSync(entity, placeholder.transform.parent.gameObject, cellRoot, result))
         {
             return false;
-
-<<<<<<< TODO: Unmerged change from project 'NitroxClient', Before:
-        }
-        
-        SetupObject(entity, result.value.Value);
-=======
-        }
-
-        PrefabPlaceholderEntitySpawner.SetupObject(entity, result.value.Value);
->>>>>>> After
         }
 
         SetupObject(entity, result.value.Value);
         return true;
     }
 
-    private bool VerifyCanSpawnOrError(WorldEntity entity, Optional<GameObject> parent, out PrefabPlaceholder placeholder)
+    private static bool VerifyCanSpawnOrError(WorldEntity entity, Optional<GameObject> parent, out PrefabPlaceholder placeholder)
     {
         if (entity is PrefabPlaceholderEntity prefabEntity &&
             parent.Value && parent.Value.TryGetComponent(out PrefabPlaceholdersGroup group))

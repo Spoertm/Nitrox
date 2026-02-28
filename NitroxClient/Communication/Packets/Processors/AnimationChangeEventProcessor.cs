@@ -12,8 +12,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class AnimationChangeEventProcessor(PlayerManager remotePlayerManager) : IClientPacketProcessor<AnimationChangeEvent>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-
     public Task Process(ClientProcessorContext context, AnimationChangeEvent packet)
     {
         // Possible for this to be sent during initial sync when the RemotePlayer doesn't exist yet

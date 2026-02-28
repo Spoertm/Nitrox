@@ -7,8 +7,8 @@ namespace NitroxPatcher.Patches.Dynamic;
 
 public sealed class CyclopsDestructionEvent_OnConsoleCommand_Patch : NitroxPatch, IDynamicPatch
 {
-    private static readonly MethodInfo TARGET_METHOD_RESTORE = Reflect.Method((CyclopsDestructionEvent t) => t.OnConsoleCommand_restorecyclops(default));
-    private static readonly MethodInfo TARGET_METHOD_DESTROY = Reflect.Method((CyclopsDestructionEvent t) => t.OnConsoleCommand_destroycyclops(default));
+    private static readonly MethodInfo TARGET_METHOD_RESTORE = Method((CyclopsDestructionEvent t) => t.OnConsoleCommand_restorecyclops(default));
+    private static readonly MethodInfo TARGET_METHOD_DESTROY = Method((CyclopsDestructionEvent t) => t.OnConsoleCommand_destroycyclops(default));
 
     public static bool PrefixRestore()
     {

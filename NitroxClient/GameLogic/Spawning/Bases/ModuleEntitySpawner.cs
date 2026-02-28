@@ -76,7 +76,7 @@ public sealed class ModuleEntitySpawner : EntitySpawner<ModuleEntity>
             prefab = prefabResult.Get();
         }
 
-        GameObject moduleObject = UnityEngine.Object.Instantiate(prefab);
+        GameObject moduleObject = Object.Instantiate(prefab);
         Transform moduleTransform = moduleObject.transform;
         moduleTransform.parent = parent;
         moduleTransform.localPosition = moduleEntity.Transform.LocalPosition.ToUnity();

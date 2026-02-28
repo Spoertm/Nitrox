@@ -9,8 +9,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class EscapePodChangedProcessor(PlayerManager remotePlayerManager) : IClientPacketProcessor<EscapePodChanged>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-
     public Task Process(ClientProcessorContext context, EscapePodChanged packet)
     {
         Optional<RemotePlayer> remotePlayer = remotePlayerManager.Find(packet.SessionId);

@@ -177,7 +177,7 @@ public abstract class FileSystem
         using ZipArchive zip = new(File.Create(outZipFullName), ZipArchiveMode.Create);
         foreach (string file in files)
         {
-            ZipArchiveEntry entry = zip.CreateEntry(FileSystem.MakeRelativePath(dir, file));
+            ZipArchiveEntry entry = zip.CreateEntry(MakeRelativePath(dir, file));
             using Stream sourceStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
             using Stream targetStream = entry.Open();
             sourceStream.CopyTo(targetStream);

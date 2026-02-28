@@ -12,8 +12,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.Debugging;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class LoadBatchCommand(BatchEntitySpawner batchEntitySpawner) : ICommandHandler<int, int, int>
 {
-    private readonly BatchEntitySpawner batchEntitySpawner = batchEntitySpawner;
-
     [Description("Loads entities at x y z")]
     public async Task Execute(ICommandContext context, int xCoordinate, int yCoordinate, int zCoordinate)
     {

@@ -11,7 +11,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 internal sealed class SimulationOwnershipResponseProcessor(IMultiplayerSession multiplayerSession, SimulationOwnership simulationOwnershipManager) : IClientPacketProcessor<SimulationOwnershipResponse>
 {
     private readonly IMultiplayerSession multiplayerSession = multiplayerSession;
-    private readonly SimulationOwnership simulationOwnershipManager = simulationOwnershipManager;
 
     public Task Process(ClientProcessorContext context, SimulationOwnershipResponse response)
     {
@@ -28,7 +27,7 @@ internal sealed class SimulationOwnershipResponseProcessor(IMultiplayerSession m
 
         if (response.LockAcquired)
         {
-            SimulationOwnershipResponseProcessor.RemoveRemoteController(response.Id);
+            RemoveRemoteController(response.Id);
         }
         return Task.CompletedTask;
     }

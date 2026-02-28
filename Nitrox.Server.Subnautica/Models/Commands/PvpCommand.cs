@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class PvpCommand(IOptions<SubnauticaServerOptions> options) : ICommandHandler<bool>
 {
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-
     [Description("Enables/Disables PvP")]
     public async Task Execute(ICommandContext context, bool state)
     {

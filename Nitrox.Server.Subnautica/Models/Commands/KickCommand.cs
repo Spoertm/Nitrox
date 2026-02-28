@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class KickCommand(IKickPlayer playerKicker) : ICommandHandler<Player, string>
 {
-    private readonly IKickPlayer playerKicker = playerKicker;
-
     [Description("Kicks a player from the server")]
     public async Task Execute(ICommandContext context, Player playerToKick, string reason = "")
     {

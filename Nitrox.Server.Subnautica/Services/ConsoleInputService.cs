@@ -11,11 +11,7 @@ namespace Nitrox.Server.Subnautica.Services;
 /// </summary>
 internal sealed class ConsoleInputService(CommandService commandService, IPacketSender packetSender, IHostApplicationLifetime appLifetime, ILogger<ConsoleInputService> logger) : BackgroundService
 {
-    private readonly IHostApplicationLifetime appLifetime = appLifetime;
-    private readonly CommandService commandService = commandService;
     private readonly CircularBuffer<string> inputHistory = new(1000);
-    private readonly ILogger<ConsoleInputService> logger = logger;
-    private readonly IPacketSender packetSender = packetSender;
     private int currentHistoryIndex;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

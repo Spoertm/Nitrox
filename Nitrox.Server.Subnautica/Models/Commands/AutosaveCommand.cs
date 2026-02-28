@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class AutoSaveCommand(IOptions<SubnauticaServerOptions> serverOptionsProvider) : ICommandHandler<bool>
 {
-    private readonly IOptions<SubnauticaServerOptions> serverOptionsProvider = serverOptionsProvider;
-
     [Description("Whether autosave should be on or off")]
     public async Task Execute(ICommandContext context, bool toggle)
     {

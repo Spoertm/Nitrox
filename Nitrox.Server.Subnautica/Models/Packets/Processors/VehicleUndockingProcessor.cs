@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class VehicleUndockingProcessor(EntityRegistry entityRegistry, ILogger<VehicleUndockingProcessor> logger) : IAuthPacketProcessor<VehicleUndocking>
 {
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly ILogger<VehicleUndockingProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, VehicleUndocking packet)
     {
         if (packet.UndockingStart)

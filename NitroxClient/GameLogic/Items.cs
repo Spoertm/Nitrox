@@ -96,7 +96,7 @@ public sealed class Items
     {
         techType ??= CraftData.GetTechType(gameObject);
         // there is a theoretical possibility of a stray remote tracking packet that re-adds the monobehavior, this is purely a safety call.
-        Items.RemoveAnyRemoteControl(gameObject);
+        RemoveAnyRemoteControl(gameObject);
 
         // WaterParkCreatures need at least one ManagedUpdate to run so their data is correctly refreshed (isMature and timeNextBreed)
         if (gameObject.TryGetComponent(out WaterParkCreature waterParkCreature))
@@ -163,7 +163,7 @@ public sealed class Items
     /// </summary>
     public void Placed(GameObject gameObject, TechType techType)
     {
-        Items.RemoveAnyRemoteControl(gameObject);
+        RemoveAnyRemoteControl(gameObject);
 
         NitroxId id = NitroxEntity.GetIdOrGenerateNew(gameObject);
         Optional<EntityMetadata> metadata = entityMetadataManager.Extract(gameObject);
@@ -239,7 +239,7 @@ public sealed class Items
         entities.MarkAsSpawned(inventoryItemEntity);
 
         // We want to remove any remote tracking immediately on pickup as it can cause weird behavior like holding a ghost item still in the world.
-        Items.RemoveAnyRemoteControl(gameObject);
+        RemoveAnyRemoteControl(gameObject);
         EntityPositionBroadcaster.StopWatchingEntity(inventoryItemEntity.Id);
 
         return inventoryItemEntity;

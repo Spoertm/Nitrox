@@ -10,8 +10,6 @@ namespace Nitrox.Server.Subnautica.Services;
 /// </summary>
 internal sealed class MemoryService(ILogger<MemoryService> logger) : QueuingBackgroundService<MemoryService.ServiceAction>
 {
-    private readonly ILogger<MemoryService> logger = logger;
-
     protected override async Task ExecuteQueuedActionAsync(ServiceAction action, CancellationToken stoppingToken)
     {
         switch (action)

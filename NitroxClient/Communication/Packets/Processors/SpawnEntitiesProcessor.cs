@@ -8,10 +8,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class SpawnEntitiesProcessor(Entities entities, SimulationOwnership simulationOwnership, Terrain terrain) : IClientPacketProcessor<SpawnEntities>
 {
-    private readonly Entities entities = entities;
-    private readonly SimulationOwnership simulationOwnership = simulationOwnership;
-    private readonly Terrain terrain = terrain;
-
     public Task Process(ClientProcessorContext context, SpawnEntities packet)
     {
         if (packet.ForceRespawn)

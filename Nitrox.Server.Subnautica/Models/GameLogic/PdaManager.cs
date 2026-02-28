@@ -13,8 +13,6 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic;
 /// </summary>
 internal sealed class PdaManager(ILogger<PdaManager> logger) : ISummarize
 {
-    private readonly ILogger<PdaManager> logger = logger;
-
     private readonly Lock pdaStateLock = new();
 
     /// <summary>

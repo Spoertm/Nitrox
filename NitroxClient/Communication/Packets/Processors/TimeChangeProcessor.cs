@@ -6,8 +6,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class TimeChangeProcessor(TimeManager timeManager) : IClientPacketProcessor<TimeChange>
 {
-    private readonly TimeManager timeManager = timeManager;
-
     public Task Process(ClientProcessorContext context, TimeChange timeChangePacket)
     {
         timeManager.ProcessUpdate(timeChangePacket);

@@ -13,12 +13,9 @@ internal sealed class SleepManager(IPacketSender packetSender, PlayerManager pla
     /// <summary>Time to skip when sleeping. From Bed.kSleepEndTime - Bed.kSleepStartTime (1188 - 792 = 396).</summary>
     private const float SLEEP_TIME_SKIP_SECONDS = 396f;
 
-    private readonly IPacketSender packetSender = packetSender;
-    private readonly TimeService timeService = timeService;
     private readonly ThreadSafeSet<SessionId> sessionIdsInBed = [];
     private bool isSleepInProgress;
     private Timer? sleepTimer;
-    private readonly PlayerManager playerManager = playerManager;
 
     public void PlayerEnteredBed(Player player)
     {

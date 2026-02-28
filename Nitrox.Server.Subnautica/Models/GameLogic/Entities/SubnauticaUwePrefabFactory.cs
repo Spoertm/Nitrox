@@ -5,9 +5,8 @@ using static LootDistributionData;
 
 namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities;
 
-internal sealed class SubnauticaUwePrefabFactory(EntityDistributionsResource distributionData) : IUwePrefabFactory
+internal sealed class SubnauticaUwePrefabFactory(EntityDistributionsResource resource) : IUwePrefabFactory
 {
-    private readonly EntityDistributionsResource resource = distributionData;
     private readonly Dictionary<string, List<UwePrefab>> cache = new();
     private readonly Lock cacheLock = new();
 

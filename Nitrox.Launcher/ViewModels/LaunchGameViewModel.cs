@@ -28,10 +28,6 @@ internal partial class LaunchGameViewModel(DialogService dialogService, ServerSe
 {
     public static Task<string>? LastFindSubnauticaTask;
     private static bool hasInstantLaunched;
-    private readonly DialogService dialogService = dialogService;
-    private readonly IKeyValueStore keyValueStore = keyValueStore;
-
-    private readonly ServerService serverService = serverService;
 
     [ObservableProperty]
     private Platform gamePlatform;

@@ -5,9 +5,7 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class RadioPlayPendingMessageProcessor(StoryManager storyManager, IPacketSender packetSender, ILogger<RadioPlayPendingMessageProcessor> logger) : IAuthPacketProcessor<RadioPlayPendingMessage>
 {
-    private readonly StoryManager storyManager = storyManager;
     private readonly IPacketSender packetSender = packetSender;
-    private readonly ILogger<RadioPlayPendingMessageProcessor> logger = logger;
 
     public async Task Process(AuthProcessorContext context, RadioPlayPendingMessage packet)
     {

@@ -15,10 +15,7 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed partial class CommandService(CommandRegistry registry, ILogger<CommandService> logger, ILoggerFactory loggerFactory) : IHostedLifecycleService, ICommandSubmit
 {
     private const int MAX_ARGS = 8;
-    private readonly ILogger<CommandService> logger = logger;
-    private readonly ILoggerFactory loggerFactory = loggerFactory;
 
-    private readonly CommandRegistry registry = registry;
     private readonly Channel<Task> runningCommands = Channel.CreateUnbounded<Task>();
     private Task commandWaiterTask;
 

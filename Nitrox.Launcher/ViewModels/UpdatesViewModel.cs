@@ -24,11 +24,6 @@ namespace Nitrox.Launcher.ViewModels;
 
 internal partial class UpdatesViewModel(NitroxWebsiteApiService nitroxWebsiteApi, DialogService dialogService, ServerService serverService, Func<Window> mainWindowProvider, BackupService backupService) : RoutableViewModelBase
 {
-    private readonly DialogService dialogService = dialogService;
-    private readonly ServerService serverService = serverService;
-    private readonly Func<Window> mainWindowProvider = mainWindowProvider;
-    private readonly NitroxWebsiteApiService nitroxWebsiteApi = nitroxWebsiteApi;
-    private readonly BackupService backupService = backupService;
     private CancellationTokenSource? downloadCts;
 
     [ObservableProperty]

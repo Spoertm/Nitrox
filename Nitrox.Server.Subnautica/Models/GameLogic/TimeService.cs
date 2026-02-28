@@ -31,12 +31,6 @@ internal sealed class TimeService(IPacketSender packetSender, NtpSyncer ntpSynce
     /// </summary>
     private const int NTP_RETRY_INTERVAL_SECONDS = 60;
 
-    private readonly ILogger<TimeService> logger = logger;
-    private readonly ILoggerFactory loggerFactory = loggerFactory;
-
-    private readonly NtpSyncer ntpSyncer = ntpSyncer;
-    private readonly IPacketSender packetSender = packetSender;
-
     private readonly PeriodicTimer resyncTimer = new(TimeSpan.FromSeconds(RESYNC_INTERVAL_SECONDS));
     private readonly Stopwatch stopWatch = new();
 

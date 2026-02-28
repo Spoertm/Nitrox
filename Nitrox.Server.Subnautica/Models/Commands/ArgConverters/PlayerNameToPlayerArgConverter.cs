@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.ArgConverters;
 /// </summary>
 internal sealed class PlayerNameToPlayerArgConverter(PlayerManager playerManager) : IArgConverter<string, Player>
 {
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task<ConvertResult> ConvertAsync(string playerName)
     {
         if (!playerManager.TryGetPlayerByName(playerName, out Player? player))

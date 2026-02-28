@@ -12,8 +12,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class TeleportCommand(IPacketSender packetSender) : ICommandHandler<int, int, int>
 {
-    private readonly IPacketSender packetSender = packetSender;
-
     [Description("Teleports you on a specific location")]
     public async Task Execute(ICommandContext context, [Description("x coordinate")] int x, [Description("y coordinate")] int y, [Description("z coordinate")] int z)
     {

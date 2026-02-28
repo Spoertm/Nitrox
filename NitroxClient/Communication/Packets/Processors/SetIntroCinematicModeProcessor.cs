@@ -7,10 +7,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class SetIntroCinematicModeProcessor(PlayerManager playerManager, PlayerCinematics playerCinematics, LocalPlayer localPlayer) : IClientPacketProcessor<SetIntroCinematicMode>
 {
-    private readonly LocalPlayer localPlayer = localPlayer;
-    private readonly PlayerCinematics playerCinematics = playerCinematics;
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, SetIntroCinematicMode packet)
     {
         if (localPlayer.SessionId == packet.SessionId)

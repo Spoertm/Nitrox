@@ -13,8 +13,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class VehicleDockingProcessor(Vehicles vehicles) : IClientPacketProcessor<VehicleDocking>
 {
-    private readonly Vehicles vehicles = vehicles;
-
     public Task Process(ClientProcessorContext context, VehicleDocking packet)
     {
         if (!NitroxEntity.TryGetComponentFrom(packet.VehicleId, out Vehicle vehicle))

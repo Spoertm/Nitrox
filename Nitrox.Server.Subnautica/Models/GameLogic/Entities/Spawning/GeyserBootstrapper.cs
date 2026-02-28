@@ -5,8 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities.Spawning;
 
 internal sealed class GeyserBootstrapper(XorRandom random) : IEntityBootstrapper
 {
-    private readonly XorRandom random = random;
-
     public void Prepare(ref WorldEntity entity, DeterministicGenerator deterministicBatchGenerator)
     {
         entity = new GeyserWorldEntity(entity.Transform, entity.Level, entity.ClassId,

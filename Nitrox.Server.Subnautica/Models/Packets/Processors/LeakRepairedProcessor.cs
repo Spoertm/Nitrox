@@ -5,8 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 sealed class LeakRepairedProcessor(WorldEntityManager worldEntityManager) : IAuthPacketProcessor<LeakRepaired>
 {
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, LeakRepaired packet)
     {
         if (worldEntityManager.TryDestroyEntity(packet.LeakId, out _))

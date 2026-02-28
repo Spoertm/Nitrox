@@ -22,8 +22,8 @@ public class CyclopsLightingMetadataProcessor : EntityMetadataProcessor<CyclopsL
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            CyclopsLightingMetadataProcessor.SetInternalLighting(lighting, metadata.InternalLightsOn);
-            CyclopsLightingMetadataProcessor.SetFloodLighting(lighting, metadata.FloodLightsOn);
+            SetInternalLighting(lighting, metadata.InternalLightsOn);
+            SetFloodLighting(lighting, metadata.FloodLightsOn);
         }
     }
 

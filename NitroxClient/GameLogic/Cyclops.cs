@@ -146,8 +146,8 @@ namespace NitroxClient.GameLogic
                 damageInfo = new CyclopsDamageInfoData(subId, dealerId, damage.originalDamage, damage.damage, damage.position.ToDto(), damage.type);
             }
 
-            int[] damagePointIndexes = Cyclops.GetActiveDamagePoints(subRoot).ToArray();
-            CyclopsFireData[] firePoints = Cyclops.GetActiveRoomFires(subRoot.GetComponent<SubFire>()).ToArray();
+            int[] damagePointIndexes = GetActiveDamagePoints(subRoot).ToArray();
+            CyclopsFireData[] firePoints = GetActiveRoomFires(subRoot.GetComponent<SubFire>()).ToArray();
 
             CyclopsDamage packet = new(subId, subRoot.GetComponent<LiveMixin>().health, subRoot.damageManager.subLiveMixin.health, subRoot.GetComponent<SubFire>().liveMixin.health, damagePointIndexes, firePoints, damageInfo);
             packetSender.Send(packet);

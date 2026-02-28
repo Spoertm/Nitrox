@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresOrigin(CommandOrigin.SERVER)]
 internal sealed class ConfigCommand(IOptions<ServerStartOptions> optionsProvider) : ICommandHandler
 {
-    private readonly IOptions<ServerStartOptions> optionsProvider = optionsProvider;
-
     [Description("Opens the server configuration file")]
     public async Task Execute(ICommandContext context)
     {

@@ -9,10 +9,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class RemoveCreatureCorpseProcessor(Entities entities, LiveMixinManager liveMixinManager, SimulationOwnership simulationOwnership) : IClientPacketProcessor<RemoveCreatureCorpse>
 {
-    private readonly Entities entities = entities;
-    private readonly LiveMixinManager liveMixinManager = liveMixinManager;
-    private readonly SimulationOwnership simulationOwnership = simulationOwnership;
-
     /// <summary>
     ///     Calls only some parts from <see cref="CreatureDeath.OnKillAsync" /> to avoid sending packets from it
     ///     or already synced behaviour (like spawning another respawner from the remote clients)

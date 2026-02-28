@@ -10,11 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class EntitySpawnedByClientProcessor(PlayerManager playerManager, EntityRegistry entityRegistry, WorldEntityManager worldEntityManager, EntitySimulation entitySimulation)
     : IAuthPacketProcessor<EntitySpawnedByClient>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-
     public async Task Process(AuthProcessorContext context, EntitySpawnedByClient packet)
     {
         Entity entity = packet.Entity;

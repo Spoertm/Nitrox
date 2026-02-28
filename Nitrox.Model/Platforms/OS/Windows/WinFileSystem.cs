@@ -16,7 +16,7 @@ namespace Nitrox.Model.Platforms.OS.Windows;
 internal sealed class WinFileSystem : FileSystem
 {
     public override IEnumerable<string> ExecutableFileExtensions { get; } = ["exe", "cmd", "bat"];
-    public override string TextEditor => FileSystem.GetFullPath("notepad.exe");
+    public override string TextEditor => GetFullPath("notepad.exe");
 
     public override IEnumerable<string> GetDefaultPrograms(string file)
     {
@@ -60,7 +60,7 @@ internal sealed class WinFileSystem : FileSystem
 
         foreach (char c in mruList)
         {
-            string fullPath = SearchExecutableInSameDirectory(FileSystem.GetFullPath(rk.GetValue(c.ToString()).ToString()));
+            string fullPath = SearchExecutableInSameDirectory(GetFullPath(rk.GetValue(c.ToString()).ToString()));
             if (fullPath == null)
             {
                 continue;

@@ -65,10 +65,10 @@ public sealed class VirtualCyclops : MonoBehaviour
 
             Instance.axis = model.GetComponent<SubRoot>().subAxis;
 
-            GameObject.Destroy(model.GetComponent<EcoTarget>());
-            GameObject.Destroy(model.GetComponent<PingInstance>());
-            GameObject.Destroy(model.GetComponent<CyclopsDestructionEvent>());
-            GameObject.Destroy(model.GetComponent<VFXConstructing>());
+            Destroy(model.GetComponent<EcoTarget>());
+            Destroy(model.GetComponent<PingInstance>());
+            Destroy(model.GetComponent<CyclopsDestructionEvent>());
+            Destroy(model.GetComponent<VFXConstructing>());
                         
             Instance.InitialPosition = position;
             Instance.InitialRotation = rotation;
@@ -235,7 +235,7 @@ public sealed class VirtualCyclops : MonoBehaviour
     {
         if (cacheColliderCopy.TryGetValue(techType, out GameObject colliderCopy))
         {
-            return GameObject.Instantiate(colliderCopy);
+            return Instantiate(colliderCopy);
         }
         colliderCopy = new GameObject($"{realObject.name}-collidercopy");
         // This will act as a prefab but will stay in the material world so we put it out of hands in the meantime
@@ -276,7 +276,7 @@ public sealed class VirtualCyclops : MonoBehaviour
         }
 
         cacheColliderCopy.Add(techType, colliderCopy);
-        return GameObject.Instantiate(colliderCopy);
+        return Instantiate(colliderCopy);
     }
 
     public void UnregisterConstructable(GameObject realObject)

@@ -10,11 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class PlayerUnseeOutOfCellEntityProcessor(SimulationOwnershipData simulationOwnershipData, PlayerManager playerManager, EntitySimulation entitySimulation, EntityRegistry entityRegistry)
     : IAuthPacketProcessor<PlayerUnseeOutOfCellEntity>
 {
-    private readonly SimulationOwnershipData simulationOwnershipData = simulationOwnershipData;
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-
     public async Task Process(AuthProcessorContext context, PlayerUnseeOutOfCellEntity packet)
     {
         // Most of this packet's utility is in the below Remove

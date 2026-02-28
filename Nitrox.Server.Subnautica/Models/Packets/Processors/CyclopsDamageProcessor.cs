@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 /// </summary>
 internal sealed class CyclopsDamageProcessor(ILogger<CyclopsDamageProcessor> logger) : IAuthPacketProcessor<CyclopsDamage>
 {
-    private readonly ILogger<CyclopsDamageProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, CyclopsDamage packet)
     {
         logger.ZLogDebug($"New cyclops damage from player #{context.Sender.SessionId}: {packet}");

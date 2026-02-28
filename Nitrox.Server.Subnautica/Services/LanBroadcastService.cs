@@ -14,8 +14,6 @@ internal sealed class LanBroadcastService(IOptionsMonitor<SubnauticaServerOption
     private const int ACTIVE_POLL_INTERVAL_MS = 100;
     private const int INACTIVE_POLL_INTERVAL_MS = (int)(5 * TimeSpan.MillisecondsPerSecond);
 
-    private readonly ILogger<LanBroadcastService> logger = logger;
-    private readonly IOptionsMonitor<SubnauticaServerOptions> optionsProvider = optionsProvider;
     private readonly PeriodicTimer pollTimer = new(TimeSpan.FromMilliseconds(ACTIVE_POLL_INTERVAL_MS));
     private EventBasedNetListener listener;
     private int selectedPort;

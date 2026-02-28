@@ -11,9 +11,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors.Core;
 internal abstract class TransmitIfCanSeePacketProcessor<T>(PlayerManager playerManager, EntityRegistry entityRegistry) : IAuthPacketProcessor<T>
     where T : Packet
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-
     /// <summary>
     /// Transmits the provided <paramref name="packet"/> to all other players (excluding <paramref name="senderPlayer"/>)
     /// who can see (<see cref="Player.CanSee"/>) entities corresponding to the provided <paramref name="entityIds"/> only if all those entities are registered.

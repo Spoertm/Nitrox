@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.ArgConverters;
 /// </summary>
 internal sealed class SessionIdToPlayerArgConverter(PlayerManager playerManager) : IArgConverter<ushort, Player>
 {
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task<ConvertResult> ConvertAsync(ushort sessionId)
     {
         if (sessionId < 1)

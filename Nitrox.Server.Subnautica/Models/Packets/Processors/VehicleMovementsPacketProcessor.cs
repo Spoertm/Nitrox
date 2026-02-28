@@ -11,10 +11,6 @@ internal sealed class VehicleMovementsPacketProcessor(EntityRegistry entityRegis
 {
     private static readonly NitroxVector3 CyclopsSteeringWheelRelativePosition = new(-0.05f, 0.97f, -23.54f);
 
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly SimulationOwnershipData simulationOwnershipData = simulationOwnershipData;
-    private readonly ILogger<VehicleMovementsPacketProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, VehicleMovements packet)
     {
         for (int i = packet.Data.Count - 1; i >= 0; i--)

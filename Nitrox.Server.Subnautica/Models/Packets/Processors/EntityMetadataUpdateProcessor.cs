@@ -8,10 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class EntityMetadataUpdateProcessor(PlayerManager playerManager, EntityRegistry entityRegistry, ILogger<EntityMetadataUpdateProcessor> logger) : IAuthPacketProcessor<EntityMetadataUpdate>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly ILogger<EntityMetadataUpdateProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, EntityMetadataUpdate packet)
     {
         if (!entityRegistry.TryGetEntityById(packet.Id, out Entity entity))

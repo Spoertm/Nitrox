@@ -7,8 +7,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class UserKickedProcessor(IMultiplayerSession session) : IClientPacketProcessor<PlayerKicked>
 {
-    private readonly IMultiplayerSession session = session;
-
     public Task Process(ClientProcessorContext context, PlayerKicked packet)
     {
         string message = Language.main.Get("Nitrox_PlayerKicked");

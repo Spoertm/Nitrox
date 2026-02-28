@@ -10,8 +10,6 @@ internal static class EasyPool<T>
 
     internal readonly struct Lease(T[] rentedArray) : IDisposable
     {
-        private readonly T[] rentedArray = rentedArray;
-
         public ref T GetRef() => ref rentedArray[0];
 
         public void Dispose() => pool.Return(rentedArray);

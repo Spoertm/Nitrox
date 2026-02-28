@@ -8,8 +8,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class BenchChangedProcessor(PlayerManager remotePlayerManager) : IClientPacketProcessor<BenchChanged>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-
     public Task Process(ClientProcessorContext context, BenchChanged benchChanged)
     {
         if (!remotePlayerManager.TryFind(benchChanged.SessionId, out RemotePlayer remotePlayer))

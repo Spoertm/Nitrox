@@ -28,7 +28,7 @@ namespace NitroxClient.GameLogic
             }
             else
             {
-                Log.Error($"{nameof(Rockets.RequestRocketLaunch)}: Can't find a NitroxEntity attached to the Rocket: {rocket.name}");
+                Log.Error($"{nameof(RequestRocketLaunch)}: Can't find a NitroxEntity attached to the Rocket: {rocket.name}");
             }
         }
 

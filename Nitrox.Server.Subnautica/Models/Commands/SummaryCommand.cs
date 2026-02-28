@@ -9,9 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class SummaryCommand(StatusService statusService, ILogger<SummaryCommand> logger) : ICommandHandler
 {
-    private readonly StatusService statusService = statusService;
-    private readonly ILogger<SummaryCommand> logger = logger;
-
     [Description("Shows persisted data")]
     public async Task Execute(ICommandContext context)
     {

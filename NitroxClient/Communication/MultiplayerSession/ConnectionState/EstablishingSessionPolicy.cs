@@ -22,7 +22,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             try
             {
                 ValidateState(sessionConnectionContext);
-                EstablishingSessionPolicy.AwaitReservationCredentials(sessionConnectionContext);
+                AwaitReservationCredentials(sessionConnectionContext);
             }
             catch (Exception)
             {

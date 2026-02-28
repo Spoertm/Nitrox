@@ -64,7 +64,7 @@ public static class AssetBundleLoader
         AssetBundleRequest fetchAssetRequest = nitroxAssetBundle.AssetBundle.LoadAssetAsync<GameObject>(nitroxAssetBundle.BundleName);
         yield return fetchAssetRequest;
 
-        GameObject asset = UnityEngine.Object.Instantiate(fetchAssetRequest.asset, uGUI.main.screenCanvas.transform, false) as GameObject;
+        GameObject asset = Object.Instantiate(fetchAssetRequest.asset, uGUI.main.screenCanvas.transform, false) as GameObject;
 
         if (!asset)
         {
@@ -76,7 +76,7 @@ public static class AssetBundleLoader
         {
             canvasGroup.alpha = 0;
         }
-        nitroxAssetBundle.LoadedAssets = new UnityEngine.Object[] { asset };
+        nitroxAssetBundle.LoadedAssets = new Object[] { asset };
     }
 
     public static bool IsBundleLoaded(NitroxAssetBundle nitroxAssetBundle)
@@ -89,7 +89,7 @@ public static class AssetBundleLoader
     {
         public string BundleName { get; }
         public AssetBundle AssetBundle { get; set; }
-        public UnityEngine.Object[] LoadedAssets { get; set; }
+        public Object[] LoadedAssets { get; set; }
 
         private NitroxAssetBundle(string bundleName)
         {

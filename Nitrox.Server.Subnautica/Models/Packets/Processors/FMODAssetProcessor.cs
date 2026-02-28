@@ -8,10 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class FMODAssetProcessor(PlayerManager playerManager, FmodService fmodService, ILogger<FMODAssetProcessor> logger) : IAuthPacketProcessor<FMODAssetPacket>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly FmodService fmodService = fmodService;
-    private readonly ILogger<FMODAssetProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, FMODAssetPacket packet)
     {
         if (!fmodService.TryGetSoundData(packet.AssetPath, out SoundData soundData))

@@ -14,8 +14,6 @@ namespace Nitrox.Launcher.ViewModels;
 
 internal partial class ObjectPropertyEditorViewModel(DialogService dialogService) : ModalViewModelBase
 {
-    private readonly DialogService dialogService = dialogService;
-
     [ObservableProperty]
     private AvaloniaList<EditorField> editorFields = [];
 

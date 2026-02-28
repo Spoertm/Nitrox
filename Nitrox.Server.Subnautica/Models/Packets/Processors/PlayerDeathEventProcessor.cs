@@ -6,11 +6,9 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class PlayerDeathEventProcessor(IOptions<SubnauticaServerOptions> config) : IAuthPacketProcessor<PlayerDeathEvent>
 {
-    private readonly IOptions<SubnauticaServerOptions> options = config;
-
     public async Task Process(AuthProcessorContext context, PlayerDeathEvent packet)
     {
-        if (options.Value.IsHardcore())
+        if (config.Value.IsHardcore())
         {
             context.Sender.IsPermaDeath = true;
             await context.ReplyAsync(new PlayerKicked("Permanent death from hardcore mode"));

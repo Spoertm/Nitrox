@@ -17,9 +17,6 @@ internal sealed class EscapePodManager(RandomFactory randomFactory, EntityRegist
 {
     private const int PLAYERS_PER_ESCAPEPOD = 50;
 
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly RandomStartResource randomStartResource = randomStartResource;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
     private readonly ThreadSafeDictionary<PeerId, EscapePodEntity> escapePodsByPlayerId = [];
     private EscapePodEntity? podForNextPlayer;
     private readonly Random random = randomFactory.GetDotnetRandom();

@@ -6,8 +6,6 @@ namespace NitroxClient.GameLogic.Spawning.Metadata.Processor;
 
 public class PlantableMetadataProcessor(FruitPlantMetadataProcessor fruitPlantMetadataProcessor) : EntityMetadataProcessor<PlantableMetadata>
 {
-    private readonly FruitPlantMetadataProcessor fruitPlantMetadataProcessor = fruitPlantMetadataProcessor;
-
     public override void ProcessMetadata(GameObject gameObject, PlantableMetadata metadata)
     {
         if (!gameObject.TryGetComponent(out Plantable plantable))

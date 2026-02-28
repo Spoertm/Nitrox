@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class DiscordRequestIPProcessor(IOptions<SubnauticaServerOptions> options, ILogger<DiscordRequestIPProcessor> logger) : IAuthPacketProcessor<DiscordRequestIP>
 {
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly ILogger<DiscordRequestIPProcessor> logger = logger;
-
     private string ipPort;
 
     public async Task Process(AuthProcessorContext context, DiscordRequestIP packet)

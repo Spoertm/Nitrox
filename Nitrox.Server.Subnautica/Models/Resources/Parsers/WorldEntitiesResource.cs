@@ -9,8 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Resources.Parsers;
 
 internal sealed class WorldEntitiesResource(SubnauticaAssetsManager assetsManager, IOptions<ServerStartOptions> options) : IGameResource
 {
-    private readonly SubnauticaAssetsManager assetsManager = assetsManager;
-    private readonly IOptions<ServerStartOptions> startOptions = options;
     private readonly TaskCompletionSource<Dictionary<string, WorldEntityInfo>> worldEntitiesByClassId = new();
 
     public async Task LoadAsync(CancellationToken cancellationToken)
@@ -31,7 +29,7 @@ internal sealed class WorldEntitiesResource(SubnauticaAssetsManager assetsManage
         Dictionary<string, WorldEntityInfo> result = [];
 
         cancellationToken.ThrowIfCancellationRequested();
-        AssetsFileInstance assetFile = assetsManager.LoadAssetsFile(Path.Combine(startOptions.Value.GetSubnauticaResourcesPath(), "resources.assets"), true);
+        AssetsFileInstance assetFile = assetsManager.LoadAssetsFile(Path.Combine(options.Value.GetSubnauticaResourcesPath(), "resources.assets"), true);
         AssetFileInfo assetFileInfo = assetFile.file.GetAssetInfo(assetsManager, "WorldEntityData", AssetClassID.MonoBehaviour);
         AssetTypeValueField assetValue = assetsManager.GetBaseField(assetFile, assetFileInfo);
 

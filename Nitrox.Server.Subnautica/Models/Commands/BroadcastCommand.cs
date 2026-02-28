@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class BroadcastCommand(ILogger<BroadcastCommand> logger) : ICommandHandler<string>
 {
-    private readonly ILogger<BroadcastCommand> logger = logger;
-
     [Description("Broadcasts a message on the server")]
     public async Task Execute(ICommandContext context, string messageToBroadcast)
     {

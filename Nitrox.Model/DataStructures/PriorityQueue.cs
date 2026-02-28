@@ -52,7 +52,7 @@ namespace Nitrox.Model.DataStructures
             InsertItemInSequentialChain(priorityItem, tail);
 
             // Step 2: Append the item into the priority chain.
-            PriorityQueue<T>.InsertItemInPriorityChain(priorityItem, chain, chain.Tail);
+            InsertItemInPriorityChain(priorityItem, chain, chain.Tail);
 
             return priorityItem;
         }
@@ -180,7 +180,7 @@ namespace Nitrox.Model.DataStructures
             if (chain.Head == null)
             {
                 Debug.Assert(chain.Tail == null, "PriorityQueue.InsertItemInPriorityChain: both the head and the tail should be null.");
-                PriorityQueue<T>.InsertItemInPriorityChain(item, chain, null);
+                InsertItemInPriorityChain(item, chain, null);
             }
             else
             {
@@ -198,7 +198,7 @@ namespace Nitrox.Model.DataStructures
                     }
                 }
 
-                PriorityQueue<T>.InsertItemInPriorityChain(item, chain, after);
+                InsertItemInPriorityChain(item, chain, after);
             }
         }
 

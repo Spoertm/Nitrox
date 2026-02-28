@@ -15,7 +15,7 @@ public sealed partial class EscapePodFirstUseCinematicsController_ReleaseCreatur
     {
         if (creatureGO)
         {
-            UnityEngine.Object.Destroy(creatureGO);
+            Object.Destroy(creatureGO);
         }
 
         return false;

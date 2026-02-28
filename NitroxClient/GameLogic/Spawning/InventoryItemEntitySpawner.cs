@@ -18,11 +18,9 @@ namespace NitroxClient.GameLogic.Spawning;
 
 public sealed class InventoryItemEntitySpawner(EntityMetadataManager entityMetadataManager) : SyncEntitySpawner<InventoryItemEntity>
 {
-    private readonly EntityMetadataManager entityMetadataManager = entityMetadataManager;
-
     protected override IEnumerator SpawnAsync(InventoryItemEntity entity, TaskResult<Optional<GameObject>> result)
     {        
-        if (!InventoryItemEntitySpawner.CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
+        if (!CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
         {
             Log.Error(errorLog);
             result.Set(Optional.Empty);
@@ -44,7 +42,7 @@ public sealed class InventoryItemEntitySpawner(EntityMetadataManager entityMetad
         {
             return false;
         }
-        if (!InventoryItemEntitySpawner.CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
+        if (!CanSpawn(entity, out GameObject? parentObject, out ItemsContainer? container, out string? errorLog))
         {
             Log.Error(errorLog);
             return true;

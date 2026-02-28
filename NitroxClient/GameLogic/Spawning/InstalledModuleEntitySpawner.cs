@@ -13,7 +13,7 @@ public sealed class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledMo
 {
     protected override IEnumerator SpawnAsync(InstalledModuleEntity entity, TaskResult<Optional<GameObject>> result)
     {
-        if (!InstalledModuleEntitySpawner.CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
+        if (!CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
         {
             Log.Info(errorLog);
             result.Set(Optional.Empty);
@@ -24,7 +24,7 @@ public sealed class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledMo
         yield return DefaultWorldEntitySpawner.CreateGameObject(entity.TechType.ToUnity(), entity.ClassId, entity.Id, gameObjectResult);
         GameObject gameObject = gameObjectResult.Get();
 
-        InstalledModuleEntitySpawner.SetupObject(entity, gameObject, parentObject, equipment);
+        SetupObject(entity, gameObject, parentObject, equipment);
 
         result.Set(Optional.Of(gameObject));
     }
@@ -35,7 +35,7 @@ public sealed class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledMo
         {
             return false;
         }
-        if (!InstalledModuleEntitySpawner.CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
+        if (!CanSpawn(entity, out GameObject parentObject, out Equipment equipment, out string errorLog))
         {
             Log.Error(errorLog);
             return true;
@@ -43,7 +43,7 @@ public sealed class InstalledModuleEntitySpawner : SyncEntitySpawner<InstalledMo
 
         GameObject gameObject = GameObjectExtensions.SpawnFromPrefab(prefab, entity.Id);
 
-        InstalledModuleEntitySpawner.SetupObject(entity, gameObject, parentObject, equipment);
+        SetupObject(entity, gameObject, parentObject, equipment);
 
         result.Set(gameObject);
         return true;

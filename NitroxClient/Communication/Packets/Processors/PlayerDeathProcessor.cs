@@ -7,8 +7,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class PlayerDeathProcessor(PlayerManager playerManager) : IClientPacketProcessor<PlayerDeathEvent>
 {
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, PlayerDeathEvent playerDeath)
     {
         RemotePlayer player = Validate.IsPresent(playerManager.Find(playerDeath.SessionId));

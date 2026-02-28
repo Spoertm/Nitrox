@@ -8,9 +8,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class DisconnectProcessor(PlayerManager remotePlayerManager, PlayerVitalsManager vitalsManager) : IClientPacketProcessor<Disconnect>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-    private readonly PlayerVitalsManager vitalsManager = vitalsManager;
-
     public Task Process(ClientProcessorContext context, Disconnect disconnect)
     {
         // TODO: don't remove right away... maybe grey out and start

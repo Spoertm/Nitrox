@@ -9,7 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 internal sealed class DeopCommand(PlayerManager playerManager) : ICommandHandler<Player>
 {
     private const Perms DEOP_PERMS_DEFAULT = Perms.PLAYER;
-    private readonly PlayerManager playerManager = playerManager;
 
     [Description("Removes admin rights from user")]
     public async Task Execute(ICommandContext context, [Description("Username to remove admin rights from")] Player targetPlayer)

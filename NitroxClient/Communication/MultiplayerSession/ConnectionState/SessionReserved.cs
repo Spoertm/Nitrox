@@ -13,8 +13,8 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             try
             {
                 ValidateState(sessionConnectionContext);
-                SessionReserved.EnterMultiplayerSession(sessionConnectionContext);
-                SessionReserved.ChangeState(sessionConnectionContext);
+                EnterMultiplayerSession(sessionConnectionContext);
+                ChangeState(sessionConnectionContext);
             }
             catch (Exception)
             {

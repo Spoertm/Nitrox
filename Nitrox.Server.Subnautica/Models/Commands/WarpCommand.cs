@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class WarpCommand(IPacketSender packetSender) : ICommandHandler<Player>, ICommandHandler<Player, Player>
 {
-    private readonly IPacketSender packetSender = packetSender;
-
     [RequiresOrigin(CommandOrigin.PLAYER)]
     [Description("Teleports you to the target player")]
     public async Task Execute(ICommandContext context, [Description("Player to teleport to")] Player targetPlayer)

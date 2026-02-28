@@ -5,8 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class PlayerStatsProcessor(ILogger<PlayerStatsProcessor> logger) : IAuthPacketProcessor<PlayerStats>
 {
-    private readonly ILogger<PlayerStatsProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, PlayerStats packet)
     {
         if (packet.SessionId != context.Sender.SessionId)

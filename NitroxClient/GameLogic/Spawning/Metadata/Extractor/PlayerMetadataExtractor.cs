@@ -10,7 +10,7 @@ public class PlayerMetadataExtractor : EntityMetadataExtractor<Player, PlayerMet
 {
     public override PlayerMetadata Extract(Player player)
     {
-        return new PlayerMetadata(PlayerMetadataExtractor.ExtractEquippedItems());
+        return new PlayerMetadata(ExtractEquippedItems());
     }
 
     private static List<EquippedItem> ExtractEquippedItems()

@@ -10,10 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresOrigin(CommandOrigin.PLAYER)]
 internal sealed class BackCommand(IPacketSender packetSender, PlayerManager playerManager, ILogger<BackCommand> logger) : ICommandHandler
 {
-    private readonly ILogger<BackCommand> logger = logger;
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly IPacketSender packetSender = packetSender;
-
     [Description("Teleports you back on your last location")]
     public Task Execute(ICommandContext context)
     {

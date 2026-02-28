@@ -7,7 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class ScheduleProcessor(IPacketSender packetSender, StoryScheduler storyScheduler) : IAuthPacketProcessor<Schedule>
 {
     private readonly IPacketSender packetSender = packetSender;
-    private readonly StoryScheduler storyScheduler = storyScheduler;
 
     public async Task Process(AuthProcessorContext context, Schedule packet)
     {

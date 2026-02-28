@@ -74,7 +74,7 @@ namespace NitroxClient.Helpers
                 {
                     AddType(type);
                 }
-                else if (NitroxProtobufSerializer.HasNitroxProtoContract(type))
+                else if (HasNitroxProtoContract(type))
                 {
                     AddType(type);
 

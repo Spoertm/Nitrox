@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class StopCommand(IHostApplicationLifetime lifetimeService) : ICommandHandler
 {
-    private readonly IHostApplicationLifetime lifetimeService = lifetimeService;
-
     [Description("Stops the server")]
     public Task Execute(ICommandContext context)
     {

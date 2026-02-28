@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class SimulationOwnershipRequestProcessor(SimulationOwnershipData simulationOwnershipData, EntitySimulation entitySimulation) : IAuthPacketProcessor<SimulationOwnershipRequest>
 {
-    private readonly SimulationOwnershipData simulationOwnershipData = simulationOwnershipData;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-
     public async Task Process(AuthProcessorContext context, SimulationOwnershipRequest ownershipRequest)
     {
         bool aquiredLock = simulationOwnershipData.TryToAcquire(ownershipRequest.Id, context.Sender, ownershipRequest.LockType);

@@ -9,8 +9,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class SubRootChangedProcessor(PlayerManager remotePlayerManager) : IClientPacketProcessor<SubRootChanged>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-
     public Task Process(ClientProcessorContext context, SubRootChanged packet)
     {
         Optional<RemotePlayer> remotePlayer = remotePlayerManager.Find(packet.SessionId);

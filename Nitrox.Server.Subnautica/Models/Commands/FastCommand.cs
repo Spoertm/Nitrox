@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class FastCommand(SessionSettings sessionSettings) : ICommandHandler<FastCheatChanged.FastCheat>, ICommandHandler<FastCheatChanged.FastCheat, bool>
 {
-    private readonly SessionSettings sessionSettings = sessionSettings;
-
     [Description("Enables/disables a fast cheat command, whether it be \"hatch\" or \"grow\"")]
     public async Task Execute(ICommandContext context,
                               [Description("The name of the fast cheat")]

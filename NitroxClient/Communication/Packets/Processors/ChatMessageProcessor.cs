@@ -14,9 +14,7 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class ChatMessageProcessor(PlayerManager remotePlayerManager, LocalPlayer localPlayer) : IClientPacketProcessor<ChatMessage>
 {
-    private readonly LocalPlayer localPlayer = localPlayer;
     private readonly PlayerChatManager playerChatManager = PlayerChatManager.Instance;
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
 
     private readonly Color32 serverMessageColor = new Color32(0x8c, 0x00, 0xFF, 0xFF);
 

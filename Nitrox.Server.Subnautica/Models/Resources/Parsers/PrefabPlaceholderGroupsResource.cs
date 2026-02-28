@@ -30,10 +30,7 @@ internal sealed class PrefabPlaceholderGroupsResource(SubnauticaAssetsManager as
 
     private const string CACHE_FILENAME = "PrefabPlaceholdersGroupAssetsCache.json";
 
-    private readonly SubnauticaAssetsManager assetsManager = assetsManager;
     private readonly XorRandom random = randomFactory.GetUnityLikeRandom();
-    private readonly ILogger<PrefabPlaceholderGroupsResource> logger = logger;
-    private readonly IOptions<ServerStartOptions> options = options;
     private readonly TaskCompletionSource resourceLoadFinished = new();
     private readonly JsonSerializer serializer = new() { TypeNameHandling = TypeNameHandling.Auto };
     private ConcurrentDictionary<string, PrefabPlaceholdersGroupAsset> groupsByClassId = [];

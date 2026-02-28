@@ -5,8 +5,6 @@ namespace NitroxClient.GameLogic.Spawning.Metadata.Extractor;
 
 public class PlantableMetadataExtractor(FruitPlantMetadataExtractor fruitPlantMetadataExtractor) : EntityMetadataExtractor<Plantable, PlantableMetadata>
 {
-    private readonly FruitPlantMetadataExtractor fruitPlantMetadataExtractor = fruitPlantMetadataExtractor;
-
     public override PlantableMetadata Extract(Plantable plantable)
     {
         // Default value for no progress is -1

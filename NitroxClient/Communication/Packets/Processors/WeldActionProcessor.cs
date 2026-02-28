@@ -8,8 +8,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal class WeldActionProcessor(SimulationOwnership simulationOwnership) : IClientPacketProcessor<WeldAction>
 {
-    private readonly SimulationOwnership simulationOwnership = simulationOwnership;
-
     public Task Process(ClientProcessorContext context, WeldAction packet)
     {
         GameObject gameObject = NitroxEntity.RequireObjectFrom(packet.Id);

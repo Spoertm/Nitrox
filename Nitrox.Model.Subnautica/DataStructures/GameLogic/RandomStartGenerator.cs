@@ -6,8 +6,6 @@ namespace Nitrox.Model.Subnautica.DataStructures.GameLogic;
 
 public sealed class RandomStartGenerator(RandomStartGenerator.IPixelProvider pixelProvider)
 {
-    private readonly IPixelProvider pixelProvider = pixelProvider;
-
     /// <summary>
     ///     Generates all starts positions available for a given randomization. Only take as many positions as needed to avoid unnecessary compute.
     /// </summary>

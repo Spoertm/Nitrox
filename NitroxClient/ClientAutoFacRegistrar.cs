@@ -45,10 +45,10 @@ namespace NitroxClient
             }
 
             RegisterCoreDependencies(containerBuilder);
-            ClientAutoFacRegistrar.RegisterMetadataDependencies(containerBuilder);
-            ClientAutoFacRegistrar.RegisterPacketProcessors(containerBuilder);
-            ClientAutoFacRegistrar.RegisterColorSwapManagers(containerBuilder);
-            ClientAutoFacRegistrar.RegisterInitialSyncProcessors(containerBuilder);
+            RegisterMetadataDependencies(containerBuilder);
+            RegisterPacketProcessors(containerBuilder);
+            RegisterColorSwapManagers(containerBuilder);
+            RegisterInitialSyncProcessors(containerBuilder);
         }
 
         private void RegisterCoreDependencies(ContainerBuilder containerBuilder)

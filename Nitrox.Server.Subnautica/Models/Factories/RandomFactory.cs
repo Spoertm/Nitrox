@@ -5,8 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.Factories;
 
 internal sealed class RandomFactory(IOptions<SubnauticaServerOptions> options)
 {
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-
     public static int CreateSeedInt32(string worldSeed, string csFilePath, int seedId = 0) => $"{worldSeed}{csFilePath}:{seedId}".ToMd5HashedInt32();
 
     public static string GetCsFilePathFromType(Type type)

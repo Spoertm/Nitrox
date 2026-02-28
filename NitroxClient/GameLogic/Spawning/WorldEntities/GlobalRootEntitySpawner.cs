@@ -18,7 +18,7 @@ public sealed class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity
         yield return DefaultWorldEntitySpawner.CreateGameObject(entity.TechType.ToUnity(), entity.ClassId, entity.Id, gameObjectResult);
         GameObject gameObject = gameObjectResult.Get();
 
-        GlobalRootEntitySpawner.SetupObject(entity, gameObject);
+        SetupObject(entity, gameObject);
 
         result.Set(gameObject);
     }
@@ -30,7 +30,7 @@ public sealed class GlobalRootEntitySpawner : SyncEntitySpawner<GlobalRootEntity
             return false;
         }
         GameObject gameObject = GameObjectExtensions.InstantiateWithId(prefab, entity.Id);
-        GlobalRootEntitySpawner.SetupObject(entity, gameObject);
+        SetupObject(entity, gameObject);
 
         result.Set(gameObject);
         return true;

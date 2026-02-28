@@ -14,9 +14,7 @@ namespace Nitrox.Server.Subnautica.Services;
 /// </remarks>
 internal class PortForwardService(IOptionsMonitor<SubnauticaServerOptions> optionsProvider, ILogger<PortForwardService> logger) : BackgroundService
 {
-    private readonly ILogger<PortForwardService> logger = logger;
     private readonly ConcurrentDictionary<ushort, bool> openedPorts = [];
-    private readonly IOptionsMonitor<SubnauticaServerOptions> optionsProvider = optionsProvider;
 
     private readonly Channel<PortForwardAction> portForwardChannel = Channel.CreateBounded<PortForwardAction>(new BoundedChannelOptions(10)
     {

@@ -9,8 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 /// </summary>
 internal sealed class TextAutoCompleteProcessor(CommandRegistry commandRegistry) : IAuthPacketProcessor<TextAutoComplete>
 {
-    private readonly CommandRegistry commandRegistry = commandRegistry;
-
     public async Task Process(AuthProcessorContext context, TextAutoComplete packet)
     {
         switch (packet.Context)

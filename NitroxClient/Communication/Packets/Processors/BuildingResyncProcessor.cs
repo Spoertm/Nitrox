@@ -21,9 +21,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class BuildingResyncProcessor(Entities entities, EntityMetadataManager entityMetadataManager) : IClientPacketProcessor<BuildingResync>
 {
-    private readonly Entities entities = entities;
-    private readonly EntityMetadataManager entityMetadataManager = entityMetadataManager;
-
     public Task Process(ClientProcessorContext context, BuildingResync packet)
     {
         if (!BuildingHandler.Main)
@@ -67,10 +64,10 @@ internal sealed class BuildingResyncProcessor(Entities entities, EntityMetadataM
     {
         Stopwatch stopwatch = Stopwatch.StartNew();
         BuildingHandler.Main.StartResync(buildEntities);
-        yield return UpdateEntities<Base, BuildEntity>(buildEntities.Keys.ToList(), OverwriteBase, BuildingResyncProcessor.IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing BuildEntities"));
+        yield return UpdateEntities<Base, BuildEntity>(buildEntities.Keys.ToList(), OverwriteBase, IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing BuildEntities"));
 
         BuildingHandler.Main.StartResync(moduleEntities);
-        yield return UpdateEntities<Constructable, ModuleEntity>(moduleEntities.Keys.ToList(), OverwriteModule, BuildingResyncProcessor.IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing ModuleEntities"));
+        yield return UpdateEntities<Constructable, ModuleEntity>(moduleEntities.Keys.ToList(), OverwriteModule, IsInCloseProximity).OnYieldError(exception => Log.Error(exception, "Encountered an exception while resyncing ModuleEntities"));
         BuildingHandler.Main.StopResync();
 
         stopwatch.Stop();

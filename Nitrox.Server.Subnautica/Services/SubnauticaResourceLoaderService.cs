@@ -10,8 +10,6 @@ namespace Nitrox.Server.Subnautica.Services;
 /// </summary>
 internal class SubnauticaResourceLoaderService(IEnumerable<IGameResource> resources, MemoryService memoryService, ILogger<SubnauticaResourceLoaderService> logger) : IHostedService
 {
-    private readonly ILogger<SubnauticaResourceLoaderService> logger = logger;
-
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         Stopwatch totalStopWatch = Stopwatch.StartNew();

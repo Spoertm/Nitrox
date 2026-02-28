@@ -16,8 +16,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.Debugging;
 [Description("Gets a world seed where the spawn position is the closest to the X and Z coordinates")]
 internal sealed class SeedNearPositionCommand(RandomStartResource randomStart) : ICommandHandler<int, int>, ICommandHandler<int, int, int>
 {
-    private readonly RandomStartResource randomStart = randomStart;
-
     public async Task Execute(ICommandContext context, int x, int z, int iterations)
     {
         iterations = int.Max(1000, iterations);

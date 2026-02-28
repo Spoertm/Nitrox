@@ -23,7 +23,7 @@ public sealed class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntit
         yield return CreateGameObject(techType, entity.ClassId, entity.Id, gameObjectResult);
 
         GameObject gameObject = gameObjectResult.Get();
-        DefaultWorldEntitySpawner.SetupObject(entity, parent, gameObject, cellRoot, techType);
+        SetupObject(entity, parent, gameObject, cellRoot, techType);
 
         result.Set(Optional.Of(gameObject));
     }
@@ -190,7 +190,7 @@ public sealed class DefaultWorldEntitySpawner : IWorldEntitySpawner, IWorldEntit
 
         if (TryCreateGameObjectSync(techType, entity.ClassId, entity.Id, out GameObject gameObject))
         {
-            DefaultWorldEntitySpawner.SetupObject(entity, parent, gameObject, cellRoot, techType);
+            SetupObject(entity, parent, gameObject, cellRoot, techType);
             result.Set(gameObject);
             return true;
         }

@@ -13,12 +13,6 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed class SaveService(Func<WorldService> worldServiceProvider, ISaveState.Trigger saveStateTrigger, IOptions<SubnauticaServerOptions> options, IOptions<ServerStartOptions> startOptions, ILogger<SaveService> logger)
     : QueuingBackgroundService<SaveService.ServiceAction>, IHibernate
 {
-    private readonly ILogger<SaveService> logger = logger;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly ISaveState.Trigger saveStateTrigger = saveStateTrigger;
-    private readonly IOptions<ServerStartOptions> startOptions = startOptions;
-    private readonly Func<WorldService> worldServiceProvider = worldServiceProvider;
-
     protected override async Task ExecuteQueuedActionAsync(ServiceAction action, CancellationToken stoppingToken)
     {
         switch (action)

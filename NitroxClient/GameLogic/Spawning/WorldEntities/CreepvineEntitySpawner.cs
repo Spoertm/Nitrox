@@ -7,8 +7,6 @@ namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
 public sealed class CreepvineEntitySpawner(DefaultWorldEntitySpawner defaultWorldEntitySpawner) : IWorldEntitySpawner, IWorldEntitySyncSpawner
 {
-    private readonly DefaultWorldEntitySpawner defaultWorldEntitySpawner = defaultWorldEntitySpawner;
-
     public IEnumerator SpawnAsync(WorldEntity entity, Optional<GameObject> parent, EntityCell cellRoot, TaskResult<Optional<GameObject>> result)
     {
         yield return defaultWorldEntitySpawner.SpawnAsync(entity, parent, cellRoot, result);

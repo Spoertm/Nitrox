@@ -8,9 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class RemoveCreatureCorpseProcessor(IPacketSender packetSender, PlayerManager playerManager, EntitySimulation entitySimulation, WorldEntityManager worldEntityManager) : IAuthPacketProcessor<RemoveCreatureCorpse>
 {
     private readonly IPacketSender packetSender = packetSender;
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
 
     public async Task Process(AuthProcessorContext context, RemoveCreatureCorpse packet)
     {

@@ -20,10 +20,10 @@ public class WindowsApi
             return;
         }
 
-        Win32Native.WS dwNewLong = Win32Native.WS.WS_CAPTION | Win32Native.WS.WS_CLIPCHILDREN | Win32Native.WS.WS_MINIMIZEBOX | Win32Native.WS.WS_MAXIMIZEBOX | Win32Native.WS.WS_SYSMENU;
+        WS dwNewLong = WS.WS_CAPTION | WS.WS_CLIPCHILDREN | WS.WS_MINIMIZEBOX | WS.WS_MAXIMIZEBOX | WS.WS_SYSMENU;
         if (canResize)
         {
-            dwNewLong |= Win32Native.WS.WS_SIZEBOX;
+            dwNewLong |= WS.WS_SIZEBOX;
         }
 
         HandleRef handle = new(null, windowHandle);

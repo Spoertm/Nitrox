@@ -16,7 +16,6 @@ namespace Nitrox.Launcher.Models.Services;
 internal class WriteGrpcPortFileService(IServer server) : IHostedLifecycleService
 {
     private readonly string filePath = Path.Combine(Path.GetTempPath(), LauncherConstants.GRPC_LISTEN_PORT_TEMP_FILE_NAME);
-    private readonly IServer server = server;
 
     public Task StartAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 

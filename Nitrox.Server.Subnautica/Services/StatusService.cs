@@ -22,13 +22,6 @@ internal sealed class StatusService(
     IOptions<ServerStartOptions> startOptions,
     ILogger<StatusService> logger) : IHostedLifecycleService, ISummarize
 {
-    private readonly GameInfo gameInfo = gameInfo;
-    private readonly ILogger<StatusService> logger = logger;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly IPacketSender packetSender = packetSender;
-    private readonly IOptions<ServerStartOptions> startOptions = startOptions;
-    private readonly ISummarize.Trigger summarizeTrigger = summarizeTrigger;
-
     public Task StartAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

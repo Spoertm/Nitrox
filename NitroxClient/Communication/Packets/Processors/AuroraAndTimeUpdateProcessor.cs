@@ -6,8 +6,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class AuroraAndTimeUpdateProcessor(TimeManager timeManager) : IClientPacketProcessor<AuroraAndTimeUpdate>
 {
-    private readonly TimeManager timeManager = timeManager;
-
     public Task Process(ClientProcessorContext context, AuroraAndTimeUpdate packet)
     {
         timeManager.ProcessUpdate(packet.TimeData.TimePacket);

@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class EntityReparentedProcessor(EntityRegistry entityRegistry, ILogger<EntityReparentedProcessor> logger) : IAuthPacketProcessor<EntityReparented>
 {
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly ILogger<EntityReparentedProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, EntityReparented packet)
     {
         if (!entityRegistry.TryGetEntityById(packet.Id, out Entity entity))

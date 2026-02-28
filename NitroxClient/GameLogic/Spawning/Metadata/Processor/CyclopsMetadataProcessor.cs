@@ -22,13 +22,13 @@ public class CyclopsMetadataProcessor : EntityMetadataProcessor<CyclopsMetadata>
     {
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            CyclopsMetadataProcessor.SetEngineMode(cyclops, (CyclopsMotorMode.CyclopsMotorModes)metadata.EngineMode);
+            SetEngineMode(cyclops, (CyclopsMotorMode.CyclopsMotorModes)metadata.EngineMode);
             ChangeSilentRunning(cyclops, metadata.SilentRunningOn);
-            CyclopsMetadataProcessor.ChangeShieldMode(cyclops, metadata.ShieldOn);
-            CyclopsMetadataProcessor.ChangeSonarMode(cyclops, metadata.SonarOn);
+            ChangeShieldMode(cyclops, metadata.ShieldOn);
+            ChangeSonarMode(cyclops, metadata.SonarOn);
             SetEngineState(cyclops, metadata.EngineOn);
             SetHealth(cyclops, metadata.Health);
-            CyclopsMetadataProcessor.SetDestroyed(cyclops, metadata.IsDestroyed);
+            SetDestroyed(cyclops, metadata.IsDestroyed);
         }
     }
 

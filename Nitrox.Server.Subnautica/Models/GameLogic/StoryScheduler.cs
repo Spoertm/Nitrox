@@ -8,12 +8,8 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic
 {
     internal sealed class StoryScheduler(IPacketSender packetSender, PdaManager pdaManager, StoryManager storyManager, TimeService timeService, PlayerManager playerManager)
     {
-        private readonly IPacketSender packetSender = packetSender;
-        private readonly PdaManager pdaManager = pdaManager;
         private readonly PlayerManager playerManager = playerManager;
         private readonly ThreadSafeDictionary<string, NitroxScheduledGoal> scheduledStories = [];
-        private readonly StoryManager storyManager = storyManager;
-        private readonly TimeService timeService = timeService;
 
         private float ElapsedSecondsFloat => (float)timeService.GameTime.TotalSeconds;
 

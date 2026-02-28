@@ -5,10 +5,6 @@ namespace Nitrox.Server.Subnautica.Services;
 
 internal sealed class HibernateService(IHibernate.SleepTrigger sleepTrigger, IHibernate.WakeTrigger wakeTrigger, ILogger<HibernateService> logger) : IHostedLifecycleService, ISessionCleaner
 {
-    private readonly ILogger<HibernateService> logger = logger;
-    private readonly IHibernate.SleepTrigger sleepTrigger = sleepTrigger;
-    private readonly IHibernate.WakeTrigger wakeTrigger = wakeTrigger;
-
     public bool IsSleeping
     {
         get => Interlocked.CompareExchange(ref field, true, true);

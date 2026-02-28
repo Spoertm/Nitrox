@@ -5,7 +5,6 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed class FmodService(GameInfo gameInfo) : IHostedService
 {
     private FMODWhitelist? whitelist;
-    private readonly GameInfo gameInfo = gameInfo;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {

@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities;
 
 internal sealed class SubnauticaUweWorldEntityFactory(WorldEntitiesResource resource)
 {
-    private readonly WorldEntitiesResource resource = resource;
-
     public async Task<UweWorldEntity?> FindAsync(string classId)
     {
         Dictionary<string, WorldEntityInfo> worldEntitiesByClassId = await resource.GetWorldEntitiesByClassIdAsync();

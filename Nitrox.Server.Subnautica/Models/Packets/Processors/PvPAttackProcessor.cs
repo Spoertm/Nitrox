@@ -6,10 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class PvPAttackProcessor(IPacketSender packetSender, PlayerManager playerManager, IOptions<SubnauticaServerOptions> options) : IAuthPacketProcessor<PvPAttack>
 {
-    private readonly IPacketSender packetSender = packetSender;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly PlayerManager playerManager = playerManager;
-
     // TODO: In the future, do a whole config for damage sources
     private static readonly Dictionary<PvPAttack.AttackType, float> damageMultiplierByType = new()
     {

@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class PlayerInCyclopsMovementProcessor(IPacketSender packetSender, EntityRegistry entityRegistry, ILogger<PlayerInCyclopsMovementProcessor> logger) : IAuthPacketProcessor<PlayerInCyclopsMovement>
 {
     private readonly IPacketSender packetSender = packetSender;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly ILogger<PlayerInCyclopsMovementProcessor> logger = logger;
 
     public async Task Process(AuthProcessorContext context, PlayerInCyclopsMovement packet)
     {

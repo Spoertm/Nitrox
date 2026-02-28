@@ -18,8 +18,8 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
                 ValidateState(sessionConnectionContext);
 
                 string reservationCorrelationId = Guid.NewGuid().ToString();
-                AwaitingReservationCredentials.RequestSessionReservation(sessionConnectionContext, reservationCorrelationId);
-                AwaitingReservationCredentials.AwaitSessionReservation(sessionConnectionContext, reservationCorrelationId);
+                RequestSessionReservation(sessionConnectionContext, reservationCorrelationId);
+                AwaitSessionReservation(sessionConnectionContext, reservationCorrelationId);
             }
             catch (Exception)
             {

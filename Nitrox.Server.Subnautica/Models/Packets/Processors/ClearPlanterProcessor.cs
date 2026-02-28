@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class ClearPlanterProcessor(EntityRegistry entityRegistry, ILogger<ClearPlanterProcessor> logger) : IAuthPacketProcessor<ClearPlanter>
 {
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly ILogger<ClearPlanterProcessor> logger = logger;
-
     public Task Process(AuthProcessorContext context, ClearPlanter packet)
     {
         if (!entityRegistry.TryGetEntityById(packet.PlanterId, out PlanterEntity planterEntity))

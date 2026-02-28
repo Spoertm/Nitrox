@@ -14,7 +14,6 @@ namespace Nitrox.Launcher.Models.Services;
 
 internal sealed class DialogService(Func<Window> dialogOwnerProvider, IEnumerable<DialogService.Mapping> viewModelToWindowMap)
 {
-    private readonly Func<Window> dialogOwnerProvider = dialogOwnerProvider;
     private readonly Dictionary<Type, Mapping> viewModelToWindowMap = viewModelToWindowMap.ToDictionary(m => m.ViewModelType);
     private readonly Lock viewModelToWindowMapLocker = new();
 

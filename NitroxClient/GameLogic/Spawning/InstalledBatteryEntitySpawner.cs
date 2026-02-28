@@ -16,7 +16,7 @@ public sealed class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledB
 {
     protected override IEnumerator SpawnAsync(InstalledBatteryEntity entity, TaskResult<Optional<GameObject>> result)
     {
-        if (!InstalledBatteryEntitySpawner.CanSpawn(entity, out EnergyMixin? energyMixin, out string errorLog))
+        if (!CanSpawn(entity, out EnergyMixin? energyMixin, out string errorLog))
         {
             Log.Error(errorLog);
             result.Set(Optional.Empty);
@@ -27,7 +27,7 @@ public sealed class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledB
         yield return DefaultWorldEntitySpawner.RequestPrefab(entity.TechType.ToUnity(), prefabResult);
         GameObject gameObject = GameObjectExtensions.InstantiateWithId(prefabResult.Get(), entity.Id);
 
-        InstalledBatteryEntitySpawner.SetupObject(gameObject, energyMixin);
+        SetupObject(gameObject, energyMixin);
 
         result.Set(gameObject);
     }
@@ -38,7 +38,7 @@ public sealed class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledB
         {
             return false;
         }
-        if (!InstalledBatteryEntitySpawner.CanSpawn(entity, out EnergyMixin energyMixin, out string errorLog))
+        if (!CanSpawn(entity, out EnergyMixin energyMixin, out string errorLog))
         {
             Log.Error(errorLog);
             return true;
@@ -46,7 +46,7 @@ public sealed class InstalledBatteryEntitySpawner : SyncEntitySpawner<InstalledB
 
         GameObject gameObject = GameObjectExtensions.SpawnFromPrefab(prefab, entity.Id);
 
-        InstalledBatteryEntitySpawner.SetupObject(gameObject, energyMixin);
+        SetupObject(gameObject, energyMixin);
 
         result.Set(gameObject);
         return true;

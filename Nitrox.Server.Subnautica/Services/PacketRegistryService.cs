@@ -9,7 +9,6 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed class PacketRegistryService(Func<IPacketProcessor[]> packetProcessorsProvider) : IHostedService
 {
     private PacketProcessorsInvoker packetProcessorsInvoker;
-    private readonly Func<IPacketProcessor[]> packetProcessorsProvider = packetProcessorsProvider;
     private PacketProcessorsInvoker.Entry defaultProcessor;
 
     public Task StartAsync(CancellationToken cancellationToken)

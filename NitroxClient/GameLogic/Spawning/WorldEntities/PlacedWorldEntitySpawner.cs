@@ -8,8 +8,6 @@ namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
 internal sealed class PlacedWorldEntitySpawner(WorldEntitySpawner worldEntitySpawner) : SyncEntitySpawner<PlacedWorldEntity>
 {
-    private readonly WorldEntitySpawner worldEntitySpawner = worldEntitySpawner;
-
     protected override IEnumerator SpawnAsync(PlacedWorldEntity entity, TaskResult<Optional<GameObject>> result)
     {
         if (!DefaultWorldEntitySpawner.TryGetCachedPrefab(out GameObject prefab, classId: entity.ClassId))

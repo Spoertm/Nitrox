@@ -24,18 +24,9 @@ internal sealed class BatchEntitySpawner(
     IOptions<SubnauticaServerOptions> options,
     ILogger<BatchEntitySpawner> logger)
 {
-    private readonly BatchCellsParser batchCellsParser = batchCellsParser;
-
     private readonly HashSet<NitroxInt3> emptyBatches = [];
-    private readonly PrefabPlaceholderGroupsResource prefabPlaceholderGroupsResource = prefabPlaceholderGroupsResource;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly ILogger<BatchEntitySpawner> logger = logger;
-    private readonly IUwePrefabFactory prefabFactory = prefabFactory;
-    private readonly IEntityBootstrapperManager entityBootstrapperManager = entityBootstrapperManager;
-    private readonly PdaManager pdaManager = pdaManager;
 
     private readonly XorRandom random = randomFactory.GetUnityLikeRandom();
-    private readonly SubnauticaUweWorldEntityFactory worldEntityFactory = worldEntityFactory;
 
     private readonly Lock parsedBatchesLock = new();
     private readonly Lock emptyBatchesLock = new();

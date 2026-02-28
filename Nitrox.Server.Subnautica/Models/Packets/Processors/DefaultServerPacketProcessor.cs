@@ -14,8 +14,6 @@ internal sealed class DefaultServerPacketProcessor(ILogger<DefaultServerPacketPr
         typeof(DropSimulationOwnership)
     ];
 
-    private readonly ILogger<DefaultServerPacketProcessor> logger = logger;
-
     private readonly HashSet<Type> loggingPacketBlackList =
     [
         typeof(AnimationChangeEvent),

@@ -25,7 +25,7 @@ internal sealed class ScheduleProcessor : IClientPacketProcessor<Schedule>
 
     private bool ShouldSchedule(ScheduledGoal goal)
     {
-        return goal.timeExecute >= DayNightCycle.main.timePassedAsDouble && !ScheduleProcessor.IsAlreadyKnown(goal.goalKey);
+        return goal.timeExecute >= DayNightCycle.main.timePassedAsDouble && !IsAlreadyKnown(goal.goalKey);
     }
 
     private static bool IsAlreadyKnown(string goalKey)

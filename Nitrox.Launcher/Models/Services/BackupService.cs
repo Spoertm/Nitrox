@@ -18,8 +18,6 @@ namespace Nitrox.Launcher.Models.Services;
 /// </summary>
 public sealed class BackupService(IKeyValueStore keyValueStore)
 {
-    private readonly IKeyValueStore keyValueStore = keyValueStore;
-
     public static string BackupsDirectory => Path.Combine(NitroxUser.AppDataPath, "backups");
 
     /// <summary>

@@ -6,7 +6,6 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed class PreventMultiServerInitService(ILogger<PreventMultiServerInitService> logger) : IHostedLifecycleService
 {
     private readonly SemaphoreSlim callerGate = new(1);
-    private readonly ILogger<PreventMultiServerInitService> logger = logger;
     private readonly SemaphoreSlim mutexReleaseGate = new(1);
 
     public Task StartAsync(CancellationToken cancellationToken) => Task.CompletedTask;

@@ -13,10 +13,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.Debugging;
 [RequiresPermission(Perms.HOST)]
 internal sealed class QueryCommand(EntityRegistry entityRegistry, SimulationOwnershipData simulationOwnershipData, ILogger<QueryCommand> logger) : ICommandHandler<NitroxId>
 {
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly SimulationOwnershipData simulationOwnershipData = simulationOwnershipData;
-    private readonly ILogger<QueryCommand> logger = logger;
-
     [Description("Query the entity associated with the given NitroxId")]
     public Task Execute(ICommandContext context, [Description("NitroxId of an entity")] NitroxId entityId)
     {

@@ -38,7 +38,7 @@ public sealed class BuildEntitySpawner : EntitySpawner<BuildEntity>
 #if DEBUG
         Stopwatch stopwatch = Stopwatch.StartNew();
 #endif
-        GameObject newBase = UnityEngine.Object.Instantiate(BaseGhost._basePrefab, LargeWorldStreamer.main.globalRoot.transform, entity.Transform.LocalPosition.ToUnity(), entity.Transform.LocalRotation.ToUnity(), entity.Transform.LocalScale.ToUnity(), false);
+        GameObject newBase = Object.Instantiate(BaseGhost._basePrefab, LargeWorldStreamer.main.globalRoot.transform, entity.Transform.LocalPosition.ToUnity(), entity.Transform.LocalRotation.ToUnity(), entity.Transform.LocalScale.ToUnity(), false);
         if (LargeWorld.main)
         {
             LargeWorld.main.streamer.cellManager.RegisterEntity(newBase);

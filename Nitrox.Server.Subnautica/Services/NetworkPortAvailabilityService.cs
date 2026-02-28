@@ -8,7 +8,6 @@ namespace Nitrox.Server.Subnautica.Services;
 /// </summary>
 internal sealed class NetworkPortAvailabilityService(IOptions<SubnauticaServerOptions> options, ILogger<NetworkPortAvailabilityService> logger) : IHostedLifecycleService
 {
-    private readonly ILogger<NetworkPortAvailabilityService> logger = logger;
     private readonly SubnauticaServerOptions options = options.Value;
 
     public Task StartAsync(CancellationToken cancellationToken) => Task.CompletedTask;

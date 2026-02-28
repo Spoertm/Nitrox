@@ -9,9 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 
 internal sealed class ListCommand(IOptions<SubnauticaServerOptions> options, PlayerManager playerManager) : ICommandHandler
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-
     [Description("Shows who's online")]
     public async Task Execute(ICommandContext context)
     {

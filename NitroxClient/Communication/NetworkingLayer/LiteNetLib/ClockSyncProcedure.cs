@@ -6,7 +6,6 @@ namespace NitroxClient.Communication.NetworkingLayer.LiteNetLib;
 
 public sealed class ClockSyncProcedure(LiteNetLibClient liteNetLibClient) : IDisposable
 {
-    private readonly LiteNetLibClient liteNetLibClient = liteNetLibClient;
     private readonly int previousPingInterval = liteNetLibClient.PingInterval;
     private readonly List<long> deltas = [];
 

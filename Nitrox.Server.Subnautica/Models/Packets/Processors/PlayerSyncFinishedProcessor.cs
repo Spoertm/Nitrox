@@ -8,10 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class PlayerSyncFinishedProcessor(SessionManager sessionManager, JoiningManager joiningManager, HibernateService hibernateService)
     : IAuthPacketProcessor<PlayerSyncFinished>
 {
-    private readonly SessionManager sessionManager = sessionManager;
-    private readonly JoiningManager joiningManager = joiningManager;
-    private readonly HibernateService hibernateService = hibernateService;
-
     public async Task Process(AuthProcessorContext context, PlayerSyncFinished packet)
     {
         if (sessionManager.GetSessionCount() > 0)

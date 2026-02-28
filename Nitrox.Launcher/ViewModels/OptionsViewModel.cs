@@ -22,9 +22,6 @@ namespace Nitrox.Launcher.ViewModels;
 
 internal partial class OptionsViewModel(IKeyValueStore keyValueStore, StorageService storageService) : RoutableViewModelBase
 {
-    private readonly IKeyValueStore keyValueStore = keyValueStore;
-    private readonly StorageService storageService = storageService;
-
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(SetArgumentsCommand))]
     private string launchArgs;

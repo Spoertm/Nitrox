@@ -10,8 +10,6 @@ namespace NitroxClient.GameLogic.Spawning.WorldEntities;
 
 internal sealed class OxygenPipeEntitySpawner(WorldEntitySpawner worldEntitySpawner) : SyncEntitySpawner<OxygenPipeEntity>
 {
-    private readonly WorldEntitySpawner worldEntitySpawner = worldEntitySpawner;
-
     private readonly Dictionary<NitroxId, List<OxygenPipe>> childrenPipeEntitiesByParentId = new();
 
     protected override IEnumerator SpawnAsync(OxygenPipeEntity entity, TaskResult<Optional<GameObject>> result)

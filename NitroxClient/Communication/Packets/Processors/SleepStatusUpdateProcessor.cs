@@ -6,8 +6,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class SleepStatusUpdateProcessor(SleepManager sleepManager) : IClientPacketProcessor<SleepStatusUpdate>
 {
-    private readonly SleepManager sleepManager = sleepManager;
-
     public Task Process(ClientProcessorContext context, SleepStatusUpdate packet)
     {
         if (packet.PlayersInBed > 0)

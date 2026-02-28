@@ -5,9 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class MultiplayerSessionPolicyRequestProcessor(IOptions<SubnauticaServerOptions> configProvider, ILogger<MultiplayerSessionPolicyRequestProcessor> logger)
     : IAnonPacketProcessor<MultiplayerSessionPolicyRequest>
 {
-    private readonly IOptions<SubnauticaServerOptions> configProvider = configProvider;
-    private readonly ILogger<MultiplayerSessionPolicyRequestProcessor> logger = logger;
-
     // This will extend in the future when we look into different options for auth
     public async Task Process(AnonProcessorContext context, MultiplayerSessionPolicyRequest packet)
     {

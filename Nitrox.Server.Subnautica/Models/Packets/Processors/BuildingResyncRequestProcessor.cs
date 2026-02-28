@@ -9,9 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 sealed class BuildingResyncRequestProcessor(EntityRegistry entityRegistry, WorldEntityManager worldEntityManager) : IAuthPacketProcessor<BuildingResyncRequest>
 {
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, BuildingResyncRequest packet)
     {
         Dictionary<BuildEntity, int> buildEntities = new();

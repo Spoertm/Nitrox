@@ -6,9 +6,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class PDAScanFinishedPacketProcessor(PdaManager pdaManager, WorldEntityManager worldEntityManager) : IAuthPacketProcessor<PDAScanFinished>
 {
-    private readonly PdaManager pdaManager = pdaManager;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, PDAScanFinished packet)
     {
         if (!packet.WasAlreadyResearched)

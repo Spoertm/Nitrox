@@ -191,7 +191,7 @@ namespace NitroxClient.GameLogic
                     UpdateEntity(entity);
                     continue;
                 }
-                else if (entity.ParentId != null && !Entities.IsParentReady(entity.ParentId))
+                else if (entity.ParentId != null && !IsParentReady(entity.ParentId))
                 {
                     AddPendingParentEntity(entity);
                     continue;

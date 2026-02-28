@@ -9,10 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class EntityTransformUpdatesProcessor(PlayerManager playerManager, WorldEntityManager worldEntityManager, SimulationOwnershipData simulationOwnershipData) : IAuthPacketProcessor<EntityTransformUpdates>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly SimulationOwnershipData simulationOwnershipData = simulationOwnershipData;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, EntityTransformUpdates packet)
     {
         Dictionary<Player, List<EntityTransformUpdates.EntityTransformUpdate>> visibleUpdatesByPlayer = InitializeVisibleUpdateMapWithOtherPlayers(context.Sender);

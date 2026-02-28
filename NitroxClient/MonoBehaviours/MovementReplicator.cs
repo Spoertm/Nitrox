@@ -49,7 +49,7 @@ public abstract class MovementReplicator : MonoBehaviour
 
         if (latency > maxAllowedLatency)
         {
-            maxAllowedLatency = latency + MovementReplicator.SafetyLatencyMargin;
+            maxAllowedLatency = latency + SafetyLatencyMargin;
             latestLatencyBumpTime = currentTime;
             maxLatencyDetectedRecently = 0;
         }
@@ -57,11 +57,11 @@ public abstract class MovementReplicator : MonoBehaviour
         {
             maxLatencyDetectedRecently = Mathf.Max(latency, maxLatencyDetectedRecently);
 
-            if (currentTime - latestLatencyBumpTime >= MovementReplicator.LatencyUpdatePeriod)
+            if (currentTime - latestLatencyBumpTime >= LatencyUpdatePeriod)
             {
-                if (maxLatencyDetectedRecently < maxAllowedLatency - 2 * MovementReplicator.SafetyLatencyMargin)
+                if (maxLatencyDetectedRecently < maxAllowedLatency - 2 * SafetyLatencyMargin)
                 {
-                    maxAllowedLatency = maxLatencyDetectedRecently + MovementReplicator.SafetyLatencyMargin; // regular gameplay latency variation
+                    maxAllowedLatency = maxLatencyDetectedRecently + SafetyLatencyMargin; // regular gameplay latency variation
                 }
                 latestLatencyBumpTime = currentTime;
                 maxLatencyDetectedRecently = 0;

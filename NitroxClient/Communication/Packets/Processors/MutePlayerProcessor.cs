@@ -10,7 +10,6 @@ internal sealed class MutePlayerProcessor(PlayerManager playerManager) : IClient
 {
     public delegate void PlayerMuted(SessionId sessionId, bool muted);
 
-    private readonly PlayerManager playerManager = playerManager;
     public PlayerMuted OnPlayerMuted;
 
     public Task Process(ClientProcessorContext context, MutePlayer packet)

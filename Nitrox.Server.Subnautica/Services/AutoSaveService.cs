@@ -2,11 +2,6 @@ namespace Nitrox.Server.Subnautica.Services;
 
 internal sealed class AutoSaveService(SaveService saveService, HibernateService hibernateService, IOptions<SubnauticaServerOptions> options, ILogger<AutoSaveService> logger) : BackgroundService, IHostedLifecycleService
 {
-    private readonly HibernateService hibernateService = hibernateService;
-    private readonly ILogger<AutoSaveService> logger = logger;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly SaveService saveService = saveService;
-
     public Task StartingAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
     public Task StartedAsync(CancellationToken cancellationToken)

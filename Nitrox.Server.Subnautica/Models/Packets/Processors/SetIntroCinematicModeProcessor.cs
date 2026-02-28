@@ -7,9 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class SetIntroCinematicModeProcessor(PlayerManager playerManager, ILogger<SetIntroCinematicModeProcessor> logger) : IAuthPacketProcessor<SetIntroCinematicMode>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly ILogger<SetIntroCinematicModeProcessor> logger = logger;
-
     public async Task Process(AuthProcessorContext context, SetIntroCinematicMode packet)
     {
         if (packet.SessionId != context.Sender.SessionId)

@@ -7,9 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class ChangeServerPasswordCommand(ILogger<ChangeServerPasswordCommand> logger, IOptions<SubnauticaServerOptions> serverConfig) : ICommandHandler, ICommandHandler<string>
 {
-    private readonly IOptions<SubnauticaServerOptions> serverConfig = serverConfig;
-    private readonly ILogger<ChangeServerPasswordCommand> logger = logger;
-
     [Description("Changes server password. Clear it without argument")]
     public async Task Execute(ICommandContext context, [Description("The new server password")] string newPassword) => await SetPasswordAsync(context, newPassword);
 

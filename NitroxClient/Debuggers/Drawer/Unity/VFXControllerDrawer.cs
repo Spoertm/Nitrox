@@ -52,27 +52,27 @@ public sealed class VFXControllerDrawer : IDrawer<VFXController>
 
         using (new GUILayout.HorizontalScope())
         {
-            GUILayout.Label("Spawn on play", NitroxGUILayout.DrawerLabel, GUILayout.Width(LABEL_WIDTH));
-            NitroxGUILayout.Separator();
-            emitter.spawnOnPlay = NitroxGUILayout.BoolField(emitter.spawnOnPlay, VALUE_MAX_WIDTH);
+            GUILayout.Label("Spawn on play", DrawerLabel, GUILayout.Width(LABEL_WIDTH));
+            Separator();
+            emitter.spawnOnPlay = BoolField(emitter.spawnOnPlay, VALUE_MAX_WIDTH);
         }
         
         GUILayout.Space(5);
 
         using (new GUILayout.HorizontalScope())
         {
-            GUILayout.Label("Fx", NitroxGUILayout.DrawerLabel, GUILayout.Width(LABEL_WIDTH));
-            NitroxGUILayout.Separator();
+            GUILayout.Label("Fx", DrawerLabel, GUILayout.Width(LABEL_WIDTH));
+            Separator();
             if (emitter.fx)
             {
-                if (GUILayout.Button(emitter.fx.name, GUILayout.Width(NitroxGUILayout.VALUE_WIDTH)))
+                if (GUILayout.Button(emitter.fx.name, GUILayout.Width(VALUE_WIDTH)))
                 {
                     sceneDebugger.UpdateSelectedObject(emitter.fx);
                 }
             }
             else
             {
-                GUILayout.Box("Field is null", GUILayout.Width(NitroxGUILayout.VALUE_WIDTH));
+                GUILayout.Box("Field is null", GUILayout.Width(VALUE_WIDTH));
             }
         }
 
@@ -80,8 +80,8 @@ public sealed class VFXControllerDrawer : IDrawer<VFXController>
 
         using (new GUILayout.HorizontalScope())
         {
-            GUILayout.Label("Position Offset", NitroxGUILayout.DrawerLabel, GUILayout.Width(LABEL_WIDTH));
-            NitroxGUILayout.Separator();
+            GUILayout.Label("Position Offset", DrawerLabel, GUILayout.Width(LABEL_WIDTH));
+            Separator();
             emitter.posOffset = vectorDrawer.Draw(emitter.posOffset, new VectorDrawer.DrawOptions(VECTOR_MAX_WIDTH));
         }
 
@@ -89,8 +89,8 @@ public sealed class VFXControllerDrawer : IDrawer<VFXController>
 
         using (new GUILayout.HorizontalScope())
         {
-            GUILayout.Label("Euler Offset", NitroxGUILayout.DrawerLabel, GUILayout.Width(LABEL_WIDTH));
-            NitroxGUILayout.Separator();
+            GUILayout.Label("Euler Offset", DrawerLabel, GUILayout.Width(LABEL_WIDTH));
+            Separator();
             emitter.eulerOffset = vectorDrawer.Draw(emitter.eulerOffset, new VectorDrawer.DrawOptions(VECTOR_MAX_WIDTH));
         }
 
@@ -98,18 +98,18 @@ public sealed class VFXControllerDrawer : IDrawer<VFXController>
 
         using (new GUILayout.HorizontalScope())
         {
-            GUILayout.Label("Instance GO", NitroxGUILayout.DrawerLabel, GUILayout.Width(LABEL_WIDTH));
-            NitroxGUILayout.Separator();
+            GUILayout.Label("Instance GO", DrawerLabel, GUILayout.Width(LABEL_WIDTH));
+            Separator();
             if (emitter.instanceGO)
             {
-                if (GUILayout.Button(emitter.instanceGO.name, GUILayout.Width(NitroxGUILayout.VALUE_WIDTH)))
+                if (GUILayout.Button(emitter.instanceGO.name, GUILayout.Width(VALUE_WIDTH)))
                 {
                     sceneDebugger.UpdateSelectedObject(emitter.instanceGO);
                 }
             }
             else
             {
-                GUILayout.Box("Field is null", GUILayout.Width(NitroxGUILayout.VALUE_WIDTH));
+                GUILayout.Box("Field is null", GUILayout.Width(VALUE_WIDTH));
             }
         }
     }

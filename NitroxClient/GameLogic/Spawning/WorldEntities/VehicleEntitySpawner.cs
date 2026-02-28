@@ -20,7 +20,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
     protected override IEnumerator SpawnAsync(VehicleEntity vehicleEntity, TaskResult<Optional<GameObject>> result)
     {
-        bool withinConstructorSpawnWindow = (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime) < VehicleEntitySpawner.GetCraftDuration(vehicleEntity.TechType.ToUnity());
+        bool withinConstructorSpawnWindow = (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime) < GetCraftDuration(vehicleEntity.TechType.ToUnity());
         Optional<GameObject> spawnerObj = NitroxEntity.GetObjectFrom(vehicleEntity.SpawnerId);
         Optional<GameObject> parent = vehicleEntity.ParentId != null ? NitroxEntity.GetObjectFrom(vehicleEntity.ParentId) : Optional.Empty;
 
@@ -73,7 +73,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
             }
         }
 
-        VehicleEntitySpawner.AddCinematicControllers(gameObject);
+        AddCinematicControllers(gameObject);
 
         gameObject.transform.position = vehicleEntity.Transform.Position.ToUnity();
         gameObject.transform.rotation = vehicleEntity.Transform.Rotation.ToUnity();
@@ -86,7 +86,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         yield return Yielders.WaitForEndOfFrame;
 
-        VehicleEntitySpawner.RemoveConstructionAnimations(gameObject);
+        RemoveConstructionAnimations(gameObject);
 
         yield return Yielders.WaitForEndOfFrame;
 
@@ -104,7 +104,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         if (parent.HasValue)
         {
-            VehicleEntitySpawner.DockVehicle(gameObject, parent.Value);
+            DockVehicle(gameObject, parent.Value);
         }
         
         // While spawning a vehicle, we want to make sure that it doesn't free fall as if it was just built by a constructor
@@ -123,7 +123,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
             constructor.Deploy(true);
         }
 
-        float craftDuration = VehicleEntitySpawner.GetCraftDuration(vehicleEntity.TechType.ToUnity()) - (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime);
+        float craftDuration = GetCraftDuration(vehicleEntity.TechType.ToUnity()) - (DayNightCycle.main.timePassedAsFloat - vehicleEntity.ConstructionTime);
 
         ConstructorInput crafter = constructor.gameObject.RequireComponentInChildren<ConstructorInput>(true);
 
@@ -134,7 +134,7 @@ public sealed class VehicleEntitySpawner : EntitySpawner<VehicleEntity>
 
         NitroxEntity.SetNewId(constructedObject, vehicleEntity.Id);
 
-        VehicleEntitySpawner.AddCinematicControllers(constructedObject);
+        AddCinematicControllers(constructedObject);
 
         result.Set(constructedObject);
         yield break;

@@ -8,7 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Serialization.SaveDataUpgrades;
 
 public abstract class SaveDataUpgrade(ILogger logger)
 {
-    private readonly ILogger logger = logger;
     private static readonly JsonConverter[] converters = [new NitroxIdConverter(), new TechTypeConverter(), new VersionConverter(), new KeyValuePairConverter(), new StringEnumConverter()];
 
     /// <summary>

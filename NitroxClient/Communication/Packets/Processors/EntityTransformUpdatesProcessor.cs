@@ -9,8 +9,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class EntityTransformUpdatesProcessor(SimulationOwnership simulationOwnership) : IClientPacketProcessor<EntityTransformUpdates>
 {
-    private readonly SimulationOwnership simulationOwnership = simulationOwnership;
-
     public Task Process(ClientProcessorContext context, EntityTransformUpdates packet)
     {
         foreach (EntityTransformUpdate update in packet.Updates)

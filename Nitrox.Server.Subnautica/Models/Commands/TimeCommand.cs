@@ -8,8 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class TimeCommand(TimeService timeService) : ICommandHandler<StoryManager.TimeModification>
 {
-    private readonly TimeService timeService = timeService;
-
     [Description("Changes the map time")]
     public async Task Execute(ICommandContext context, [Description("Changes the map time")] StoryManager.TimeModification time)
     {

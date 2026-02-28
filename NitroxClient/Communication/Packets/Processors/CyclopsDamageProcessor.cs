@@ -16,8 +16,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 /// </summary>
 internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcessor<CyclopsDamage>
 {
-    private readonly Fires fires = fires;
-
     public Task Process(ClientProcessorContext context, CyclopsDamage packet)
     {
         SubRoot subRoot = NitroxEntity.RequireObjectFrom(packet.Id).GetComponent<SubRoot>();
@@ -97,7 +95,7 @@ internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcess
                     // If it's active, but not in the list, it must have been repaired.
                     if (damageManager.damagePoints[damagePointsIndex].gameObject.activeSelf)
                     {
-                        CyclopsDamageProcessor.RepairDamagePoint(cyclops, damagePointsIndex, 999);
+                        RepairDamagePoint(cyclops, damagePointsIndex, 999);
                     }
                 }
             }
@@ -115,7 +113,7 @@ internal sealed class CyclopsDamageProcessor(Fires fires) : IClientPacketProcess
             {
                 if (damageManager.damagePoints[i].gameObject.activeSelf)
                 {
-                    CyclopsDamageProcessor.RepairDamagePoint(cyclops, i, 999);
+                    RepairDamagePoint(cyclops, i, 999);
                 }
             }
         }

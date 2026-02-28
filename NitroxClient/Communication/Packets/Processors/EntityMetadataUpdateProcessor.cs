@@ -12,9 +12,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class EntityMetadataUpdateProcessor(Entities entities, EntityMetadataManager entityMetadataManager) : IClientPacketProcessor<EntityMetadataUpdate>
 {
-    private readonly Entities entities = entities;
-    private readonly EntityMetadataManager entityMetadataManager = entityMetadataManager;
-
     public Task Process(ClientProcessorContext context, EntityMetadataUpdate update)
     {
         if (entities.SpawningEntities)

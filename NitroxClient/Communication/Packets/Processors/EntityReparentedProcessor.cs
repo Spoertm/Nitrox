@@ -12,8 +12,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class EntityReparentedProcessor(Entities entities) : IClientPacketProcessor<EntityReparented>
 {
-    private readonly Entities entities = entities;
-
     public Task Process(ClientProcessorContext context, EntityReparented packet)
     {
         Optional<GameObject> entity = NitroxEntity.GetObjectFrom(packet.Id);
@@ -61,11 +59,11 @@ internal sealed class EntityReparentedProcessor(Entities entities) : IClientPack
             // Move this to a resolver if there ends up being a lot of custom reparenting logic
             if (entityType == typeof(InventoryItemEntity))
             {
-                EntityReparentedProcessor.InventoryItemReparented(entity.Value, newParent);
+                InventoryItemReparented(entity.Value, newParent);
             }
             else
             {
-                EntityReparentedProcessor.PerformDefaultReparenting(entity.Value, newParent);
+                PerformDefaultReparenting(entity.Value, newParent);
             }
         }
         return Task.CompletedTask;

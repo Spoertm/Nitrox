@@ -11,8 +11,6 @@ namespace Nitrox.Server.Subnautica.Models.Resources.Parsers;
 
 internal sealed class RandomStartResource(SubnauticaAssetsManager assetsManager, IOptions<ServerStartOptions> options) : IGameResource
 {
-    private readonly SubnauticaAssetsManager assetsManager = assetsManager;
-    private readonly IOptions<ServerStartOptions> options = options;
     private readonly TaskCompletionSource<RandomStartGenerator> randomStartGeneratorTcs = new();
 
     public Task LoadAsync(CancellationToken cancellationToken)

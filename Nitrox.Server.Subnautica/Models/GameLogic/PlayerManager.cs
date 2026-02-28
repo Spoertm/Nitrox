@@ -29,9 +29,6 @@ internal sealed partial class PlayerManager(SessionManager sessionManager, IOpti
     private readonly ThreadSafeDictionary<string, PlayerContext> reservations = [];
     private readonly ThreadSafeSet<string> reservedPlayerNames = new("Player"); // "Player" is often used to identify the local player and should not be used by any user
 
-    private readonly SessionManager sessionManager = sessionManager;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly ILogger<PlayerManager> logger = logger;
     private PeerId currentPlayerId;
 
     /// <summary>All players that have joined since the server started, even if they disconnected</summary>

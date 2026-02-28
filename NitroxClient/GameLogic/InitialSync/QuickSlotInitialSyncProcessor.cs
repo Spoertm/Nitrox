@@ -18,7 +18,7 @@ public sealed class QuickSlotInitialSyncProcessor : InitialSyncProcessor
     {
         int nonEmptySlots = 0;
 
-        Dictionary<NitroxId, InventoryItem> inventoryItemsById = QuickSlotInitialSyncProcessor.GetItemsById();
+        Dictionary<NitroxId, InventoryItem> inventoryItemsById = GetItemsById();
 
         for (int i = 0; i < packet.QuickSlotsBindingIds.Length; i++)
         {

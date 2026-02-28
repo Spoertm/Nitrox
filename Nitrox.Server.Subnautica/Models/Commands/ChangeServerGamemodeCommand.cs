@@ -8,9 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class ChangeServerGamemodeCommand(PlayerManager playerManager, IOptions<SubnauticaServerOptions> serverConfig) : ICommandHandler<SubnauticaGameMode>
 {
-    private readonly IOptions<SubnauticaServerOptions> serverConfig = serverConfig;
-    private readonly PlayerManager playerManager = playerManager;
-
     [Description("Changes server gamemode")]
     public async Task Execute(ICommandContext context, [Description("Gamemode to change to")] SubnauticaGameMode newGameMode)
     {

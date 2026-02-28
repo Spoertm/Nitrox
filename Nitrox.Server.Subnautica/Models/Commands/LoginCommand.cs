@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresOrigin(CommandOrigin.PLAYER)]
 internal sealed class LoginCommand(IOptions<SubnauticaServerOptions> optionsProvider) : ICommandHandler<string>
 {
-    private readonly IOptions<SubnauticaServerOptions> optionsProvider = optionsProvider;
-
     [Description("Log in to server as admin (requires password)")]
     public async Task Execute(ICommandContext context, [Description("The admin password for the server")] string adminPassword)
     {

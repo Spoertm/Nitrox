@@ -11,8 +11,6 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
 {
     public const DamageType DAMAGE_TYPE_RUN_ORIGINAL = (DamageType)100;
 
-    private readonly Entities entities = entities;
-
     public Task Process(ClientProcessorContext context, EntityDestroyed packet)
     {
         entities.RemoveEntity(packet.Id);
@@ -33,15 +31,15 @@ public sealed class EntityDestroyedProcessor(Entities entities) : IClientPacketP
             // This type of check could get out of control if there are many types with custom destroy logic. If we get a couple more, move to separate processors.
             if (gameObject.TryGetComponent(out Vehicle vehicle))
             {
-                EntityDestroyedProcessor.DestroyVehicle(vehicle);
+                DestroyVehicle(vehicle);
             }
             else if (gameObject.TryGetComponent(out SubRoot subRoot))
             {
-                EntityDestroyedProcessor.DestroySubroot(subRoot);
+                DestroySubroot(subRoot);
             }
             else if (gameObject.TryGetComponent(out Pickupable pickupable))
             {
-                EntityDestroyedProcessor.DestroyPickupable(pickupable);
+                DestroyPickupable(pickupable);
             }
             else
             {

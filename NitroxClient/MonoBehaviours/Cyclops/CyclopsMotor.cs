@@ -147,7 +147,7 @@ public sealed partial class CyclopsMotor : GroundMotor
         Vector3 beforePosition = Pawn.Position;
 
         Vector3 velocity = new(horizontalVelocity.x, verticalVelocity.y, horizontalVelocity.z);
-        Vector3 movementThisFrame = velocity * CyclopsMotor.DeltaTime;
+        Vector3 movementThisFrame = velocity * DeltaTime;
 
         float step = Mathf.Max(Pawn.Controller.stepOffset, Mathf.Sqrt(movementThisFrame.x * movementThisFrame.x + movementThisFrame.z * movementThisFrame.z));
         if (grounded)
@@ -163,7 +163,7 @@ public sealed partial class CyclopsMotor : GroundMotor
         CheckGrounded(Collision, verticalDot <= 0f);
 
         Vector3 velocityXZ = velocity._X0Z();
-        Vector3 instantVelocity = (Pawn.Position - beforePosition) / CyclopsMotor.DeltaTime;
+        Vector3 instantVelocity = (Pawn.Position - beforePosition) / DeltaTime;
         if (instantVelocity.sqrMagnitude <= 0.2f)
         {
             instantVelocity = velocity;
@@ -243,7 +243,7 @@ public sealed partial class CyclopsMotor : GroundMotor
 
         if (!grounded)
         {
-            verticalMove = -gravity * Up * CyclopsMotor.DeltaTime;
+            verticalMove = -gravity * Up * DeltaTime;
             verticalMove.y = Mathf.Max(verticalMove.y, -movement.maxFallSpeed);
         }
         if (grounded || allowMidAirJumping || flyCheatEnabled)
@@ -328,7 +328,7 @@ public sealed partial class CyclopsMotor : GroundMotor
             latestVelocity.y = 0f;
         }
 
-        float maxSpeed = GetMaxAcceleration(grounded) * CyclopsMotor.DeltaTime;
+        float maxSpeed = GetMaxAcceleration(grounded) * DeltaTime;
         
         Vector3 difference = velocity - latestVelocity;
         if (difference.sqrMagnitude > maxSpeed * maxSpeed)

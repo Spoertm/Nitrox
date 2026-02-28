@@ -31,20 +31,6 @@ internal sealed class JoiningManager(
     ILogger<JoiningManager> logger)
     : ISessionCleaner
 {
-    private readonly IPacketSender packetSender = packetSender;
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly SessionManager sessionManager = sessionManager;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-    private readonly PdaManager pdaManager = pdaManager;
-    private readonly StoryManager storyManager = storyManager;
-    private readonly StoryScheduler storyScheduler = storyScheduler;
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-    private readonly ILogger<JoiningManager> logger = logger;
-    private readonly EscapePodManager escapePodManager = escapePodManager;
-    private readonly EntityRegistry entityRegistry = entityRegistry;
-    private readonly SessionSettings sessionSettings = sessionSettings;
-
     private readonly ThreadSafeQueue<(SessionId, string)> joinQueue = new();
     private readonly Lock queueLocker = new(); // Necessary to avoid race conditions between JoinQueueLoop and AddToJoinQueue
     private bool queueActive;

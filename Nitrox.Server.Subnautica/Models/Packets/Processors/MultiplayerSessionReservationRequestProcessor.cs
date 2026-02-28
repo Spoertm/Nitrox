@@ -8,9 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 internal sealed class MultiplayerSessionReservationRequestProcessor(PlayerManager playerManager, ILogger<MultiplayerSessionReservationRequestProcessor> logger)
     : IAnonPacketProcessor<MultiplayerSessionReservationRequest>
 {
-    private readonly PlayerManager playerManager = playerManager;
-    private readonly ILogger<MultiplayerSessionReservationRequestProcessor> logger = logger;
-
     public async Task Process(AnonProcessorContext context, MultiplayerSessionReservationRequest packet)
     {
         logger.ZLogInformation($"Processing reservation request from {packet.AuthenticationContext.Username}");

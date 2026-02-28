@@ -9,10 +9,7 @@ namespace Nitrox.Server.Subnautica.Models.Resources.Parsers;
 
 internal sealed class EntityDistributionsResource(SubnauticaAssetsManager assetsManager, IOptions<ServerStartOptions> options) : IGameResource
 {
-    private readonly SubnauticaAssetsManager assetsManager = assetsManager;
-
     private readonly TaskCompletionSource<LootDistributionData> lootDistributionTcs = new();
-    private readonly IOptions<ServerStartOptions> options = options;
 
     public async Task LoadAsync(CancellationToken cancellationToken)
     {

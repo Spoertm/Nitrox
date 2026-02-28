@@ -64,7 +64,7 @@ public sealed class PlayerModelManager
     public IEnumerator AttachPing(INitroxPlayer player)
     {
         TaskResult<GameObject> result = new();
-        yield return PlayerModelManager.CreateSignalPrototype(result);
+        yield return CreateSignalPrototype(result);
 
         GameObject signalBase = Object.Instantiate(result.value, player.PlayerModel.transform, false);
         signalBase.name = $"signal_{player.PlayerName}";

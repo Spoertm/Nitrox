@@ -9,7 +9,6 @@ internal abstract class ZLoggerGenericLoggerProvider<TProcessor, TOptions>(
     where TProcessor : IAsyncLogProcessor
     where TOptions : ZLoggerOptions
 {
-    private readonly TOptions options = options;
     private readonly TProcessor processor = processor;
     private IExternalScopeProvider? scopeProvider;
 

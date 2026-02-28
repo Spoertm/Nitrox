@@ -19,7 +19,7 @@ namespace NitroxClient.GameLogic
 
         public SimulationOwnership(IMultiplayerSession muliplayerSession, IPacketSender packetSender)
         {
-            this.multiplayerSession = muliplayerSession;
+            multiplayerSession = muliplayerSession;
             this.packetSender = packetSender;
         }
         public bool PlayerHasMinLockType(NitroxId id, SimulationLockType lockType)
@@ -145,7 +145,7 @@ namespace NitroxClient.GameLogic
 
         public bool TreatVehicleEntity(NitroxId entityId, bool isLocalPlayerNewOwner, SimulationLockType simulationLockType)
         {
-            if (!NitroxEntity.TryGetObjectFrom(entityId, out GameObject gameObject) || !SimulationOwnership.IsVehicle(gameObject))
+            if (!NitroxEntity.TryGetObjectFrom(entityId, out GameObject gameObject) || !IsVehicle(gameObject))
             {
                 return false;
             }

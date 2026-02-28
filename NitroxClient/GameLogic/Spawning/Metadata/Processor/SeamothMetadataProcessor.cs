@@ -28,7 +28,7 @@ public class SeamothMetadataProcessor : VehicleMetadataProcessor<SeamothMetadata
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            SeamothMetadataProcessor.SetLights(seamoth, metadata.LightsOn);
+            SetLights(seamoth, metadata.LightsOn);
             SetHealth(seamoth.gameObject, metadata.Health);
             SetInPrecursor(seamoth, metadata.InPrecursor);
             SetNameAndColors(subName, metadata.Name, metadata.Colors);

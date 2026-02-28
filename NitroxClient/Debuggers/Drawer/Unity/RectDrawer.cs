@@ -72,7 +72,7 @@ public sealed class RectDrawer : IEditorDrawer<Rect, RectDrawer.DrawOptions>, IE
 
     public RectOffset Draw(RectOffset rect)
     {
-        return RectDrawer.Draw(rect, null);
+        return Draw(rect, null);
     }
 
     public sealed record DrawOptions(float Width = 100, float MaxWidth = 215);

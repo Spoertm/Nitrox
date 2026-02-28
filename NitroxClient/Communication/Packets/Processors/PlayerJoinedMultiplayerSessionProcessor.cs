@@ -8,9 +8,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class PlayerJoinedMultiplayerSessionProcessor(PlayerManager playerManager, Entities entities) : IClientPacketProcessor<PlayerJoinedMultiplayerSession>
 {
-    private readonly Entities entities = entities;
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, PlayerJoinedMultiplayerSession packet)
     {
         CoroutineHost.StartCoroutine(SpawnRemotePlayer(packet));

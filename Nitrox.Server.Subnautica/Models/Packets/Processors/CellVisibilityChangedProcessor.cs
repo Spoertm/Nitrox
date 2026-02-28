@@ -9,9 +9,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 sealed class CellVisibilityChangedProcessor(EntitySimulation entitySimulation, WorldEntityManager worldEntityManager) : IAuthPacketProcessor<CellVisibilityChanged>
 {
-    private readonly EntitySimulation entitySimulation = entitySimulation;
-    private readonly WorldEntityManager worldEntityManager = worldEntityManager;
-
     public async Task Process(AuthProcessorContext context, CellVisibilityChanged packet)
     {
         context.Sender.AddCells(packet.Added);

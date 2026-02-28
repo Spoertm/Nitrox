@@ -10,7 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.GameLogic.Entities
 {
     public sealed class EntityRegistry(ILogger<EntityRegistry> logger)
     {
-        private readonly ILogger<EntityRegistry> logger = logger;
         private readonly ConcurrentDictionary<NitroxId, Entity> entitiesById = new();
 
         public Optional<T> GetEntityById<T>(NitroxId id) where T : Entity

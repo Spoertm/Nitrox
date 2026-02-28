@@ -170,10 +170,6 @@ public sealed class RecolorImage : Control
     private class RecolorImageRender(MemoryStream data, Rect src, Rect dest, Color color)
         : ICustomDrawOperation
     {
-        private readonly Color color = color;
-        private readonly MemoryStream data = data;
-        private readonly Rect dest = dest;
-
         public Rect Bounds { get; } = src;
 
         public bool HitTest(Point p) => Bounds.Contains(p);

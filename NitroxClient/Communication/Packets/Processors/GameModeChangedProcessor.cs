@@ -6,9 +6,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class GameModeChangedProcessor(LocalPlayer localPlayer, PlayerManager playerManager) : IClientPacketProcessor<GameModeChanged>
 {
-    private readonly LocalPlayer localPlayer = localPlayer;
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, GameModeChanged packet)
     {
         if (packet.AllPlayers || packet.SessionId == localPlayer.SessionId)

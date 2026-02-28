@@ -10,7 +10,6 @@ internal abstract class BuildingProcessor<T>(BuildingManager buildingManager, En
     where T : Packet
 {
     protected readonly BuildingManager BuildingManager = buildingManager;
-    private readonly EntitySimulation? entitySimulation = entitySimulation;
 
     public abstract Task Process(AuthProcessorContext context, T packet);
 

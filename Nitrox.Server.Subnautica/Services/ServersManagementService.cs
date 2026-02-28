@@ -20,10 +20,6 @@ namespace Nitrox.Server.Subnautica.Services;
 internal sealed class ServersManagementService(PlayerManager playerManager, IPacketSender packetSender, CommandService commandProcessor, IOptions<ServerStartOptions> options, ILogger<ServersManagementService> logger) : BackgroundService
 {
     public static readonly Channel<LogEntry> LogQueue = Channel.CreateBounded<LogEntry>(new BoundedChannelOptions(1000) { FullMode = BoundedChannelFullMode.DropOldest });
-    private readonly CommandService commandProcessor = commandProcessor;
-    private readonly ILogger<ServersManagementService> logger = logger;
-    private readonly IOptions<ServerStartOptions> options = options;
-    private readonly PlayerManager playerManager = playerManager;
     private GrpcChannel? channel;
     private Task? pushLogsTask;
 

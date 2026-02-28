@@ -14,11 +14,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.Debugging;
 [RequiresPermission(Perms.HOST)]
 internal sealed class PlayerCommand(SimulationOwnershipData simulationOwnership, WorldEntityManager entityManager, PlayerManager playerManager, ILogger<PlayerCommand> logger) : ICommandHandler<Player>
 {
-    private readonly SimulationOwnershipData simulationOwnership = simulationOwnership;
-    private readonly WorldEntityManager entityManager = entityManager;
-    private readonly ILogger<PlayerCommand> logger = logger;
-    private readonly PlayerManager playerManager = playerManager;
-
     [Description("Lists all visible cells of a player, their simulated entities per cell and the player's visible out of cell entities")]
     public Task Execute(ICommandContext context, [Description("name of the target player")] Player selectedPlayer)
     {

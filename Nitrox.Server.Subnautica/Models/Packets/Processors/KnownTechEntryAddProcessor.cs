@@ -5,8 +5,6 @@ namespace Nitrox.Server.Subnautica.Models.Packets.Processors;
 
 internal sealed class KnownTechEntryAddProcessor(PdaManager pdaManager) : IAuthPacketProcessor<KnownTechEntryAdd>
 {
-    private readonly PdaManager pdaManager = pdaManager;
-
     public async Task Process(AuthProcessorContext context, KnownTechEntryAdd packet)
     {
         switch (packet.Category)

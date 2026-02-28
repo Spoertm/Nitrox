@@ -14,9 +14,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands.Debugging;
 [Description("Spawns blocks at spawn positions")]
 internal sealed class DebugStartMapCommand(RandomFactory randomFactory, RandomStartResource randomStart) : ICommandHandler<int, int>
 {
-    private readonly RandomFactory randomFactory = randomFactory;
-    private readonly RandomStartResource randomStart = randomStart;
-
     public async Task Execute(ICommandContext context, int amount = 1000, int seed = 0)
     {
         RandomStartGenerator randomResource = await randomStart.GetRandomStartGeneratorAsync();

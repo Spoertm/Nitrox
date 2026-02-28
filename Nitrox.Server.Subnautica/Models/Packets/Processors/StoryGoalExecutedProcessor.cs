@@ -7,10 +7,6 @@ internal sealed class StoryGoalExecutedProcessor(IPacketSender packetSender, Sto
     : IAuthPacketProcessor<StoryGoalExecuted>
 {
     private readonly IPacketSender packetSender = packetSender;
-    private readonly StoryManager storyManager = storyManager;
-    private readonly StoryScheduler storyScheduler = storyScheduler;
-    private readonly PdaManager pdaManager = pdaManager;
-    private readonly ILogger<StoryGoalExecutedProcessor> logger = logger;
 
     public async Task Process(AuthProcessorContext context, StoryGoalExecuted packet)
     {

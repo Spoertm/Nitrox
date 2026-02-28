@@ -7,8 +7,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.ADMIN)]
 internal sealed class SetKeepInventoryCommand(IOptions<SubnauticaServerOptions> options) : ICommandHandler<bool>
 {
-    private readonly IOptions<SubnauticaServerOptions> options = options;
-
     [Description("Sets \"keep inventory\" setting to on/off. If \"on\", players won't lose items when they die.")]
     public async Task Execute(ICommandContext context, [Description("The true/false state to set keep inventory on death to")] bool newState)
     {

@@ -12,7 +12,7 @@ public sealed class AttributeContractResolver : DefaultContractResolver
     {
         if (objectType.GetInterfaces().Any(i => i == typeof(IDictionary) || i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IDictionary<,>)))
         {
-            return base.CreateArrayContract(objectType);
+            return CreateArrayContract(objectType);
         }
 
         return base.CreateContract(objectType);

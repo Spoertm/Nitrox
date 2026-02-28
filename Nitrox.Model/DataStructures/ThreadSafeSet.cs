@@ -32,7 +32,7 @@ namespace Nitrox.Model.DataStructures
         {
             if (set == null || createCopy)
             {
-                this.set = ThreadSafeSet<T>.CreateCopy(set);
+                this.set = CreateCopy(set);
                 return;
             }
             this.set = set;
@@ -190,7 +190,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return ThreadSafeSet<T>.CreateCopy(set).GetEnumerator();
+                return CreateCopy(set).GetEnumerator();
             }
         }
 
@@ -235,7 +235,7 @@ namespace Nitrox.Model.DataStructures
         {
             lock (locker)
             {
-                return ThreadSafeSet<T>.CreateCopy(set);
+                return CreateCopy(set);
             }
         }
 

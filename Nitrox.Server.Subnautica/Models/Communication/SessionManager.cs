@@ -13,9 +13,7 @@ namespace Nitrox.Server.Subnautica.Models.Communication;
 /// </summary>
 internal sealed class SessionManager(ISessionCleaner.Trigger sessionCleanTrigger, ILogger<SessionManager> logger)
 {
-    private readonly ILogger<SessionManager> logger = logger;
     private readonly Queue<(TimeSpan ReturnedTimeStamp, SessionId Id)> returnedSessionIds = [];
-    private readonly ISessionCleaner.Trigger sessionCleanTrigger = sessionCleanTrigger;
     private readonly Dictionary<EndpointKey, SessionId> sessionIdByEndpoint = [];
     private readonly Lock sessionLock = new();
     private readonly Dictionary<SessionId, Session> sessions = [];

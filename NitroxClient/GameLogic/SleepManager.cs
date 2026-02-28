@@ -6,7 +6,6 @@ namespace NitroxClient.GameLogic;
 
 public sealed class SleepManager(IPacketSender packetSender)
 {
-    private readonly IPacketSender packetSender = packetSender;
     private Bed? currentBed;
     private bool isSleepInProgress;
     private float timeLastSleepBeforeEntering;

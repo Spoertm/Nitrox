@@ -8,9 +8,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresPermission(Perms.MODERATOR)]
 internal sealed class SaveCommand(SaveService saveService, ILogger<SaveCommand> logger) : ICommandHandler
 {
-    private readonly SaveService saveService = saveService;
-    private readonly ILogger<SaveCommand> logger = logger;
-
     [Description("Saves the map")]
     public async Task Execute(ICommandContext context)
     {

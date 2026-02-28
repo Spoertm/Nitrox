@@ -10,8 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresOrigin(CommandOrigin.PLAYER)]
 internal sealed class AuroraCommand(StoryManager storyManager) : ICommandHandler<AuroraCommand.AuroraAction>
 {
-    private readonly StoryManager storyManager = storyManager;
-
     [Description("Which action to apply to Aurora")]
     public Task Execute(ICommandContext context, AuroraAction action)
     {

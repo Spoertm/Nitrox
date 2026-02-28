@@ -12,7 +12,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
 
         public async Task NegotiateReservationAsync(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
-            Disconnected.ValidateState(sessionConnectionContext);
+            ValidateState(sessionConnectionContext);
 
             IClient client = sessionConnectionContext.Client;
             string ipAddress = sessionConnectionContext.IpAddress;

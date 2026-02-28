@@ -10,9 +10,6 @@ namespace Nitrox.Server.Subnautica.Models.Commands;
 [RequiresOrigin(CommandOrigin.SERVER)]
 internal sealed class DirectoryCommand(IOptions<ServerStartOptions> optionsProvider, ILogger<DirectoryCommand> logger) : ICommandHandler<DirectoryCommand.CommonDirectory>
 {
-    private readonly IOptions<ServerStartOptions> optionsProvider = optionsProvider;
-    private readonly ILogger<DirectoryCommand> logger = logger;
-
     [Description("Opens save directory or other directory by name")]
     public Task Execute(ICommandContext context, [Description("Common name of the directory to open")] CommonDirectory commonDirectory = CommonDirectory.SAVE)
     {

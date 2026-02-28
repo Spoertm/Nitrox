@@ -50,7 +50,7 @@ public sealed class PlayerEntitySpawner : SyncEntitySpawner<PlayerEntity>
 
         if (parent.HasValue)
         {
-            PlayerEntitySpawner.AttachToParent(remotePlayer.Value, parent.Value);
+            AttachToParent(remotePlayer.Value, parent.Value);
         }
 
         result.Set(Optional.Of(remotePlayerBody));

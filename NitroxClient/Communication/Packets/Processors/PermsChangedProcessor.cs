@@ -9,7 +9,6 @@ internal sealed class PermsChangedProcessor(LocalPlayer localPlayer) : IClientPa
 {
     public delegate void PermissionsChanged(Perms perms);
 
-    private readonly LocalPlayer localPlayer = localPlayer;
     public PermissionsChanged OnPermissionsChanged;
 
     public Task Process(ClientProcessorContext context, PermsChanged packet)

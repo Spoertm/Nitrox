@@ -7,8 +7,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class PlayerStatsProcessor(PlayerManager playerManager) : IClientPacketProcessor<PlayerStats>
 {
-    private readonly PlayerManager playerManager = playerManager;
-
     public Task Process(ClientProcessorContext context, PlayerStats playerStats)
     {
         if (playerManager.TryFind(playerStats.SessionId, out RemotePlayer remotePlayer))

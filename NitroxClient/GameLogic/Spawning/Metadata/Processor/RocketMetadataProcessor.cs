@@ -34,8 +34,8 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
 
         using (PacketSuppressor<EntityMetadataUpdate>.Suppress())
         {
-            RocketMetadataProcessor.UpdateElevator(rocket, metadata);
-            RocketMetadataProcessor.UpdateStage(rocket, metadata);
+            UpdateElevator(rocket, metadata);
+            UpdateStage(rocket, metadata);
             UpdatePreflightChecks(rocket, metadata);
         }
     }
@@ -110,11 +110,11 @@ public class RocketMetadataProcessor : EntityMetadataProcessor<RocketMetadata>
 
         if (isCockpitCheck)
         {
-            RocketMetadataProcessor.CompleteCockpitPreflightCheck(rocket, preflightCheck);
+            CompleteCockpitPreflightCheck(rocket, preflightCheck);
         }
         else
         {
-            RocketMetadataProcessor.CompleteBasicPreflightCheck(rocket, preflightCheck);
+            CompleteBasicPreflightCheck(rocket, preflightCheck);
         }
     }
 

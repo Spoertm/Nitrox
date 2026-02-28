@@ -85,7 +85,7 @@ public sealed class EntityPositionBroadcaster : MonoBehaviour
         
         if (NitroxEntity.TryGetComponentFrom(id, out RemotelyControlled remotelyControlled))
         {
-            Object.Destroy(remotelyControlled);
+            Destroy(remotelyControlled);
         }
     }
 

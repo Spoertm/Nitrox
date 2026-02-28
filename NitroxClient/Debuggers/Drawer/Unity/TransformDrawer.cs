@@ -88,7 +88,7 @@ public sealed class TransformDrawer : IDrawer<Transform>
                         {
                             sceneDebugger.JumpToComponent(transform.parent);
                         }
-                        UnityEngine.Object.Destroy(transform.gameObject);
+                        Object.Destroy(transform.gameObject);
                     }
                 }
                 if (GUILayout.Button("Goto", GUILayout.MaxWidth(75)) && Player.main)

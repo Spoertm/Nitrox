@@ -10,9 +10,6 @@ namespace NitroxClient.Communication.Packets.Processors;
 
 internal sealed class VehicleUndockingProcessor(Vehicles vehicles, PlayerManager remotePlayerManager) : IClientPacketProcessor<VehicleUndocking>
 {
-    private readonly PlayerManager remotePlayerManager = remotePlayerManager;
-    private readonly Vehicles vehicles = vehicles;
-
     public Task Process(ClientProcessorContext context, VehicleUndocking packet)
     {
         GameObject vehicleGo = NitroxEntity.RequireObjectFrom(packet.VehicleId);

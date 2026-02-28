@@ -16,7 +16,6 @@ namespace Nitrox.Launcher.Models.Services;
 internal sealed class ServersManagement(ServerService serverService) : StreamingHubBase<IServersManagement, IServerManagementReceiver>, IServersManagement
 {
     private readonly CancellationTokenSource cts = new();
-    private readonly ServerService serverService = serverService;
     private int processId;
     private string saveName;
 
