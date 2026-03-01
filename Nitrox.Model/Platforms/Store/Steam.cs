@@ -267,7 +267,7 @@ public sealed class Steam : IGamePlatform
                 using FileStream fs = new(consoleLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 fs.Seek(initialLength, SeekOrigin.Begin);
                 using StreamReader sr = new(fs);
-                string newContent = await sr.ReadToEndAsync(cts.Token);
+                string newContent = await sr.ReadToEndAsync();
                 initialLength = currentLength;
 
                 // These tokens appear in Steam's console log once its UI layer is up.
