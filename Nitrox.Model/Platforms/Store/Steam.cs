@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -161,7 +160,7 @@ public sealed class Steam : IGamePlatform
             {
                 try
                 {
-                    if (Directory.GetFileSystemEntries(path).Any())
+                    if (Directory.GetFileSystemEntries(path).Length != 0)
                     {
                         steamPath = path;
                         break;
@@ -201,13 +200,94 @@ public sealed class Steam : IGamePlatform
         {
             if (isPlatformStartingUp)
             {
-                // TODO: Instead of waiting, detect when Steam Big Picture is ready to be started by Steam.
-                await Task.Delay(2000);
+                await WaitForSteamBigPictureReadyAsync();
             }
             await LaunchSteamBigPictureModeAsync();
         }
 
         return ProcessEx.From(CreateSteamGameStartInfo(pathToGameExe, GetExeFile(), launchArguments, steamAppId, skipSteam, bigPictureMode));
+    }
+
+    /// <summary>
+    /// Waits until Steam's UI layer is ready to accept a Big Picture mode launch.
+    /// On Windows we watch the registry ActiveUser value; on all platforms we also
+    /// watch the console log for the "steamui" or "bigpicture" tokens that Steam
+    /// writes once its browser/UI compositor is initialised.
+    /// </summary>
+    private static async Task WaitForSteamBigPictureReadyAsync()
+    {
+        string? exe = GetExeFile();
+        using CancellationTokenSource cts = new(TimeSpan.FromSeconds(30));
+
+        try
+        {
+            // On Windows, block until an active user session exists in the registry,
+            // which means the Steam client has finished authenticating and its UI is live.
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Log.Debug("Waiting for Steam UI to become ready (registry)...");
+                await RegistryEx.CompareWaitAsync<int>(
+                    @"SOFTWARE\Valve\Steam\ActiveProcess\ActiveUser",
+                    v => v > 0,
+                    cts.Token);
+                Log.Debug("Steam UI ready (registry signal received).");
+                return;
+            }
+
+            // On Linux / macOS fall back to polling the console log for a line that
+            // indicates the Steam browser/UI compositor has started.  Steam writes
+            // "BPM_ConnectedToSteam" or "steamui loaded" once it is ready.
+            if (exe is null)
+            {
+                return;
+            }
+
+            string steamLogsPath = GetSteamLogsPath(exe);
+            string consoleLog = Path.Combine(steamLogsPath, "console_log.txt");
+
+            Log.Debug("Waiting for Steam UI to become ready (log polling)...");
+            long initialLength = File.Exists(consoleLog) ? new FileInfo(consoleLog).Length : 0;
+
+            while (!cts.IsCancellationRequested)
+            {
+                await Task.Delay(300, cts.Token);
+
+                if (!File.Exists(consoleLog))
+                {
+                    continue;
+                }
+
+                long currentLength = new FileInfo(consoleLog).Length;
+                if (currentLength <= initialLength)
+                {
+                    continue;
+                }
+
+                // Read only newly appended bytes so we don't re-scan the whole file.
+                using FileStream fs = new(consoleLog, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                fs.Seek(initialLength, SeekOrigin.Begin);
+                using StreamReader sr = new(fs);
+                string newContent = await sr.ReadToEndAsync(cts.Token);
+                initialLength = currentLength;
+
+                // These tokens appear in Steam's console log once its UI layer is up.
+                if (newContent.Contains("BPM_ConnectedToSteam", StringComparison.OrdinalIgnoreCase) ||
+                    newContent.Contains("steamui loaded", StringComparison.OrdinalIgnoreCase) ||
+                    newContent.Contains("BigPicture", StringComparison.OrdinalIgnoreCase))
+                {
+                    Log.Debug("Steam UI ready (log signal received).");
+                    return;
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Log.Debug("Timed out waiting for Steam UI to be ready; proceeding anyway.");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex);
+        }
     }
 
     private static async Task LaunchSteamBigPictureModeAsync()
@@ -260,7 +340,12 @@ public sealed class Steam : IGamePlatform
         {
             throw new Exception("Steam was not found on your machine.");
         }
-        // Start game through Steam so Steam Overlay loads properly. TODO: HACK - this way should be removed if we add a call SteamAPI_Init before Unity Engine shows graphics, see https://partner.steamgames.com/doc/features/overlay.
+
+        // Start game through Steam so Steam Overlay loads properly.
+        // NOTE: Ideally we would call SteamAPI_Init before the Unity Engine shows graphics,
+        // which would allow us to launch via the game executable directly with full overlay
+        // support. See: https://partner.steamgames.com/doc/features/overlay
+        // Until that is possible, we launch via the Steam client as a workaround.
         if (!skipSteam)
         {
             args = $"""-applaunch {steamAppId} --nitrox "{NitroxUser.LauncherPath}" {args}""";
@@ -455,14 +540,13 @@ public sealed class Steam : IGamePlatform
         }
     }
 
-    private static DateTime GetSteamConsoleLogLastWrite(string steamExePath)
+    private static string GetSteamLogsPath(string steamExePath) => steamExePath switch
     {
-        string steamLogsPath = steamExePath switch
-        {
-            not null when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Steam", "logs"),
-            not null when Path.GetDirectoryName(steamExePath) is { } steamPath => Path.Combine(steamPath, "logs"),
-            _ => throw new FileNotFoundException("Failed to find Steam console log file")
-        };
-        return File.GetLastWriteTime(Path.Combine(steamLogsPath, "console_log.txt"));
-    }
+        not null when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Steam", "logs"),
+        not null when Path.GetDirectoryName(steamExePath) is { } steamPath => Path.Combine(steamPath, "logs"),
+        _ => throw new FileNotFoundException("Failed to find Steam logs directory")
+    };
+
+    private static DateTime GetSteamConsoleLogLastWrite(string steamExePath) =>
+        File.GetLastWriteTime(Path.Combine(GetSteamLogsPath(steamExePath), "console_log.txt"));
 }
