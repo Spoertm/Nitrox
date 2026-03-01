@@ -9,7 +9,7 @@ public readonly record struct OperandPattern(string DeclaringClassName, string M
     public bool IsAny => this == default;
     public bool IsAnyArguments => ArgumentTypes == null;
 
-    public static bool operator ==(OperandPattern pattern, [CanBeNull] object operand)
+    public static bool operator ==(OperandPattern pattern, object? operand)
     {
         if (pattern.IsAny)
         {
