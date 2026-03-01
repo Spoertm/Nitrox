@@ -447,7 +447,7 @@ public class SceneDebugger : BaseDebugger
                 {
                     GUILayout.Label(method.ToString());
 
-                    if (method.GetParameters().Any()) // TODO: Allow methods with parameters to be called.
+                    if (method.GetParameters().Length != 0) // TODO: Allow methods with parameters to be called.
                     {
                         continue;
                     }
