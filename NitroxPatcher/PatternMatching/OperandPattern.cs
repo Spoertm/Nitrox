@@ -1,10 +1,9 @@
 using System;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace NitroxPatcher.PatternMatching;
 
-public readonly record struct OperandPattern(string DeclaringClassName, string MemberName, Type[] ArgumentTypes = null)
+public readonly record struct OperandPattern(string DeclaringClassName, string MemberName, Type[]? ArgumentTypes = null)
 {
     public bool IsAny => this == default;
     public bool IsAnyArguments => ArgumentTypes == null;
